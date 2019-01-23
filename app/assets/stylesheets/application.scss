@@ -22,3 +22,11 @@
   background-color: $color-darkest-grey;
   color: white;
 }
+
+.text-input[type="email"] {
+  max-width: 15em;
+}
+
+.text-input[type="tel"] {
+  max-width: 15em;
+}
