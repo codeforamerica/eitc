@@ -1,0 +1,64 @@
+.image-set {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  @media screen and (min-width: 601px) {
+    padding: 12px;
+  }
+  @media screen and (min-width: 961px) {
+    padding: 15px;
+  }
+}
+
+.image-set__item {
+  margin: 10px;
+  @media screen and (min-width: 601px) {
+    margin: 12px;
+  }
+  @media screen and (min-width: 961px) {
+    margin: 15px;
+  }
+  display: inline-block;
+  text-align: center;
+}
+
+.image--cfa-logo {
+  margin-left: 0;
+  width: 100px;
+  @media screen and (min-width: 601px) {
+    width: 150px;
+  }
+  @media screen and (min-width: 961px) {
+    width: 175px;
+  }
+}
+
+.image--cdle-logo {
+  width: 300px;
+  @media screen and (min-width: 601px) {
+    width: 450px;
+  }
+  @media screen and (min-width: 961px) {
+    width: 575px;
+  }
+}
+
+.image--gci-logo {
+  width: 100px;
+  @media screen and (min-width: 601px) {
+    width: 150px;
+  }
+  @media screen and (min-width: 961px) {
+    width: 175px;
+  }
+}
+
+.image--uw-logo {
+  width: 125px;
+  @media screen and (min-width: 601px) {
+    width: 185px;
+  }
+  @media screen and (min-width: 961px) {
+    width: 225px;
+  }
+}

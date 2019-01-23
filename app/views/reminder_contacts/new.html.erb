@@ -1,0 +1,18 @@
+<div class="slab">
+  <div class="grid">
+    <div class="grid__item width-five-sixths shift-one-twelfth">
+      <%= form_for @reminder_contact, builder: Cfa::Styleguide::CfaFormBuilder, url: { action: 'create' }, html: { class: 'form-card' } do |f| %>
+        <div class="form-card__header">
+          <h1 class="form-card__title">Want a reminder?</h1>
+        </div>
+        <div class="form-card__content">
+          <%= f.cfa_input_field(:email, 'What is your email?') %>
+          <%= f.cfa_input_field(:phone_number, 'What is your phone number?') %>
+        </div>
+        <div class="form-card__footer">
+          <%= f.submit 'Send me a reminder', class: "button button--primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

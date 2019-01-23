@@ -1,0 +1,21 @@
+.template--homepage {
+  margin-bottom: 0;
+  .slab--fold {
+    h2 {
+      max-width: 9em;
+      font-size: 5rem;
+      line-height: 1.3em;
+      font-weight: 600;
+      margin-top: 2em;
+      margin-bottom: .5em;
+    }
+
+    h1 {
+      margin-bottom: 2em;
+      font-weight: 500;
+      font-size: inherit;
+      line-height: inherit;
+      margin-top: 0;
+    }
+  }
+}

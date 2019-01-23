@@ -1,0 +1,61 @@
+<section class="slab slab--fold">
+  <div class="grid">
+    <div class="grid__item width-three-fourths">
+      <h2>Get the refund you've earned</h2>
+      <h1>Free non-profit tax help for <br>Colorado workers and their families</h1>
+      <%= link_to "File online", :file_online, class: "button button--cta" %>
+      <%= link_to "Get in-person help", 'https://www.garycommunity.org/tax-help#gci-tax-app-filter-form', class: "button button--cta" %>
+    </div>
+  </div>
+</section>
+<section class="slab slab--dark slab--not-padded">
+  <div class="grid">
+    <div class="grid__item width-one-whole">
+      <ul class="image-set">
+        <li class="image-set__item">
+          <a href="https://codeforamerica.org">
+            <%= image_tag "CfALogo-White.svg", class: "image image--cfa-logo", alt: "Code for America" %>
+          </a>
+        </li>
+        <li class="image-set__item">
+          <a href="https://www.garycommunity.org/home">
+            <%= image_tag "gary-community-investments-logo-white.png", class: "image image--gci-logo", alt: "Gary Community Investments" %>
+          </a>
+        </li>
+        <li class="image-set__item">
+          <a href="https://www.unitedway.org/">
+            <%= image_tag "united-way-logo-white.svg", class: "image image--uw-logo", alt: "United Way" %>
+          </a>
+        </li>
+        <li class="image-set__item">
+          <a href="https://www.colorado.gov/cdle">
+            <%= image_tag "cdle-logo.svg", class: "image image--cdle-logo", alt: "Colorado Department of Labor and Employment" %>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="slab slab--padded">
+  <div class="grid">
+    <div class="grid__item">
+      <h3 class="with-padding-med">Not ready to file taxes?</h3>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="grid__item width-one-half with-padding-med">
+      <p class="text--small">We can send you a reminder</p>
+      <p class="with-no-padding">
+        <%= link_to "Get a reminder", new_reminder_contact_path, class: "button" %>
+      </p>
+    </div>
+    <div class="grid__item width-one-half with-padding-med">
+      <p class="text--small">You can file up to 3 years later</p>
+      <p class="with-no-padding">
+        <a class="button">
+          File for a previous year
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
