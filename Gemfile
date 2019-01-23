@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'cfa-styleguide', git: 'https://github.com/codeforamerica/cfa-styleguide-gem'
+
 gem 'phonelib'
 gem 'pry-byebug'
 
@@ -43,7 +45,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_bot'
-  gem 'cfa-styleguide', git: 'https://github.com/codeforamerica/cfa-styleguide-gem'
   gem 'rails-controller-testing'
 end
 
