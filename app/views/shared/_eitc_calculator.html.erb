@@ -1,0 +1,40 @@
+
+<div class="calculator-wrapper" id="calculator-wrapper">
+  <form name="estform" method="get">
+    <div class="grid">
+      <div class="estselect filing grid__item width-one-fourth">
+        <p>Filing Status:</p>
+        <select id="FORMSTATUS" name="FORMSTATUS">
+          <option value="single">Single</option>
+          <option value="married">Married</option>
+        </select>
+      </div>
+
+      <div class="estselect children grid__item width-one-fourth">
+        <p>Number of Children:</p>
+        <div>
+          <select id="FORMKIDS" name="FORMKIDS">
+            <option value="0">None</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three or More</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="estselect household grid__item width-one-fourth">
+        <p>Household Earnings:</p>
+        <div class="earningsnumber">
+          <input id="FORMEARNINGS" name="FORMEARNINGS" type="text" size="10" onkeyup="compute(this);">
+        </div>
+      </div>
+
+      <div class="estselect your grid__item width-one-fourth">
+        <div><p>Your EITC: </p></div>
+        <input class="nobc nobo" id="total" name="total" type="text" readonly="Yes" value="" size="4">
+      </div>
+
+    </div>
+  </form>
+  <div>The EITC Estimator was developed by the Center on Budget and Policy Priorities and is used here with permission.</div>
+</div>

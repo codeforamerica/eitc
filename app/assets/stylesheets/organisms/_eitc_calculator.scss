@@ -1,0 +1,71 @@
+.estselect{
+  float:left;
+  text-align:left;
+  margin-right:20px;
+}
+.estselect p{
+  font-weight:bold;
+  margin-bottom:5px;
+}
+.estselect input,.estselect select{
+  //width:213px;
+  border:none;
+  background-color:#FFF;
+  -webkit-appearance:none;
+  outline:none;
+  height:44px;
+  border:1px solid #CCCCCC;
+  border-radius:0;
+  padding:0;
+  box-sizing:border-box;
+  padding-left:15px;
+  color:#575757;
+}
+.estselect.children select,.estselect.filing select{
+  //width:263px;
+  //background:url(/sites/all/themes/minim/images/icon-dropdown-arrow.svg);
+  //background-repeat:no-repeat;
+  //background-position:95% 50%;
+}
+.estselect.children select{
+  //width:213px;
+}
+.estselect.your input{
+  //width:168px;
+  background:rgba(123,158,96,0.4);
+  border:1px dashed #799C5F;
+}
+.estselect.your{
+  margin-right:0;
+}
+.calculator-wrapper{
+  //text-align:center;
+  //margin:auto;
+  //margin-bottom:60px;
+}
+.calculator-wrapper form{
+  //width:917px;
+  margin:auto;
+  margin-bottom:30px;
+}
+.estselect.children select,.estselect.filing select{
+  color:#575757;
+  font-size:16px;
+  line-height:20px;
+  font-weight:normal;
+}
+.estselect.your,.estselect.household .earningsnumber{
+  position:relative;
+}
+.estselect.your:after,.estselect.household .earningsnumber:after{
+  content:'$';
+  position:absolute;
+  top:11.5px;
+  left:15px;
+}
+.estselect.your:after{
+  top:55.5px;
+}
+.estselect.your input,.estselect.household input{
+  padding-left:25px;
+}

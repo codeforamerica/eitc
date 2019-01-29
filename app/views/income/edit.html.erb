@@ -1,0 +1,9 @@
+<section class="slab slab--padded text--centered">
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
+    <%= render "components/molecules/progress_step_bar" %>
+    <%= f.cfa_input_field :income, 'What are your household earnings?', type: 'tel', prefix: '$', classes: ['form-width--phone'] %>
+    <%= f.button :submit, class: 'button button--primary' do %>
+      Estimate my refund
+    <% end %>
+  <% end %>
+</section>

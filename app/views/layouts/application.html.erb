@@ -13,9 +13,10 @@
 
   <body class="template--<%= template_css_class %>">
     <div class="page-wrapper">
+      <%= render 'shared/header' %>
       <%= yield %>
     </div>
 
-    <%= render "shared/footer" %>
+    <%= render 'shared/footer' %>
     </body>
 </html>

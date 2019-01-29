@@ -39,7 +39,17 @@
 <section class="slab slab--padded text--centered">
   <h2 class="h2">Estimate your refund</h2>
   <p>Use our calculator to see how much money you could get back.</p>
-  <h1>Form goes here</h1>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
+    <%= render "components/molecules/progress_step_bar" %>
+    <%= f.button :submit, name: form_name + '[status]', value: 'single', class: "button" do %>
+      <span class="emoji emoji--star"></span>
+      Single/head of household
+    <% end %>
+    <%= f.button :submit, name: form_name + '[status]', value: 'joint', class: "button" do %>
+      <span class="emoji emoji--star"></span><span class="emoji emoji--star"></span>
+      Married
+    <% end %>
+  <% end %>
 </section>
 <section class="slab slab--padded">
   <div class="grid">

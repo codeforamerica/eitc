@@ -1,0 +1,14 @@
+
+<section class="slab slab--padded text--centered">
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
+    <%= render "components/molecules/progress_step_bar" %>
+    <legend>
+      <h1><strong>How many children</strong> do you have?</h1>
+    </legend>
+    <% { "0": 0, "1": 1, "2": 2, "3+": 3 }.each_pair do |label, value| %>
+      <%= f.button :submit, name: 'children_form[children]', value: value, class: "button" do %>
+        <%= label %>
+      <% end %>
+    <% end %>
+  <% end %>
+</section>
