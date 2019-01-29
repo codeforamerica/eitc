@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#index'
+  root 'filing_status#edit'
   get '/about' => 'pages#about', as: 'about'
   get '/help_sites' => 'pages#help_sites', as: 'help_sites'
   get '/file_online' => 'pages#file_online', as: 'file_online'

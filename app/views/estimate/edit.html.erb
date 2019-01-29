@@ -43,7 +43,7 @@
       You're estimated EITC refund is:
       <br>
       <span class="figure color--green">
-        <%= number_to_currency(refund_amount, precision: 0) %>
+        <%= number_to_currency(current_eitc_estimate.refund, precision: 0) %>
       </span>
     </h1>
 

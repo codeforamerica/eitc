@@ -36,20 +36,24 @@
     </div>
   </div>
 </section>
-<section class="slab slab--padded text--centered">
-  <h2 class="h2">Estimate your refund</h2>
-  <p>Use our calculator to see how much money you could get back.</p>
-  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
-    <%= render "components/molecules/progress_step_bar" %>
-    <%= f.button :submit, name: form_name + '[status]', value: 'single', class: "button" do %>
-      <span class="emoji emoji--star"></span>
-      Single/head of household
-    <% end %>
-    <%= f.button :submit, name: form_name + '[status]', value: 'joint', class: "button" do %>
-      <span class="emoji emoji--star"></span><span class="emoji emoji--star"></span>
-      Married
-    <% end %>
-  <% end %>
+<section class="slab slab--padded text--centered" id="status_form">
+  <div class="grid">
+    <div class="grid__item width-two-thirds shift-one-sixth">
+      <h2 class="h2">Estimate your refund</h2>
+      <p>Use our calculator to see how much money you could get back.</p>
+      <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
+        <%= render "components/molecules/progress_step_bar" %>
+        <%= f.button :submit, name: form_name + '[status]', value: 'single', class: "button" do %>
+          <span class="emoji emoji--star"></span>
+          Single/head of household
+        <% end %>
+        <%= f.button :submit, name: form_name + '[status]', value: 'joint', class: "button" do %>
+          <span class="emoji emoji--star"></span><span class="emoji emoji--star"></span>
+          Married
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </section>
 <section class="slab slab--padded">
   <div class="grid">
@@ -62,14 +66,6 @@
       <p class="text--small">We can send you a reminder</p>
       <p class="with-no-padding">
         <%= link_to "Get a reminder", new_reminder_contact_path, class: "button" %>
-      </p>
-    </div>
-    <div class="grid__item width-one-half with-padding-med">
-      <p class="text--small">You can file up to 3 years later</p>
-      <p class="with-no-padding">
-        <a class="button">
-          File for a previous year
-        </a>
       </p>
     </div>
   </div>
