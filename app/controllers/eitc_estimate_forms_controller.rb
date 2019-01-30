@@ -5,7 +5,7 @@ class EitcEstimateFormsController < ApplicationController
 
   delegate :form_name, to: :class
 
-  layout "application"
+  layout "form_card"
 
   def index
   end

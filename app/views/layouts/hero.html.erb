@@ -1,0 +1,56 @@
+<% content_for :page do %>
+  <div class="page-wrapper">
+
+    <%= render 'shared/header' %>
+    <section class="slab slab--fold">
+      <div class="grid">
+        <div class="grid__item width-one-whole">
+          <h2 class="h1">Get the refund you've earned</h2>
+          <h1 class="h3">Free non-profit tax help for <br>Colorado workers and their families</h1>
+          <%= link_to "File online", :file_online, class: "button button--cta" %>
+          <%= link_to "Get in-person help", 'https://www.garycommunity.org/tax-help#gci-tax-app-filter-form', class: "button" %>
+        </div>
+      </div>
+
+      <a href="#scroller-target" class="scroller scroller--light"><span class="sr-only">Skip to content</span></a>
+
+      <div class="grid logo-panel">
+        <div class="grid__item width-one-whole">
+          <div class="grid">
+            <div class="logo-panel__item">
+              <a href="https://www.garycommunity.org/home">
+                <%= image_tag "gary-community-investments-logo-white.png", class: "image image--gci-logo", alt: "Gary Community Investments" %>
+              </a>
+            </div>
+            <div class="logo-panel__item">
+              <a href="https://www.unitedway.org/">
+                <%= image_tag "united-way-logo-white.svg", class: "image image--uw-logo", alt: "United Way" %>
+              </a>
+            </div>
+            <div class="logo-panel__item">
+              <a href="https://www.colorado.gov/cdle">
+                <%= image_tag "cdle-logo.svg", class: "image image--cdle-logo", alt: "Colorado Department of Labor and Employment" %>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="scroller-target" class="slab slab--not-padded">
+
+    <%= content_for :content %>
+    </section>
+
+    <section class="slab slab--padded">
+      <%= render 'shared/reminder_lead_in' %>
+    </section>
+
+    <%= render 'shared/footer' %>
+
+  </div>
+
+<% end %>
+
+<%= render template: "layouts/application" %>

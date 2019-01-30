@@ -1,16 +1,35 @@
 
-<section class="slab slab--padded text--centered">
+<% content_for :form_card_title do %>
+  How many children do you have?
+<% end %>
+
+<% content_for :form_card_content do %>
   <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
     <%= render "components/molecules/progress_step_bar" %>
-    <legend>
-      <h1><strong>How many children</strong> do you have?</h1>
-    </legend>
-    <% { "0": 0, "1": 1, "2": 2, "3+": 3 }.each_pair do |label, value| %>
-      <%= f.button :submit, name: 'children_form[children]', value: value, class: "button" do %>
-        <%= label %>
-      <% end %>
-    <% end %>
-  <% end %>
+    <fieldset class="button-set">
+      <legend>
+        <h1 class="form-question"><strong>How many qualifying children</strong> do you have?</h1>
+      </legend>
 
-  <%= link_to "Start over", root_path + '#status_form' %>
-</section>
+      <div class="reveal">
+        <p><a href="#" class="reveal__link">What is a qualifying child?</a></p>
+        <div class="reveal__content">
+
+          <p>If you claim children as part of your EITC, they must pass three tests to be a “qualifying child”:</p>
+          <ol class="list--numbered with-padding-med">
+            <li><strong>Relationship:</strong> The child must be your son, daughter, grandchild, stepchild or adopted child; younger sibling, step-sibling, half-sibling, or their descendent; or a foster child placed with you by a government agency.</li>
+            <li><strong>Age:</strong> The child must be under 19, under 24 if a full-time student, or any age if totally and permanently disabled.</li>
+            <li><strong>Residency:</strong> The child must live with you in the U.S. for more than half the year.</li>
+          </ol>
+
+        </div>
+      </div>
+
+      <% { "0": 0, "1": 1, "2": 2, "3+": 3 }.each_pair do |label, value| %>
+        <%= f.button :submit, name: 'children_form[children]', value: value, class: "button button-set__choice" do %>
+          <%= label %>
+        <% end %>
+      <% end %>
+    </fieldset>
+  <% end %>
+<% end %>

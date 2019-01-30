@@ -14,8 +14,15 @@
  */
 @import 'cfa_styleguide_main';
 @import 'atoms/typography';
+@import 'atoms/buttons';
+@import 'atoms/form-widths';
 @import 'atoms/illustrations';
-@import 'organisms/eitc_calculator';
+@import 'molecules/button-set';
+@import 'molecules/progress-bar';
+@import 'molecules/reveal';
+@import 'organisms/header';
+@import 'organisms/footer';
+@import 'organisms/form-card';
 @import 'templates/homepage';
 
 .slab--dark {

@@ -1,32 +1,15 @@
-<footer class="slab slab--dark slab--padded">
+<footer class="slab slab--dark slab--padded site-footer">
   <div class="grid">
-    <div class="grid__item width-one-half">
+    <div class="grid__item width-one-half with-padding-small">
       <p>This nonprofit website was made for the working people of colorado through a joint effort by Code for America, The Colorado Department of Labor and Employment, Gary Community Investments, and United Way.
       </p>
     </div>
     <div class="grid__item width-one-half">
-      <ul class="image-set">
-        <li class="image-set__item">
-          <a href="https://codeforamerica.org">
-            <%= image_tag "CfALogo-White.svg", class: "image image--cfa-logo", alt: "Code for America" %>
-          </a>
-        </li>
-        <li class="image-set__item">
-          <a href="https://www.garycommunity.org/home">
-            <%= image_tag "gary-community-investments-logo-white.png", class: "image image--gci-logo", alt: "Gary Community Investments" %>
-          </a>
-        </li>
-        <li class="image-set__item">
-          <a href="https://www.unitedway.org/">
-            <%= image_tag "united-way-logo-white.svg", class: "image image--uw-logo", alt: "United Way" %>
-          </a>
-        </li>
-        <li class="image-set__item">
-          <a href="https://www.colorado.gov/cdle">
-            <%= image_tag "cdle-logo.svg", class: "image image--cdle-logo", alt: "Colorado Department of Labor and Employment" %>
-          </a>
-        </li>
-      </ul>
+      <div class="cfa-logo">
+        <a href="https://codeforamerica.org">
+          <%= image_tag "CfALogo-White.svg", class: "image image--cfa-logo", alt: "Code for America" %>
+        </a>
+      </div>
     </div>
   </div>
 </footer>

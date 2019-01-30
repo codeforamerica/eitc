@@ -1,3 +1,26 @@
 .color--green {
   color: $color-green;
 }
+
+legend h1.form-question {
+  font-size: $font-size-h3;
+  font-weight: 300;
+  strong {
+    font-weight: bold;
+  }
+}
+
+label h1.form-question {
+  font-size: $font-size-h3;
+  font-weight: 300;
+  strong {
+    font-weight: bold;
+  }
+}
+
+.figure {
+  font-size: $font-size-h1 * 1.5;
+  font-weight: 700;
+  display: block;
+  margin-top: 1rem;
+}

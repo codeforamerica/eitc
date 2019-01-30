@@ -1,0 +1,26 @@
+<% content_for :page_title do %>
+  <%= @form.errors.first %>
+  <%= content_for :form_card_title %>
+  | ClaimTheCredit.org
+<% end %>
+
+<% content_for :template_css_class, "form" %>
+
+<% content_for :page do %>
+  <div class="page-wrapper">
+    <%= render 'shared/header' %>
+    <main class="main">
+      <section class="slab text--centered">
+        <div class="grid">
+          <div class="grid__item width-two-thirds shift-one-sixth">
+            <%= content_for :form_card_content %>
+
+            <%= link_to "Start over", root_path + '#status_form' %>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

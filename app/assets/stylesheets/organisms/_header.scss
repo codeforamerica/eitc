@@ -1,0 +1,11 @@
+.main-header__site-name {
+  font-size: $font-size-small;
+  line-height: $line-height-normal;
+  margin-bottom: 0;
+  font-weight: 500;
+  color: black;
+  a {
+    color: black;
+    text-decoration: none;
+  }
+}

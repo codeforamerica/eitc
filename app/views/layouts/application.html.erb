@@ -3,7 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Claim the Credit</title>
+
+    <title>
+      <% if content_for? :page_title %>
+        <%= content_for :page_title %>
+      <% else %>
+        ClaimTheCredit.org
+      <% end %>
+    </title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,12 +19,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="template--<%= template_css_class %>">
-    <div class="page-wrapper">
-      <%= render 'shared/header' %>
-      <%= yield %>
-    </div>
+  <body class="template--<%
+      if content_for? :template_css_class %><%=
+        content_for :template_css_class %><%
+      else %>homepage<% end
+  %>">
 
-    <%= render 'shared/footer' %>
+    <%= content_for :page %>
     </body>
 </html>

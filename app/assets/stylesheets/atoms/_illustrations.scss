@@ -22,43 +22,48 @@
   text-align: center;
 }
 
+$cdle-logo-height: 40px;
+$uw-logo-height: 40px;
+$gci-logo-height: 40px;
+$cfa-logo-height: 40px;
+
 .image--cfa-logo {
   margin-left: 0;
-  width: 100px;
+  height: $cfa-logo-height;
   @media screen and (min-width: 601px) {
-    width: 150px;
+    height: $cfa-logo-height * 1.5;
   }
   @media screen and (min-width: 961px) {
-    width: 175px;
+    height: $cfa-logo-height * 1.75;
   }
 }
 
 .image--cdle-logo {
-  width: 300px;
+  height: $cdle-logo-height;
   @media screen and (min-width: 601px) {
-    width: 450px;
+    height: $cdle-logo-height * 1.5;
   }
   @media screen and (min-width: 961px) {
-    width: 575px;
+    height: $cdle-logo-height * 1.75;
   }
 }
 
 .image--gci-logo {
-  width: 100px;
+  height: $gci-logo-height;
   @media screen and (min-width: 601px) {
-    width: 150px;
+    height: $gci-logo-height * 1.5;
   }
   @media screen and (min-width: 961px) {
-    width: 175px;
+    height: $gci-logo-height * 1.75;
   }
 }
 
 .image--uw-logo {
-  width: 125px;
+  height: $uw-logo-height;
   @media screen and (min-width: 601px) {
-    width: 185px;
+    height: $uw-logo-height * 1.5;
   }
   @media screen and (min-width: 961px) {
-    width: 225px;
+    height: $uw-logo-height * 1.75;
   }
 }
