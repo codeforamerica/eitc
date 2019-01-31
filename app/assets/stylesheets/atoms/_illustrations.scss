@@ -22,10 +22,11 @@
   text-align: center;
 }
 
-$cdle-logo-height: 40px;
-$uw-logo-height: 40px;
+$cdle-logo-height: 37px;
+$uw-logo-height: 37px;
 $gci-logo-height: 40px;
 $cfa-logo-height: 40px;
+$vertical-align-padding: 10px;
 
 .image--cfa-logo {
   margin-left: 0;
@@ -40,11 +41,14 @@ $cfa-logo-height: 40px;
 
 .image--cdle-logo {
   height: $cdle-logo-height;
+  padding-top: $vertical-align-padding;
   @media screen and (min-width: 601px) {
     height: $cdle-logo-height * 1.5;
+    padding-top: $vertical-align-padding * 1.5;
   }
   @media screen and (min-width: 961px) {
     height: $cdle-logo-height * 1.75;
+    padding-top: $vertical-align-padding * 1.75;
   }
 }
 
@@ -60,10 +64,13 @@ $cfa-logo-height: 40px;
 
 .image--uw-logo {
   height: $uw-logo-height;
+  padding-top: $vertical-align-padding;
   @media screen and (min-width: 601px) {
     height: $uw-logo-height * 1.5;
+    padding-top: $vertical-align-padding * 1.5;
   }
   @media screen and (min-width: 961px) {
     height: $uw-logo-height * 1.75;
+    padding-top: $vertical-align-padding * 1.75;
   }
 }

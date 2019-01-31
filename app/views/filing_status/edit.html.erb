@@ -1,15 +1,17 @@
 
 <% content_for :content do %>
-  <section class="slab slab--padded text--centered">
+  <section class="slab text--centered">
     <div class="grid">
       <div class="grid__item width-two-thirds shift-one-sixth">
-        <h2 class="h2">Estimate your refund</h2>
-        <p>Use our calculator to see how much money you could get back.</p>
+        <div class="with-padding-med">
+          <h2 class="h2">Estimate your refund</h2>
+          <p>Use our calculator to see how much money you could get back.</p>
+        </div>
 
         <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { id: "status_form", class: 'form-card form-card--transition' } do |f| %>
 
           <%= render "components/molecules/progress_step_bar" %>
-          <fieldset>
+          <fieldset class="with-padding-large">
             <legend>
               <h1 class="form-question">What's your <strong>filing status</strong>?</h1>
             </legend>
@@ -27,9 +29,13 @@
       </div>
     </div>
 
-    <h2 class="h2">
+    <h2 class="h2 with-padding-med">
       Get help filing for free
     </h2>
-    <%= render 'shared/filing_option_lead_ins' %>
+    <%= render 'shared/filing_option_action_busts' %>
+  </section>
+
+  <section class="slab slab--padded">
+    <%= render 'shared/reminder_action_bust' %>
   </section>
 <% end %>

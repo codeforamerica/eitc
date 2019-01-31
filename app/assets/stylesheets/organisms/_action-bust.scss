@@ -1,0 +1,19 @@
+/*
+An action-bust illustrates, summarizes, and provides a call to action for something.
+
+   Icon
+  Heading
+Summary of what
+the action is or why
+  CTA Button
+
+*/
+
+.action-bust {
+  .emoji + .h3 {
+    margin-top: 0;
+  }
+  .emoji + .h2 {
+    margin-top: 0;
+  }
+}

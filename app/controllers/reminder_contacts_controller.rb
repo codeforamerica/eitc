@@ -1,14 +1,12 @@
 class ReminderContactsController < ApplicationController
-  def template_css_class
-    'question'
-  end
+  layout "form_card"
 
   def new
-    @reminder_contact = ReminderContact.new
+    @reminder_contact = @form = ReminderContact.new
   end
 
   def create
-    @reminder_contact = ReminderContact.new(model_params)
+    @reminder_contact = @form = ReminderContact.new(model_params)
 
     if @reminder_contact.save
       redirect_to thanks_reminder_contact_path

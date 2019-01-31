@@ -1,10 +1,10 @@
 
 <% content_for :content do %>
-  <section class="slab">
+  <section class="slab slab--not-padded text--centered">
     <div class="grid">
       <div class="grid__item width-five-sixths shift-one-twelfth">
         <main id="result" class="form-card form-card--transition form-card--notice">
-          <div class="form-card__header">
+          <div class="form-card__header with-padding-med">
             <div class="emoji emoji--big emoji--money"></div>
             <h1 class="h3 form-question">
               You're estimated EITC refund is:
@@ -14,14 +14,20 @@
             </h1>
           </div>
 
-          <div class="form-card__content">
-            <h2>What next?</h2>
-            <p>Get help filing for free</p>
+          <div class="form-card__content with-padding-small">
+            <div class="with-padding-med">
+              <h2>What next?</h2>
+              <p>Get help filing for free</p>
+            </div>
 
-            <%= render 'shared/filing_option_lead_ins' %>
+            <%= render 'shared/filing_option_action_busts' %>
           </div>
         </main>
       </div>
+    </div>
+
+    <div class="with-padding-large">
+      <%= render 'shared/reminder_action_bust' %>
     </div>
   </section>
 <% end %>

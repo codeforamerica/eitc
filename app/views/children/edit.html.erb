@@ -6,12 +6,12 @@
 <% content_for :form_card_content do %>
   <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
     <%= render "components/molecules/progress_step_bar" %>
-    <fieldset class="button-set">
+    <fieldset class="button-set with-padding-med">
       <legend>
         <h1 class="form-question"><strong>How many qualifying children</strong> do you have?</h1>
       </legend>
 
-      <div class="reveal">
+      <div class="reveal with-padding-med">
         <p><a href="#" class="reveal__link">What is a qualifying child?</a></p>
         <div class="reveal__content">
 
@@ -32,4 +32,7 @@
       <% end %>
     </fieldset>
   <% end %>
+
+
+  <%= link_to "Start over", root_path + '#status_form' %>
 <% end %>

@@ -1,5 +1,7 @@
 <% content_for :page_title do %>
-  <%= @form.errors.first %>
+  <% if @form.present? %>
+    <%= @form.errors.messages.values.reduce([], :concat).first %>
+  <% end %>
   <%= content_for :form_card_title %>
   | ClaimTheCredit.org
 <% end %>
@@ -10,12 +12,10 @@
   <div class="page-wrapper">
     <%= render 'shared/header' %>
     <main class="main">
-      <section class="slab text--centered">
+      <section class="slab slab--not-padded text--centered">
         <div class="grid">
           <div class="grid__item width-two-thirds shift-one-sixth">
             <%= content_for :form_card_content %>
-
-            <%= link_to "Start over", root_path + '#status_form' %>
           </div>
         </div>
       </section>

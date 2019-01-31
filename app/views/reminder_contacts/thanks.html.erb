@@ -1,13 +1,13 @@
-<div class="slab">
-  <div class="grid">
-    <div class="grid__item width-five-sixths shift-one-twelfth">
-      <div class="form-card form-card--transition">
-        <div class="form-card__content">
-          <div class="emoji emoji--big emoji--mail-open with-padding-med"></div>
-          <h1 class="form-card__title with-padding-med">Thanks! We'll send you a reminder soon.</h1>
-          <%= link_to "Back to ClaimTheCredit.org", root_path, class: "button button--cta" %>
-        </div>
+<% content_for :form_card_title do %>
+  Thanks!
+<% end %>
+
+<% content_for :form_card_content do %>
+    <div class="form-card form-card--transition">
+      <div class="form-card__content">
+        <div class="emoji emoji--big emoji--mail-open with-padding-med"></div>
+        <h1 class="form-card__title with-padding-med">Thanks! We'll send you a reminder soon.</h1>
+        <%= link_to "Back to GetYourRefund.org", root_path, class: "button button--cta with-padding-med" %>
       </div>
     </div>
-  </div>
-</div>
+<% end %>

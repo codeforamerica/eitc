@@ -1,8 +1,12 @@
+.form-card {
+  margin-top: 1em;
+}
+
 .form-card--notice {
   padding-top: 0;
   .form-card__header {
     padding-top: 2em;
-    padding-bottom: 1em;
+    padding-bottom: 2em;
     background: linear-gradient(to right, rgba($color-magenta, .015) 0%, rgba($color-teal, .04) 65%);
   }
 }
