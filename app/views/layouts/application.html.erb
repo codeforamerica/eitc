@@ -8,7 +8,7 @@
       <% if content_for? :page_title %>
         <%= content_for :page_title %>
       <% else %>
-        ClaimTheCredit.org
+        GetYourRefund.org
       <% end %>
     </title>
 
@@ -25,6 +25,7 @@
       else %>homepage<% end
   %>">
 
-    <%= content_for :page %>
-    </body>
+  <%= render "shared/disclaimer" %>
+  <%= content_for :page %>
+  </body>
 </html>

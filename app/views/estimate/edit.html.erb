@@ -6,11 +6,60 @@
         <main id="result" class="form-card form-card--transition form-card--notice">
           <div class="form-card__header with-padding-med">
             <div class="emoji emoji--big emoji--money"></div>
-            <h1 class="h3 form-question">
-              You're estimated EITC refund is:
-              <span class="figure color--green">
-              <%= number_to_currency(current_eitc_estimate.refund, precision: 0) %>
-            </span>
+            <% if current_eitc_estimate.refund > 0 %>
+              <h1 class="h3 form-question">
+                You're estimated EITC refund is:
+                <span class="figure color--green">
+                  <%= number_to_currency(current_eitc_estimate.refund, precision: 0) %>
+                </span>
+            <% else %>
+              <p>
+                Based on your info,
+                <strong>you may not qualify for the EITC</strong>.
+                It's still a good idea to file though,
+                <strong>you might qualify for other meaningful tax credits like:</strong>
+              </p>
+
+              <div class="reveal">
+                <p><a href="#" class="reveal__link">Child Tax Credit</a></p>
+                <div class="reveal__content">
+                  <p>
+                    A federal tax credit worth up to $2,000 for each child under the age of 17 claimed on a tax return.
+                  </p>
+                </div>
+              </div>
+
+              <div class="reveal">
+                <p><a href="#" class="reveal__link">Child & Dependent Care Credit</a></p>
+                <div class="reveal__content">
+                  <p>
+                    This federal credit helps families pay for childcare while they are working or looking for
+                    employment. It is also available to families that must pay for the care of a spouse or adult
+                    depending who is incapable of caring for themselves
+                  </p>
+                </div>
+              </div>
+
+              <div class="reveal">
+                <p><a href="#" class="reveal__link">America Opportunity Tax Credit</a></p>
+                <div class="reveal__content">
+                  <p>
+                    This credit helps students and families pay for expenses incurred during the first four years of
+                    post-secondary education. It is worth $2,500 per eligible student each year.
+                  </p>
+                </div>
+              </div>
+
+              <div class="reveal">
+                <p><a href="#" class="reveal__link">Lifetime Learning</a></p>
+                <div class="reveal__content">
+                  <p>
+                    This credit helps students pay for expenses like tuition, books and supplies during each year of
+                    post-high school education. It is worth up to $2,000 per eligible student each year.
+                  </p>
+                </div>
+              </div>
+            <% end %>
             </h1>
           </div>
 

@@ -1,0 +1,8 @@
+// If an emoji is followed by a heading
+// remove the top margin of the heading
+.emoji--big + .h3 {
+  margin-top: 0;
+}
+.emoji--big + .h2 {
+  margin-top: 0;
+}
