@@ -2,20 +2,20 @@
   margin: 0;
   padding: 10px;
   text-align: center;
-  @media screen and (min-width: 601px) {
+  @media screen and (min-width: $mobile-up) {
     padding: 12px;
   }
-  @media screen and (min-width: 961px) {
+  @media screen and (min-width: $site-max-up) {
     padding: 15px;
   }
 }
 
 .image-set__item {
   margin: 10px;
-  @media screen and (min-width: 601px) {
+  @media screen and (min-width: $mobile-up) {
     margin: 12px;
   }
-  @media screen and (min-width: 961px) {
+  @media screen and (min-width: $site-max-up) {
     margin: 15px;
   }
   display: inline-block;
@@ -24,17 +24,44 @@
 
 $cdle-logo-height: 37px;
 $uw-logo-height: 37px;
+$getaheadco-logo-height: 38px;
+$piton-logo-height: 30px;
 $gci-logo-height: 40px;
 $cfa-logo-height: 40px;
-$vertical-align-padding: 10px;
+$vertical-align-padding: 6px;
+$piton-vertical-adjust: 1.3;
 
+.image--piton-logo {
+  margin-left: 0;
+  height: $piton-logo-height;
+  padding-top: $vertical-align-padding * $piton-vertical-adjust;
+  @media screen and (min-width: $mobile-up) {
+    height: $piton-logo-height * 1.5;
+    padding-top: $vertical-align-padding * 1.5 * $piton-vertical-adjust;
+  }
+  @media screen and (min-width: $site-max-up) {
+    height: $piton-logo-height * 1.75;
+    padding-top: $vertical-align-padding * 1.75 * $piton-vertical-adjust;
+  }
+}
+
+.image--getaheadco-logo {
+  margin-left: 0;
+  height: $getaheadco-logo-height;
+  @media screen and (min-width: $mobile-up) {
+    height: $getaheadco-logo-height * 1.5;
+  }
+  @media screen and (min-width: $site-max-up) {
+    height: $getaheadco-logo-height * 1.75;
+  }
+}
 .image--cfa-logo {
   margin-left: 0;
   height: $cfa-logo-height;
-  @media screen and (min-width: 601px) {
+  @media screen and (min-width: $mobile-up) {
     height: $cfa-logo-height * 1.5;
   }
-  @media screen and (min-width: 961px) {
+  @media screen and (min-width: $site-max-up) {
     height: $cfa-logo-height * 1.75;
   }
 }
@@ -42,11 +69,11 @@ $vertical-align-padding: 10px;
 .image--cdle-logo {
   height: $cdle-logo-height;
   padding-top: $vertical-align-padding;
-  @media screen and (min-width: 601px) {
+  @media screen and (min-width: $mobile-up) {
     height: $cdle-logo-height * 1.5;
     padding-top: $vertical-align-padding * 1.5;
   }
-  @media screen and (min-width: 961px) {
+  @media screen and (min-width: $site-max-up) {
     height: $cdle-logo-height * 1.75;
     padding-top: $vertical-align-padding * 1.75;
   }
@@ -54,10 +81,10 @@ $vertical-align-padding: 10px;
 
 .image--gci-logo {
   height: $gci-logo-height;
-  @media screen and (min-width: 601px) {
+  @media screen and (min-width: $mobile-up) {
     height: $gci-logo-height * 1.5;
   }
-  @media screen and (min-width: 961px) {
+  @media screen and (min-width: $site-max-up) {
     height: $gci-logo-height * 1.75;
   }
 }
@@ -65,11 +92,11 @@ $vertical-align-padding: 10px;
 .image--uw-logo {
   height: $uw-logo-height;
   padding-top: $vertical-align-padding;
-  @media screen and (min-width: 601px) {
+  @media screen and (min-width: $mobile-up) {
     height: $uw-logo-height * 1.5;
     padding-top: $vertical-align-padding * 1.5;
   }
-  @media screen and (min-width: 961px) {
+  @media screen and (min-width: $site-max-up) {
     height: $uw-logo-height * 1.75;
     padding-top: $vertical-align-padding * 1.75;
   }
