@@ -1,0 +1,24 @@
+.slab--testimonial {
+  background-image: image-url('annie-spratt-593484-unsplash.jpg');
+  background-size: cover;
+  background-position: top center;
+
+  .text--quote-overlay {
+    margin-top: 4em;
+  }
+
+  @include media($tablet-up) {
+    height: 16em;
+    .text--quote-overlay {
+      margin-top: 4rem;
+    }
+  }
+  @include media($site-max-up) {
+    height: 24em;
+    .text--quote-overlay {
+      margin-top: 12rem;
+      font-size: $font-size-h2;
+      line-height: $line-height-display;
+    }
+  }
+}
