@@ -6,9 +6,11 @@
     <div class="with-padding-med">
       <%= f.eitc_input_field :income, 'What are your <strong>household earnings</strong>?', type: 'tel', prefix: '$', classes: ['form-width--phone'] %>
     </div>
+
     <%= f.button :submit, class: 'button button--primary with-padding-small' do %>
       Estimate my refund
     <% end %>
+
   <% end %>
 
   <%= link_to "Start over", root_path + '#status_form' %>

@@ -78,7 +78,7 @@ module Eitc
 
     def eitc_label_contents(label_text, help_text, optional = false)
       label_text = <<~HTML
-      <h1 class="form-question">#{label_text + optional_text(optional)}</p>
+      <h1 class="form-question">#{label_text + optional_text(optional)}</h1>
       HTML
 
       if help_text
