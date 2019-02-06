@@ -37,6 +37,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cfa-styleguide', git: 'https://github.com/codeforamerica/cfa-styleguide-gem'
 gem 'phonelib'
 gem 'pry-byebug'
+gem 'mixpanel-ruby'
+gem 'device_detector'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

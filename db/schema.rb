@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_25_223104) do
+ActiveRecord::Schema.define(version: 2019_02_05_191101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_01_25_223104) do
     t.integer "income"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "visitor_id"
   end
 
   create_table "reminder_contacts", force: :cascade do |t|
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 2019_01_25_223104) do
     t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "visitor_id"
   end
 
 end

@@ -19,10 +19,10 @@ class EitcEstimateFormsController < ApplicationController
     if @form.valid?
       @form.save
       update_session
-      send_mixpanel_event
+      track_form_progress
       redirect_to(next_path)
     else
-      send_mixpanel_validation_errors
+      track_validation_errors
       render :edit
     end
   end
@@ -43,7 +43,7 @@ class EitcEstimateFormsController < ApplicationController
   end
 
   def current_eitc_estimate
-    EitcEstimate.find_by(id: session[:current_eitc_estimate_id])
+    EitcEstimate.find_by(visitor_id: visitor_id)
   end
 
   def self_or_other_member_translation_key(key)
@@ -69,7 +69,6 @@ class EitcEstimateFormsController < ApplicationController
   end
 
   # Don't override in subclasses
-
   def ensure_eitc_estimate_present
     if current_eitc_estimate.blank?
       redirect_to root_path
@@ -80,29 +79,20 @@ class EitcEstimateFormsController < ApplicationController
     @form_navigation ||= FormNavigation.new(self)
   end
 
-  def send_mixpanel_event
-    # MixpanelService.instance.run(
-    #     unique_id: current_eitc_estimate.id,
-    #     event_name: @form.class.analytics_event_name,
-    #     data: AnalyticsData.new(current_eitc_estimate).to_h,
-    #     )
+  def track_form_progress
+    send_mixpanel_event(
+        event_name: @form.class.analytics_event_name,
+        data: @form.record.analytics_data
+    )
   end
 
-  def send_mixpanel_validation_errors
-    data = {
-        screen: @form.class.analytics_event_name,
-        errors: @form.errors.messages.keys,
-    }
-
-    # if current_eitc_estimate.present?
-    #   data.merge!(AnalyticsData.new(current_eitc_estimate).to_h)
-    # end
-    #
-    # MixpanelService.instance.run(
-    #     unique_id: current_eitc_estimate.try(:id),
-    #     event_name: "validation_error",
-    #     data: data,
-    #     )
+  def track_validation_errors
+    send_mixpanel_event(
+      event_name: @form.class.analytics_event_name,
+      data: {
+        errors: @form.errors.messages.keys
+      }
+    )
   end
 
   class << self

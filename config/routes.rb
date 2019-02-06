@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   root 'filing_status#edit'
-  get '/about' => 'pages#about', as: 'about'
-  get '/help_sites' => 'pages#help_sites', as: 'help_sites'
   get '/file_online' => 'pages#file_online', as: 'file_online'
-  get '/reminder' => 'pages#reminder', as: 'reminder'
-  get '/file_late' => 'pages#file_late', as: 'file_late'
 
   resource :reminder_contact do
     get 'new'
     post 'create'
     get 'thanks'
+  end
+
+  namespace :redirects do
+    get 'my_free_taxes'
+    get 'get_ahead_colorado_locations'
   end
 
   resources :screens, controller: :eitc_estimate_forms, only: (Rails.env.production? ? %i[show] : %i[show index]) do

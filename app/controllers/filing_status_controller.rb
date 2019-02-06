@@ -8,7 +8,7 @@ class FilingStatusController < EitcEstimateFormsController
   end
 
   def current_eitc_estimate
-    EitcEstimate.find_by(id: session[:current_eitc_estimate_id]) || EitcEstimate.new
+    EitcEstimate.find_by(visitor_id: visitor_id) || EitcEstimate.new(visitor_id: visitor_id)
   end
 
   def current_step
