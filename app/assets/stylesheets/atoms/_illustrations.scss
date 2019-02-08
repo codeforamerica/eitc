@@ -1,3 +1,12 @@
+
+.illustration--ballot_box {
+  @include retina-bg(ballot_box, 163px 163px);
+  width: 163px;
+  height: 163px;
+}
+
+
+
 .image-set {
   margin: 0;
   padding: 10px;

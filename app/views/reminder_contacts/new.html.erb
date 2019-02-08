@@ -11,8 +11,8 @@
       <p>If you aren't ready to file yet, but want us to send you a reminder, sign up here.</p>
     </div>
     <div class="form-card__content">
-      <%= f.cfa_input_field(:email, 'What is your email address?', type: 'email') %>
-      <%= f.cfa_input_field(:phone_number, 'What is your phone number?', type: 'tel') %>
+      <%= f.cfa_input_field(:email, 'What is your email address?', type: 'email', classes: ['form-width--name']) %>
+      <%= f.cfa_input_field(:phone_number, 'What is your phone number?', type: 'tel', classes: ['form-width--phone']) %>
     </div>
     <div class="form-card__footer">
       <%= f.submit 'Send me a reminder', class: "button button--primary with-padding-med" %>

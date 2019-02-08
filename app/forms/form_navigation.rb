@@ -2,6 +2,8 @@ class FormNavigation
   MAIN = [
     FilingStatusController,
     ChildrenController,
+    FiledRecentlyController,
+    ClaimedEitcController,
     IncomeController,
     EstimateController
   ].freeze

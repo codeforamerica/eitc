@@ -51,7 +51,7 @@ class EitcEstimateFormsController < ApplicationController
   end
 
   def step_count
-    3
+    5
   end
 
   private

@@ -1,0 +1,22 @@
+<% content_for :form_card_title do %>
+  Want to make $50 in 45 minutes?
+<% end %>
+
+<% content_for :form_card_content do %>
+    <div class="form-card--invisible">
+      <h1 class="form-card__title with-padding-small">Want to make $50 in 45 minutes?</h1>
+      <div class="illustration illustration--ballot_box"></div>
+      <p>
+        We want to learn more about how people think about taxes.
+        Enter your contact information and we'll contact you for a paid interview.
+      </p>
+
+      <div>
+        <%= link_to "Sign up", new_research_contact_path, class: "button button--cta with-padding-med" %>
+      </div>
+
+      <div>
+        <%= link_to "No thanks, see my refund", estimate_screens_path + "#result" %>
+      </div>
+    </div>
+<% end %>

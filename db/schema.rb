@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_191101) do
+ActiveRecord::Schema.define(version: 2019_02_08_005131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2019_02_05_191101) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "visitor_id"
+    t.string "filed_recently", default: "unset"
+    t.string "claimed_eitc", default: "unset"
   end
 
   create_table "reminder_contacts", force: :cascade do |t|
@@ -37,6 +39,15 @@ ActiveRecord::Schema.define(version: 2019_02_05_191101) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "visitor_id"
+  end
+
+  create_table "research_contacts", force: :cascade do |t|
+    t.string "email"
+    t.string "phone_number"
+    t.string "visitor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "full_name"
   end
 
 end

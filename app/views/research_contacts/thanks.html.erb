@@ -1,0 +1,17 @@
+<% content_for :form_card_title do %>
+  You're successfully registered!
+<% end %>
+
+<% content_for :form_card_content do %>
+    <div class="form-card form-card--transition">
+      <div class="form-card__content">
+        <div class="emoji emoji--big emoji--grinning-face with-padding-small"></div>
+        <h1 class="form-card__title">You're successfully registered!</h1>
+        <p class="text--help with-padding-med">
+          You’ll hear from us soon. In the meantime, check out your refund estimate.
+          Now is a great time to get started on filing.
+        </p>
+        <%= link_to "See my refund estimate", estimate_screens_path + "#result", class: "button button--cta with-padding-med" %>
+      </div>
+    </div>
+<% end %>

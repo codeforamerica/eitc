@@ -8,6 +8,13 @@ Rails.application.routes.draw do
     get 'thanks'
   end
 
+  resource :research_contact do
+    get 'invitation'
+    get 'new'
+    post 'create'
+    get 'thanks'
+  end
+
   namespace :redirects do
     get 'my_free_taxes'
     get 'get_ahead_colorado_locations'

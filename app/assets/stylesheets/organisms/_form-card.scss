@@ -11,6 +11,23 @@
   }
 }
 
+.form-card--invisible {
+  padding: 1.5em $site-margins/2;
+  margin-bottom: 2em;
+  margin-left: -.5em;
+  margin-right: -.5em;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  @include media($tablet-up) {
+    padding: 1.5em 2em;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 .form-group {
   margin-bottom: $padding-med;
 }
