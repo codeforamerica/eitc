@@ -4,13 +4,33 @@
     <%= render 'shared/header' %>
     <section class="slab slab--fold">
       <div class="grid">
-        <div class="grid__item width-one-whole with-padding-med">
+        <div class="grid__item width-one-whole">
           <h2 class="h1">Get the refund you've earned</h2>
           <h1 class="h3">Free non-profit tax help for <br>Colorado workers and their families</h1>
           <%= link_to "File online", redirects_my_free_taxes_path, class: "button button--cta" %>
           <%= link_to "Get in-person help", redirects_get_ahead_colorado_locations_path, class: "button" %>
         </div>
       </div>
+
+      <div class="grid logo-panel">
+        <div class="grid__item width-two-thirds shift-one-sixth">
+          <div class="grid">
+            <div class="logo-panel__item">
+              <a href="https://codeforamerica.org">
+                <%= image_tag "CfALogo-White.svg", class: "image image--cfa-logo", alt: "Code for America" %>
+              </a>
+            </div>
+            <div class="logo-panel__item">
+              <a href="https://www.colorado.gov/cdle">
+                <%= image_tag "cdle-logo.svg", class: "image image--cdle-logo", alt: "Colorado Department of Labor and Employment" %>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
     </section>
     <%= content_for :content %>
     <%= render 'shared/footer' %>
