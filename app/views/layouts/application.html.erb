@@ -11,9 +11,11 @@
       <% if content_for? :page_title %>
         <%= content_for :page_title %>
       <% else %>
-        GetYourRefund.org
+        Get Back the Cash You've Earned | GetYourRefund.org
       <% end %>
     </title>
+
+    <%= render "shared/meta_tags" %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
