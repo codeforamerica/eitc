@@ -1,7 +1,39 @@
 class ApplicationController < ActionController::Base
   before_action :set_visitor_id
-  before_action :set_source_in_session
+  before_action :set_params_in_session
   before_action :track_page_view, only: [:show, :edit, :new]
+
+  def ad_name(ad_id)
+    {
+      'a0' => "You may be losing money for you and your family.",
+      'a1' => "Moms — get your money back!",
+      'a2' => "It's your money, get it back",
+      'a3' => "You earned it, now get your money back",
+      'a4' => "Does the government owe you money?",
+      'a5' => "It's your money — get it back!",
+      'a6' => "Are you leaving money on the table?",
+      'a7' => "Leaving thousands of dollars on the table?",
+      'a8' => "Not filing taxes? You may be missing out on cash.",
+      'a9' => "Does the government owe you money?",
+      'a10' => "Losing money?",
+      'a11' => "Get back the cash you earned — now",
+      'a12' => "It's your money — get it back!",
+      'a13' => "Carousel",
+      'a14' => "Leaving money on the table?",
+      'a15' => "Are you leaving money on the table? - alt",
+      'a16' => "Does the government owe you money?",
+      'a17' => "Not filing taxes? You may be missing out on cash.",
+    }[ad_id]
+  end
+
+  def campaign_name(campaign_id)
+    {
+      'c0' => "EITC - Susan Conversions",
+      'c1' => "EITC - Employee Conversions",
+      'c2' => "EITC - David Conversions",
+      'c3' => "EITC - Carlos Conversions",
+    }[campaign_id]
+  end
 
   def set_visitor_id
     return if session[:visitor_id].present?
@@ -16,13 +48,19 @@ class ApplicationController < ActionController::Base
     session[:source]
   end
 
-  def set_source_in_session
+  def set_params_in_session
     if params[:source]
       session[:source] = params[:source]
     elsif params[:s]
       session[:source] = params[:s]
     elsif request.headers.fetch(:referer, "").include?("google.com")
       session[:source] = "organic_google"
+    end
+
+    %w(campaign content).each do |param|
+      if params[param]
+        session[param] = params[param]
+      end
     end
   end
 
@@ -40,6 +78,10 @@ class ApplicationController < ActionController::Base
       default_data = {
           source: source,
           referrer: request.referrer,
+          ad_campaign_id: session[:campaign],
+          ad_campaign_name: campaign_name(session[:campaign]),
+          ad_id: session[:content],
+          ad_name: ad_name(session[:content]),
           full_user_agent: request.user_agent,
           browser_name: user_agent.name,
           browser_full_version: user_agent.full_version,
