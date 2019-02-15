@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_visitor_id
   before_action :set_params_in_session
-  before_action :track_page_view, only: [:show, :edit, :new]
+  before_action :track_page_view, except: [:update, :create, :destroy]
 
   def ad_name(ad_id)
     {
