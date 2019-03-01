@@ -1,0 +1,35 @@
+
+<% content_for :form_card_title do %>
+  Have you claimed the EITC before?
+<% end %>
+
+<% content_for :form_card_content do %>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
+    <%= render "components/molecules/progress_step_bar" %>
+    <fieldset class="button-set with-padding-med">
+      <legend>
+        <h1 class="form-question">Have you claimed the EITC before?</h1>
+      </legend>
+
+      <div class="reveal with-padding-med">
+        <p><a href="#" class="reveal__link">What is the EITC?</a></p>
+        <div class="reveal__content">
+          <p>
+            The Earned Income Tax Credit (EITC) is a  credit that you select when filing your taxes.
+            It may give you a refund or it lowers the federal taxes you owe.
+            You can claim the credit whether you’re single or married, or have children or not.
+            The main requirement is that you must earn money from a job.
+          </p>
+        </div>
+      </div>
+
+      <% { yes: "Yes", no: "No", unsure: "I don't know" }.each_pair do |value, label| %>
+        <%= f.button :submit, name: form_name + '[claimed_eitc]', value: value, class: "button button-set__choice" do %>
+          <%= label %>
+        <% end %>
+      <% end %>
+    </fieldset>
+  <% end %>
+
+  <%= link_to "Start over", root_path + '#status_form' %>
+<% end %>

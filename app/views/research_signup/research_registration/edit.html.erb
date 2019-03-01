@@ -1,0 +1,26 @@
+<% content_for :form_card_title, "How should we contact you?" %>
+
+<% content_for :form_card_content do %>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Eitc::EitcFormBuilder, html: { class: 'form-card' } do |f| %>
+    <%= render "components/molecules/progress_step_bar" %>
+
+    <div class="form-card__header">
+      <h1>How should we contact you?</h1>
+      <p>We are trying to learn from people like you. Are you interested in a 45 minute phone interview for $50?</p>
+
+      <p class="text--help">
+        We will contact you via text message to double check our info.
+      </p>
+    </div>
+
+    <div class="form-card__content">
+      <%= f.cfa_input_field(:full_name, 'What is your name?', classes: ['form-width--name']) %>
+      <%= f.cfa_input_field(:phone_number, 'What is your phone number?', type: 'tel', classes: ['form-width--phone']) %>
+      <%= f.cfa_input_field(:email, 'What is your email address?', type: 'email', classes: ['form-width--email']) %>
+    </div>
+
+    <div class="form-card__footer">
+      <%= f.submit 'Schedule an interview', class: "button button--cta with-padding-med" %>
+    </div>
+  <% end %>
+<% end %>

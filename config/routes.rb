@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'filing_status#edit'
+  root 'refund_estimate/filing_status#edit'
   get '/file_online' => 'pages#file_online', as: 'file_online'
 
   resource :reminder_contact do
@@ -23,6 +23,19 @@ Rails.application.routes.draw do
   resources :screens, controller: :eitc_estimate_forms, only: (Rails.env.production? ? %i[show] : %i[show index]) do
     collection do
       FormNavigation.form_controllers.uniq.each do |controller_class|
+        { get: :edit, put: :update }.each do |method, action|
+          match "/#{controller_class.to_param}",
+                action: action,
+                controller: controller_class.controller_path,
+                via: method
+        end
+      end
+    end
+  end
+
+  resources :research, controller: :research_signup_forms, only: (Rails.env.production? ? %i[show] : %i[show index]) do
+    collection do
+      ResearchFormNavigation.form_controllers.uniq.each do |controller_class|
         { get: :edit, put: :update }.each do |method, action|
           match "/#{controller_class.to_param}",
                 action: action,

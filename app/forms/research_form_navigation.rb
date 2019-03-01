@@ -1,11 +1,14 @@
-class FormNavigation
+class ResearchFormNavigation
   MAIN = [
-    RefundEstimate::FilingStatusController,
-    RefundEstimate::ChildrenController,
-    RefundEstimate::FiledRecentlyController,
-    RefundEstimate::ClaimedEitcController,
-    RefundEstimate::IncomeController,
-    RefundEstimate::EstimateController
+    ResearchSignup::WelcomeController,
+    ResearchSignup::FilingStatusController,
+    ResearchSignup::ChildrenController,
+    ResearchSignup::IncomeController,
+    ResearchSignup::FiledRecentlyController,
+    ResearchSignup::ClaimedEitcController,
+    ResearchSignup::ResearchRegistrationController,
+    ResearchSignup::ThanksController,
+    ResearchSignup::OffboardingController
   ].freeze
 
   class << self

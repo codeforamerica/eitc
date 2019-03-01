@@ -1,0 +1,23 @@
+
+<% content_for :form_card_title do %>
+  How many children do you live with and support?
+<% end %>
+
+<% content_for :form_card_content do %>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
+    <%= render "components/molecules/progress_step_bar" %>
+    <fieldset class="button-set with-padding-med">
+      <legend>
+        <h1 class="form-question"><strong>How many children</strong> do you live with and support?</h1>
+      </legend>
+
+      <% { "0": 0, "1": 1, "2": 2, "3+": 3 }.each_pair do |label, value| %>
+        <%= f.button :submit, name: 'children_form[children]', value: value, class: "button button-set__choice" do %>
+          <%= label %>
+        <% end %>
+      <% end %>
+    </fieldset>
+  <% end %>
+
+  <%= link_to "Start over", root_path + '#status_form' %>
+<% end %>

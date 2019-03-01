@@ -1,0 +1,25 @@
+<% content_for :form_card_title do %>
+  What's your marital status?
+<% end %>
+
+
+<% content_for :form_card_content do %>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { id: "status_form", class: 'form-card form-card--transition' } do |f| %>
+
+    <%= render "components/molecules/progress_step_bar" %>
+    <fieldset class="with-padding-large">
+      <legend>
+        <h1 class="form-question">What's your <strong>marital status</strong>?</h1>
+      </legend>
+
+      <%= f.button :submit, name: form_name + '[status]', value: 'single', class: "button" do %>
+        <span class="emoji emoji--star"></span>
+        Single
+      <% end %>
+      <%= f.button :submit, name: form_name + '[status]', value: 'joint', class: "button" do %>
+        <span class="emoji emoji--double-stars"></span>
+        Married
+      <% end %>
+    </fieldset>
+  <% end %>
+<% end %>

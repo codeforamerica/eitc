@@ -1,0 +1,40 @@
+<% content_for :additional_head_content do %>
+  <%= render partial: "shared/facebook_pixel", locals: { facebook_pixel_event: 'ViewContent' } %>
+<% end %>
+
+<% content_for :form_card_title do %>
+  Thanks for your interest
+<% end %>
+
+<% content_for :form_card_content do %>
+  <div class="form-card form-card--transition">
+
+    <div class="emoji emoji--big emoji--blush"></div>
+    <h1 class="form-card__title with-padding-small">Thanks for your interest in a paid interview</h1>
+    <p>
+      We have a few questions to check if you are in the group of people we are trying to learn from.
+    </p>
+
+    <div class="reveal with-padding-med">
+      <p><a href="#" class="reveal__link">Who are we?</a></p>
+      <div class="reveal__content">
+
+        <p>We are
+          <%= link_to "Code for America", "https://codeforamerica.org" %>,
+          a nonprofit organization that finds ways to improve public services.
+        </p>
+        <p>These interviews are for research we are doing with the
+          <%= link_to "Colorado Department of Labor and Employment", "https://www.colorado.gov/cdle" %>
+          to help Colorado workers get all the tax credits that they qualify for.
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <%= link_to next_path, class: "button button--cta with-padding-med" do %>
+       Next
+        <i class="button__icon icon-arrow_forward"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>

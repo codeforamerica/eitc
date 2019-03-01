@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe FilingStatusController, type: :controller do
+RSpec.describe RefundEstimate::FilingStatusController, type: :controller do
   describe "GET #edit" do
     before do
       get :edit

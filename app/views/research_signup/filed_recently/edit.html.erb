@@ -1,0 +1,29 @@
+<% content_for :additional_head_content do %>
+  <%= render partial: "shared/facebook_pixel", locals: { facebook_pixel_event: 'ViewContent' } %>
+<% end %>
+
+<% content_for :form_card_title do %>
+  Have you filed your taxes in the last two years?
+<% end %>
+
+<% content_for :form_card_content do %>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
+    <%= render "components/molecules/progress_step_bar" %>
+    <fieldset class="button-set with-padding-large">
+      <legend>
+        <h1 class="form-question">Have you filed your taxes in the last two years?</h1>
+      </legend>
+
+      <%= f.button :submit, name: form_name + '[filed_recently]', value: 'yes', class: "button" do %>
+        <span class="emoji emoji--checkmark"></span>
+        Yes
+      <% end %>
+      <%= f.button :submit, name: form_name + '[filed_recently]', value: 'no', class: "button" do %>
+        <span class="emoji emoji--crossmark"></span>
+        No
+      <% end %>
+    </fieldset>
+  <% end %>
+
+  <%= link_to "Start over", root_path + '#status_form' %>
+<% end %>

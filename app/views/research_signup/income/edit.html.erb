@@ -1,0 +1,16 @@
+<% content_for :form_card_title, "How much did you earn in 2018?" %>
+
+<% content_for :form_card_content do %>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Eitc::EitcFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
+    <%= render "components/molecules/progress_step_bar" %>
+    <div class="with-padding-med">
+      <%= f.eitc_input_field :income, '<strong>How much did you earn</strong> in 2018?',
+                             help_text: "Your best guess is okay. We use this to see if you qualify for the services we are researching and will not share your income information.", type: 'tel', prefix: '$', classes: ['form-width--phone'] %>
+    </div>
+
+    <%= f.button :submit, class: 'button button--primary with-padding-small' do %>
+      Next
+    <% end %>
+
+  <% end %>
+<% end %>

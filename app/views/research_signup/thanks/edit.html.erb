@@ -1,0 +1,17 @@
+<% content_for :additional_head_content do %>
+  <%= render partial: "shared/facebook_pixel", locals: { facebook_pixel_event: 'CompleteRegistration' } %>
+<% end %>
+
+<% content_for :form_card_title do %>
+  We'll text you soon
+<% end %>
+
+<% content_for :form_card_content do %>
+  <div class="form-card form-card--transition">
+    <div class="emoji emoji--big emoji--to-mobile"></div>
+    <h1 class="form-card__title with-padding-med">We'll text you soon</h1>
+    <p>
+      Thank you for signing up! We will text you soon to double check our information and schedule an interview.
+    </p>
+  </div>
+<% end %>
