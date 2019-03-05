@@ -45,4 +45,11 @@ RSpec.describe ResearchContact, type: :model do
       end
     end
   end
+
+  describe "#interview_scheduling_url" do
+    it "creates an absolute url with a unique token for scheduling an interview" do
+      expect(research_contact.interview_scheduling_url).to eq(
+         "http://localhost/interview/#{research_contact.unique_token}")
+    end
+  end
 end

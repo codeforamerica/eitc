@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'refund_estimate/filing_status#edit'
   get '/file_online' => 'pages#file_online', as: 'file_online'
 
+  get '/interview/:unique_token' => 'research_contacts#appointment', as: 'interview_appointment'
+
   resource :reminder_contact do
     get 'new'
     post 'create'

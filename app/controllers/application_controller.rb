@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
     send_mixpanel_event(event_name: 'page_view')
   end
 
-  def send_mixpanel_event(event_name:, data: {})
+  def send_mixpanel_event(event_name:, unique_id: nil, data: {})
     major_browser_version = user_agent.full_version.try { |v| v.partition('.').first }
     unless user_agent.bot?
       default_data = {
@@ -104,7 +104,7 @@ class ApplicationController < ActionController::Base
       }
 
       MixpanelService.instance.run(
-          unique_id: visitor_id,
+          unique_id: unique_id || visitor_id,
           event_name: event_name,
           data: default_data.merge(data),
       )

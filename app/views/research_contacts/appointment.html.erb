@@ -1,0 +1,21 @@
+<%# This page should only be shown in the case where the link is bad %>
+
+<% content_for :form_card_title do %>
+  Oops! It looks like that link is broken!
+<% end %>
+
+<% content_for :form_card_content do %>
+  <div class="form-card form-card--transition">
+
+    <div class="emoji emoji--big emoji--neutral-face"></div>
+    <h1 class="form-card__title with-padding-small">Oops! It looks like that link is broken!</h1>
+    <p>
+      Sorry for the inconvenience, please let us know by texting us at
+      <strong>
+        <%= phone_number_for_texting_clients.local_number %>
+      </strong>
+      so we can fix this for you.
+    </p>
+
+  </div>
+<% end %>

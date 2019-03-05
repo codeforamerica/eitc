@@ -19,4 +19,9 @@ class ResearchContact < ApplicationRecord
   def eitc_estimate
     EitcEstimate.find_by(visitor_id: visitor_id)
   end
+
+  def interview_scheduling_url
+    default_url_options = Rails.application.config.action_mailer.default_url_options
+    Rails.application.routes.url_helpers.interview_appointment_url(unique_token: unique_token, **default_url_options)
+  end
 end

@@ -64,6 +64,10 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "eitc_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = {
+      :host           => Rails.application.credentials[:production][:hostname_for_urls],
+      :protocol       => "https"
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
