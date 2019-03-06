@@ -6,7 +6,7 @@ class MixpanelService
   include Singleton
 
   def initialize
-    mixpanel_key = Rails.application.credentials.dig(Rails.env.to_sym, :mixpanel_token)
+    mixpanel_key = CredentialsHelper.environment_credential_for_key(:mixpanel_token)
     return if mixpanel_key.nil?
 
     @tracker = Mixpanel::Tracker.new(mixpanel_key)

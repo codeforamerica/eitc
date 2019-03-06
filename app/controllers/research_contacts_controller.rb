@@ -17,6 +17,7 @@ class ResearchContactsController < ApplicationController
             prefers_email: @form.email.present?,
             prefers_phone: @form.phone_number.present?
           })
+      NewResearchContactSlackNotificationJob.perform_later(research_contact: @research_contact)
       redirect_to thanks_research_contact_path
     else
       render 'new'

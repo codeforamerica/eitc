@@ -11,6 +11,7 @@ module ResearchSignup
     private
 
     def track_form_progress
+      NewResearchContactSlackNotificationJob.perform_later(research_contact: current_record)
       send_mixpanel_event(
           event_name: @form.class.analytics_event_name,
           data: current_eitc_estimate.analytics_data

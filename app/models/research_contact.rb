@@ -17,7 +17,7 @@ class ResearchContact < ApplicationRecord
   end
 
   def eitc_estimate
-    EitcEstimate.find_by(visitor_id: visitor_id)
+    @eitc_estimate ||= EitcEstimate.find_by(visitor_id: visitor_id)
   end
 
   def interview_scheduling_url
