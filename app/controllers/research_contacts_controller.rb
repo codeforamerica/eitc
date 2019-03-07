@@ -42,6 +42,7 @@ class ResearchContactsController < ApplicationController
       event_data = @research_contact.eitc_estimate&.analytics_data || {}
       send_mixpanel_event(
         event_name: "research_interview_link_click", unique_id: @research_contact.visitor_id, data: event_data)
+      @research_contact.update(followed_interview_link: DateTime.now.utc)
       return redirect_to(calendly_url + "?" + calendly_params.to_query)
     end
   end
