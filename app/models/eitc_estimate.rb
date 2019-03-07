@@ -8,8 +8,12 @@ class EitcEstimate < ApplicationRecord
   validates_inclusion_of :claimed_eitc, :in => CLAIMED_EITC_CHOICES
 
   def eligible
+    eligible_for_at_least(1)
+  end
+
+  def eligible_for_at_least(refund_amount)
     return unless eligibility_knowable?
-    refund > 0
+    refund >= refund_amount
   end
 
   def refund
@@ -25,8 +29,12 @@ class EitcEstimate < ApplicationRecord
   end
 
   def in_gap?
+    in_gap_for_at_least?(1)
+  end
+
+  def in_gap_for_at_least?(refund_amount)
     return unless gap_knowable?
-    eligible && ( filed_recently == 'no' || ['no', 'unsure'].include?(claimed_eitc) )
+    eligible_for_at_least(refund_amount) && ( filed_recently == 'no' || ['no', 'unsure'].include?(claimed_eitc) )
   end
 
   def analytics_data

@@ -5,7 +5,7 @@ module ResearchSignup
     end
 
     def next_path
-      return offboarding_research_index_path if current_eitc_estimate.in_gap? == false
+      return offboarding_research_index_path unless current_eitc_estimate.in_gap_for_at_least?(100)
       super
     end
   end
