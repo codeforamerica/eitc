@@ -33,7 +33,7 @@ class ResearchContactsController < ApplicationController
   def appointment
     @research_contact = ResearchContact.find_by(unique_token: params[:unique_token])
     if @research_contact
-      calendly_url = Rails.application.credentials.dig(Rails.env.to_sym, :calendly_url)
+      calendly_url = @research_contact.appointment_url || CredentialsHelper.environment_credential_for_key(:calendly_url)
       calendly_params = {
           full_name: @research_contact.full_name,
           email: @research_contact.email,
@@ -42,7 +42,7 @@ class ResearchContactsController < ApplicationController
       event_data = @research_contact.eitc_estimate&.analytics_data || {}
       send_mixpanel_event(
         event_name: "research_interview_link_click", unique_id: @research_contact.visitor_id, data: event_data)
-      @research_contact.update(followed_interview_link: DateTime.now.utc)
+      @research_contact.update(followed_interview_link: DateTime.now.utc, appointment_url: calendly_url)
       return redirect_to(calendly_url + "?" + calendly_params.to_query)
     end
   end
