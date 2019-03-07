@@ -1,5 +1,11 @@
 module ResearchSignup
   class IncomeController < ResearchSignupFormsController
+    helper_method :married?
+
+    def married?
+      current_eitc_estimate.status == 'joint'
+    end
+
     def current_step
       3
     end
