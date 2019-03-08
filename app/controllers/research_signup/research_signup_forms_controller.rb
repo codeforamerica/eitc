@@ -72,7 +72,7 @@ module ResearchSignup
     # Don't override in subclasses
     def ensure_eitc_estimate_present
       if current_eitc_estimate.blank?
-        redirect_to root_path
+        redirect_to welcome_research_index_path
       end
     end
 

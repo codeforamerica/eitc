@@ -16,6 +16,7 @@ module ResearchSignup
           event_name: @form.class.analytics_event_name,
           data: current_eitc_estimate.analytics_data
       )
+      session.delete(:visitor_id)
     end
   end
 end
