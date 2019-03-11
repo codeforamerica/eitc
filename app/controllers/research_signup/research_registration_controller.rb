@@ -1,7 +1,7 @@
 module ResearchSignup
   class ResearchRegistrationController < ResearchSignupFormsController
     def current_record
-      ResearchContact.find_by(visitor_id: visitor_id) || ResearchContact.new(visitor_id: visitor_id)
+      ResearchContact.find_by(visitor_id: visitor_id) || ResearchContact.new(visitor_id: visitor_id, source: source)
     end
 
     def current_step

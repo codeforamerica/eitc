@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_194004) do
+ActiveRecord::Schema.define(version: 2019_03_11_160724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_194004) do
     t.string "unique_token"
     t.datetime "followed_interview_link"
     t.string "appointment_url"
+    t.string "source"
     t.index ["unique_token"], name: "index_research_contacts_on_unique_token", unique: true
   end
 

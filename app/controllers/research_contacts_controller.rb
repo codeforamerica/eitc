@@ -8,7 +8,7 @@ class ResearchContactsController < ApplicationController
   end
 
   def create
-    @research_contact = @form = ResearchContact.new(model_params.merge(visitor_id: visitor_id))
+    @research_contact = @form = ResearchContact.new(model_params.merge(visitor_id: visitor_id, source: source))
 
     if @research_contact.save
       send_mixpanel_event(

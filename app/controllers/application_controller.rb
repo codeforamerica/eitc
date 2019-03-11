@@ -51,6 +51,8 @@ class ApplicationController < ActionController::Base
   def set_params_in_session
     if params[:source]
       session[:source] = params[:source]
+    elsif params[:utm_source]
+      session[:source] = params[:utm_source]
     elsif params[:s]
       session[:source] = params[:s]
     elsif request.headers.fetch(:referer, "").include?("google.com")
