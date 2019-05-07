@@ -28,6 +28,10 @@ class EitcEstimate < ApplicationRecord
     eligibility_knowable? && (filed_recently == 'no' || claimed_eitc != 'unset')
   end
 
+  def has_children?
+    children.present? && children > 0
+  end
+
   def in_gap?
     in_gap_for_at_least?(1)
   end

@@ -11,6 +11,12 @@ class ResearchContactDecorator < SimpleDelegator
       "Facebook"
     when 'cl'
       "Craigslist"
+    when 'cld'
+      "Craigslist Denver"
+    when 'clcs'
+      "Craigslist Colorado Springs"
+    when 'clp'
+      "Craigslist Pueblo"
     when 'organic_google'
       "Google search"
     when 'mt'
@@ -54,9 +60,9 @@ class ResearchContactDecorator < SimpleDelegator
 
   def filing_situation
     if eitc_estimate.filed_recently == 'no'
-      "Hasn't filed in the past 2 years"
+      "Hasn't filed this last tax season"
     else
-      "Filed recently, #{whether_they_claimed_eitc}"
+      "Has filed this season #{whether_they_claimed_eitc}"
     end
   end
 

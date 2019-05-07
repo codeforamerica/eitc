@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :form_card_title do %>
-  Have you filed your taxes in the last two years?
+  Have you filed your taxes this last tax season?
 <% end %>
 
 <% content_for :form_card_content do %>
@@ -11,7 +11,7 @@
     <%= render "components/molecules/progress_step_bar" %>
     <fieldset class="button-set with-padding-large">
       <legend>
-        <h1 class="form-question">Have you filed your taxes in the last two years?</h1>
+        <h1 class="form-question">Have you filed your taxes this last tax season?</h1>
       </legend>
 
       <%= f.button :submit, name: form_name + '[filed_recently]', value: 'yes', class: "button" do %>

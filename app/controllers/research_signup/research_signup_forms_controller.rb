@@ -52,7 +52,7 @@ module ResearchSignup
     end
 
     def step_count
-      6
+      5
     end
 
     private

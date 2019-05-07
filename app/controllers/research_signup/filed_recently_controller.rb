@@ -5,7 +5,7 @@ module ResearchSignup
     end
 
     def next_path
-      return research_registration_research_index_path if current_eitc_estimate.filed_recently == 'no'
+      return offboarding_research_index_path unless current_eitc_estimate.eligible_for_at_least(100)
       super
     end
   end
