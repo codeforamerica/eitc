@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_160724) do
+ActiveRecord::Schema.define(version: 2019_05_07_005128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,20 @@ ActiveRecord::Schema.define(version: 2019_03_11_160724) do
     t.string "claimed_eitc", default: "unset"
   end
 
+  create_table "household_members", force: :cascade do |t|
+    t.bigint "vita_client_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "birthdate"
+    t.string "full_time_student"
+    t.string "non_citizen"
+    t.string "disabled"
+    t.string "legally_blind"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vita_client_id"], name: "index_household_members_on_vita_client_id"
+  end
+
   create_table "reminder_contacts", force: :cascade do |t|
     t.string "email"
     t.string "phone_number"
@@ -67,7 +81,23 @@ ActiveRecord::Schema.define(version: 2019_03_11_160724) do
     t.datetime "followed_interview_link"
     t.string "appointment_url"
     t.string "source"
+    t.bigint "eitc_estimate_id"
+    t.index ["eitc_estimate_id"], name: "index_research_contacts_on_eitc_estimate_id"
     t.index ["unique_token"], name: "index_research_contacts_on_unique_token", unique: true
   end
 
+  create_table "vita_clients", force: :cascade do |t|
+    t.string "phone_number"
+    t.string "email"
+    t.string "has_spouse"
+    t.string "why_cant_file_with_spouse"
+    t.string "anyone_self_employed"
+    t.string "anything_else"
+    t.string "signature"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "household_members", "vita_clients"
+  add_foreign_key "research_contacts", "eitc_estimates"
 end

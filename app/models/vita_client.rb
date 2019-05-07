@@ -1,0 +1,2 @@
+class VitaClient < ApplicationRecord
+end
