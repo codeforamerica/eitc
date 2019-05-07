@@ -11,6 +11,12 @@ class ResearchContactDecorator < SimpleDelegator
       "Facebook"
     when 'cl'
       "Craigslist"
+    when 'cld'
+      "Craigslist Denver"
+    when 'clcs'
+      "Craigslist Colorado Springs"
+    when 'clp'
+      "Craigslist Pueblo"
     when 'organic_google'
       "Google search"
     when 'mt'
