@@ -1,0 +1,17 @@
+<% content_for :page do %>
+  <div class="form-card">
+    <div class="form-card__header">
+      <h1 class="form-card__title with-padding-small">Tax Document Upload</h1>
+    </div>
+
+    <%= form_tag({action: :upload}, multipart: true) do %>
+      <%= file_field_tag 'tax_doc' %>
+      <div class="form-card__footer">
+        <button name="button" type="submit" class="button button--cta">Upload</button>
+      </div>
+    <% end %>
+
+  </div>
+<% end %>
+
+
