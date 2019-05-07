@@ -52,7 +52,7 @@ module VitaIntake
     end
 
     def step_count
-      6
+      3
     end
 
     private

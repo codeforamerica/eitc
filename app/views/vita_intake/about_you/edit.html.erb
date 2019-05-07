@@ -1,0 +1,33 @@
+<% content_for :form_card_title do %>
+  Tell us about you
+<% end %>
+
+<% content_for :form_card_content do %>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card' } do |f| %>
+    <header class="form-card__header">
+      <h1 class="form-card__title">Tell us about you.</h1>
+    </header>
+    <fieldset class="button-set with-padding-med">
+      <div class="form-card__content">
+        <%= f.cfa_input_field(:first_name, 'What\'s your first name?', classes: ['form-width--name']) %>
+        <%= f.cfa_input_field(:last_name, 'What\'s your last name?', classes: ['form-width--name']) %>
+        <%= f.cfa_input_field(:birth_date, 'What\'s your date of birth?', type: 'date', classes: ['form-width--date']) %>
+        <%= f.cfa_checkbox_set("", [
+                                   { label: 'Full-time student', method: :full_time_student },
+                                   { label: 'Non-citizen', method: :non_citizen },
+                                   { label: 'Disabled', method: :disabled },
+                                   { label: 'None', method: :no_special_cases },
+                               ], label_text: "Do any of the following cases describe you?")
+        %>
+
+      </div>
+      <div class="form-card__footer">
+          <%= link_to next_path, class: "button button--primary with-padding-med" do %>
+          Continue
+          <i class="button__icon icon-arrow_forward"></i>
+        <% end %>
+      </div>
+    </fieldset>
+  <% end %>
+
+<% end %>

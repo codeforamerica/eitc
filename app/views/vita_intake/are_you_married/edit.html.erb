@@ -1,0 +1,23 @@
+<% content_for :form_card_title do %>
+  Contact Info
+<% end %>
+
+<% content_for :form_card_content do %>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card' } do |f| %>
+    <header class="form-card__header">
+      <h1 class="form-card__title">Are you married?</h1>
+    </header>
+    <fieldset class="button-set with-padding-med">
+      <div class="form-card__content">
+      </div>
+      <div class="form-card__footer">
+        <%= link_to next_path, class: "button toolbar__item" do %>
+          <span class="button__icon--left emoji emoji--inline emoji--checkmark"></span> Yes
+        <% end %>
+        <%= link_to next_path, class: "button toolbar__item" do %>
+          <span class="button__icon--left emoji emoji--inline emoji--crossmark"></span> No
+        <% end %>
+      </div>
+    </fieldset>
+  <% end %>
+<% end %>

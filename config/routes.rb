@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root 'vita_intake/welcome#edit'
   get '/file_online' => 'pages#file_online', as: 'file_online'
   get '/chat_support' => 'pages#chat_support', as: 'chat_support'
-  get '/vita_intake' => 'vita_intake/steps_overview#edit', as: 'vita_intake_steps'
 
   get '/interview/:unique_token' => 'research_contacts#appointment', as: 'interview_appointment'
 

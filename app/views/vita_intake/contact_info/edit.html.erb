@@ -1,0 +1,26 @@
+<% content_for :form_card_title do %>
+  Contact Info
+<% end %>
+
+<% content_for :form_card_content do %>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card' } do |f| %>
+    <header class="form-card__header">
+      <h1 class="form-card__title">Tell us about you.</h1>
+    </header>
+    <fieldset class="button-set with-padding-med">
+      <div class="form-card__content">
+        <%= f.cfa_input_field(:phone_number, 'What\'s your phone number?', type: 'tel', classes: ['form-width--phone']) %>
+        <%= f.cfa_input_field(:email, 'What\'s your email?', type: 'email', classes: ['form-width--email']) %>
+        <%= f.cfa_checkbox(:sms_consent, "Can you get text messages on this phone? Our tax preparer will use this number to get in contact with you during the process.") %>
+
+      </div>
+      <div class="form-card__footer">
+          <%= link_to next_path, class: "button button--primary with-padding-med" do %>
+          Continue
+          <i class="button__icon icon-arrow_forward"></i>
+        <% end %>
+      </div>
+    </fieldset>
+  <% end %>
+
+<% end %>

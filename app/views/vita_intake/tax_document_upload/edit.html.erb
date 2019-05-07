@@ -1,0 +1,33 @@
+<% content_for :form_card_title do %>
+  Tax Document Upload
+<% end %>
+
+<% content_for :form_card_content do %>
+  <div class="form-card">
+    <div class="form-card__header">
+      <h1 class="form-card__title with-padding-small">Tax Document Upload</h1>
+    </div>
+
+    <div class="form-card__content">
+      <div class="form-group">
+        <div class="document-upload">
+          <form class="new_later_document" id="new_later_document" enctype="multipart/form-data" action="/en/later_documents" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="WUEG1y3xfgxblm3jGnN/R6czIEhfTs9+tmlg8s2dDH5g2rQ6k7V5Fo7cTmsQqESA/m0yFCXMhKFkZSFOTTrTOQ==">
+            <div class="document-upload with-padding-med">
+              <input value="{}" data-reference="50bc9756f59c3393dde160bb2c78d08d" type="hidden" name="later_document[file]"><input class="form__documentuploader" data-reference="50bc9756f59c3393dde160bb2c78d08d" include_hidden="false" type="file" name="later_document[file]" id="later_document_file">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card__footer">
+      <button name="button" type="submit" class="button button--cta">Upload</button>
+      <%= link_to next_path, class: "button button--primary with-padding-med" do %>
+        Done with this step
+        <i class="button__icon icon-arrow_forward"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
