@@ -1,0 +1,21 @@
+<% content_for :form_card_title do %>
+  Steps
+<% end %>
+
+<% content_for :form_card_content do %>
+  <div class="form-card form-card--transition">
+
+    <div class="emoji emoji--big emoji--blush"></div>
+    <h1 class="form-card__title with-padding-small">All the steps in the process</h1>
+    <p>
+      Here are some steps
+    </p>
+
+    <div>
+      <%= link_to next_path, class: "button button--cta with-padding-med" do %>
+        Next
+        <i class="button__icon icon-arrow_forward"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>
