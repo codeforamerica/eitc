@@ -5,7 +5,7 @@ module ResearchSignup
     end
 
     def current_step
-      6
+      5
     end
 
     private

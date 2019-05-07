@@ -5,7 +5,6 @@ class ResearchFormNavigation
     ResearchSignup::ChildrenController,
     ResearchSignup::IncomeController,
     ResearchSignup::FiledRecentlyController,
-    ResearchSignup::ClaimedEitcController,
     ResearchSignup::ResearchRegistrationController,
     ResearchSignup::ThanksController,
     ResearchSignup::OffboardingController
