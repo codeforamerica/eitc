@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'refund_estimate/filing_status#edit'
+  root 'vita_intake/welcome#edit'
   get '/file_online' => 'pages#file_online', as: 'file_online'
   get '/chat_support' => 'pages#chat_support', as: 'chat_support'
 
@@ -39,6 +39,19 @@ Rails.application.routes.draw do
   resources :research, controller: :research_signup_forms, only: (Rails.env.production? ? %i[show] : %i[show index]) do
     collection do
       ResearchFormNavigation.form_controllers.uniq.each do |controller_class|
+        { get: :edit, put: :update }.each do |method, action|
+          match "/#{controller_class.to_param}",
+                action: action,
+                controller: controller_class.controller_path,
+                via: method
+        end
+      end
+    end
+  end
+
+  resources :vita_intake, controller: :vita_intake_forms, only: (Rails.env.production? ? %i[show] : %i[show index]) do
+    collection do
+      VitaIntakeNavigation.form_controllers.uniq.each do |controller_class|
         { get: :edit, put: :update }.each do |method, action|
           match "/#{controller_class.to_param}",
                 action: action,
