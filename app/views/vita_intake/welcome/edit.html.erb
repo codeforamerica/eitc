@@ -1,16 +1,77 @@
 <% content_for :content do %>
-    <section>
+  <section class="slab slab--white">
+    <div class="grid">
+      <div class="grid__item width-full">
+        <div class="with-padding-med">
+          <h2 class="h2">Why should I file?</h2>
+          <p>
+            Many people can actually get money back by doing their taxes. Households have gotten anywhere from $300 to
+            $7000 back on their tax returns.
+          </p>
+          <p>
+            We'll help you take advantage of common tax credits such as the <strong>Earned Income Tax Credit (EITC),
+            Child Tax Credit</strong>, and various education tax credits.
+          </p>
+          <p>
+            We'll help you prepare your taxes. It's your decision if you want to file them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="grid">
-        <div class="grid__item">
-          <h1>Major heading</h1>
+  <section class="slab slab--off-white">
+    <div class="grid">
+      <div class="grid__item width-full">
+        <div class="with-padding-med">
+          <h2 class="h2">Is this really free?</h2>
+          <p>
+            GetYourRefund.org is a partnership with <strong>VITA (Volunteer Income Tax Assistance)</strong>, a program
+            that offers free tax help to people who generally make $55,000 or less, persons with disabilities and
+            limited English speaking taxpayers who need assistance in preparing their own tax returns.
+          </p>
+          <p>
+            GetYourRefund.org is part of the <strong>Code for America</strong> network, a non-profit that uses
+            technology to help low-income households achieve their full potential.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <%= link_to next_path, class: "button button--cta with-padding-med" do %>
-            Important call to action
-            <i class="button__icon icon-arrow_forward"></i>
-          <% end %>
+  <section class="slab slab--white">
+    <div class="grid">
+      <div class="grid__item width-full">
+        <div class="with-padding-med">
+          <h2 class="h2">How GetYourRefund.org works</h2>
+          <ol style="list-style: decimal; padding-left: 20px;">
+            <li style="padding: 5px 0;">
+              <strong>Submit the tax documents you have.</strong> Take 10 minutes to snap pictures or upload your ID and tax documents. Afterwards, we’ll have you answer a few simple questions.
+            </li>
+            <li style="padding: 5px 0;">
+              <strong>We’ll prepare your taxes.</strong> Our IRS-certified tax volunteers will review your situation and documents. If they need more information, they will get in contact by text message.
+            </li>
+            <li style="padding: 5px 0;">
+              <strong>We’ll review your taxes with you.</strong> Once your tax return is ready, our tax volunteers will schedule a call to review your tax situation.
+            </li>
+            <li style="padding: 5px 0;">
+              <strong>If you want, we’ll file your taxes.</strong> If you choose to file your taxes, our tax volunteers will help you e-file your taxes.
+            </li>
+            <li style="padding: 5px 0;">
+              <strong>Get your refund!</strong> You’ll usually get your refund within a month via check or direct deposit.
+            </li>
+          </ol>
+
+          <div style="padding-top: 40px;text-align: center;">
+            <%= link_to next_path, class: "button button--cta with-padding-med" do %>
+              Get help now
+              <i class="button__icon icon-arrow_forward"></i>
+            <% end %>
+          </div>
 
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+
 <% end %>
