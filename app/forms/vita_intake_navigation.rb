@@ -14,9 +14,7 @@ class VitaIntakeNavigation
     VitaIntake::AddIdentityDocumentsController,
     VitaIntake::TaxDocumentsOverviewController,
     VitaIntake::AddTaxDocumentsController,
-    # VitaIntake::AnyoneSelfEmployedController,
     VitaIntake::AnythingElseController,
-    # VitaIntake::ReviewYourInformationController,
     # VitaIntake::ConsentAndSignController,
     VitaIntake::ConfirmationController,
   ].freeze

@@ -6,6 +6,16 @@
   <div class="form-card form-card--transition">
     <h1 class="form-question">Tell us about your dependents.</h1>
 
+    <ul>
+    <% current_vita_client.dependents.each do |dependent| %>
+      <li id="member-<%= dependent.id %>">
+        <%= link_to add_dependent_vita_intake_index_path(member_id: dependent.id) do %>
+          <%= dependent.first_name %> <%= dependent.last_name %>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+
     <%= link_to add_dependent_vita_intake_index_path, class: "button with-padding-med" do %>
       Add a dependent
     <% end %>

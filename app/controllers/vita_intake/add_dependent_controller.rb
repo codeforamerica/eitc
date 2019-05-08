@@ -2,27 +2,23 @@ module VitaIntake
   class AddDependentController < VitaIntakeFormsController
     helper_method :member_id
 
-    def update
-      @form = form_class.new(form_params)
-      if @form.valid?
-        member.update!(form_params)
-        track_form_progress
-        redirect_to next_path
-      else
-        track_validation_errors
-        render :edit
-      end
+    def current_record
+      dependent
+    end
+
+    def next_path
+      dependents_overview_vita_intake_index_path
     end
 
     private
 
-    def member
-      @member ||= find_or_initialize_member
+    def dependent
+      @dependent ||= find_or_initialize_dependent
     end
 
-    def find_or_initialize_member
+    def find_or_initialize_dependent
       if member_id.present?
-        current_vita_client.dependents.find(id: member_id)
+        current_vita_client.dependents.find_by(id: member_id)
       else
         current_vita_client.household_members.build(relation: :dependent)
       end

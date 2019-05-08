@@ -6,19 +6,6 @@ class AddDependentForm < Form
   validates_presence_of :birthdate, message: "Make sure to provide a date of birth."
 
   def save
-    record.save
-    if record.spouse.present?
-      record.spouse.update(attributes_for(:household_member))
-    else
-      record.household_members.create(attributes_for(:household_member).merge(relation: :spouse))
-    end
-  end
-
-  def self.existing_attributes(record)
-    if record.spouse.present?
-      HashWithIndifferentAccess.new(record.spouse.attributes)
-    else
-      {}
-    end
+    record.update(attributes_for(:household_member))
   end
 end
