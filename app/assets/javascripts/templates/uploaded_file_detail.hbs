@@ -1,0 +1,20 @@
+<div class="uploaded-file-detail">
+    <div class="doc-preview">
+        <div class="doc-preview__info">
+        <h4>{{filename}}</h4>
+            <p class="text--help">
+              <a class="delete-file-link link--subtle" href="#">
+                Delete
+              </a>
+            </p>
+        </div>
+        {{#if isPdf}}
+          <div class="doc-preview__thumb emoji emoji--page-facing-up"></div>
+        {{else}}
+          <div class="doc-preview__thumb">
+              <img src="/rails/active_storage/blobs/{{signedId}}/{{filename}}" alt="Preview of uploaded document {{document.filename}}" >
+          </div>
+        {{/if}}
+    </div>
+    <input type="hidden" value="{{signedId}}" name="{{inputName}}" />
+</div>

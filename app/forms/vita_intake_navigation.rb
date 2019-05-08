@@ -2,7 +2,7 @@ class VitaIntakeNavigation
   MAIN = [
     VitaIntake::WelcomeController,
     VitaIntake::StepsOverviewController,
-    VitaIntake::QuestionsIntroController,
+    VitaIntake::QuestionsOverviewController,
     VitaIntake::AboutYouController,
     VitaIntake::WhereDoYouLiveController,
     VitaIntake::ContactInfoController,
@@ -10,15 +10,15 @@ class VitaIntakeNavigation
     VitaIntake::AboutYourSpouseController,
     VitaIntake::AnyDependentsController,
     VitaIntake::DependentsOverviewController,
-    # VitaIntake::TaxDocumentIntroController,
-    # VitaIntake::TaxDocumentUploadController,
-    # VitaIntake::IdentityDocumentIntroController,
-    # VitaIntake::IdentityDocumentUploadController,
+    VitaIntake::IdentityDocumentsOverviewController,
+    VitaIntake::AddIdentityDocumentsController,
+    VitaIntake::TaxDocumentsOverviewController,
+    VitaIntake::AddTaxDocumentsController,
     # VitaIntake::AnyoneSelfEmployedController,
     # VitaIntake::AnythingElseController,
     # VitaIntake::ReviewYourInformationController,
     # VitaIntake::ConsentAndSignController,
-    # VitaIntake::ConfirmationController,
+    VitaIntake::ConfirmationController,
   ].freeze
 
   OFF_MAIN = [

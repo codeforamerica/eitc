@@ -1,0 +1,64 @@
+<% content_for :form_card_title do %>
+  Add Tax Documents
+<% end %>
+
+<% content_for :form_card_content do %>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card' } do |f| %>
+    <div class="form-card__header">
+      <h1 class="form-card__title with-padding-small">Attach any tax documents you can.</h1>
+    </div>
+
+    <div class="form-card__content">
+
+      <p class="text--left">
+        This includes any tax forms you have such as W2's, 1099's, etc. We recommend you submit as much as you can now
+        but you can always text it to the tax volunteer later.
+      </p>
+
+      <div>
+        <%= f.file_field :tax_documents, multiple: true, direct_upload: true, style: "display: none;", accept: "image/png, image/jpeg, image/gif, application/pdf" %>
+        <div class="uploaded-files">
+          <% @form.tax_documents.each do |document| %>
+            <div class="uploaded-file-detail">
+              <div class="doc-preview">
+                <div class="doc-preview__info">
+                  <h4><%= document.filename %></h4>
+                  <p class="text--help">
+                    <a class="delete-file-link link--subtle" href="#">
+                      Delete
+                    </a>
+                  </p>
+                </div>
+                <% if document.content_type == "application/pdf" %>
+                  <div class="doc-preview__thumb emoji emoji--page-facing-up"></div>
+                <% else %>
+                  <div class="doc-preview__thumb">
+                    <%= image_tag url_for(document), size: "100x100", alt: "Preview of uploaded document #{document.filename}" %>
+                  </div>
+                <% end %>
+              </div>
+              <input type="hidden" value="<%= document.signed_id %>" name="form[tax_documents][]" />
+            </div>
+          <% end %>
+        </div>
+        <div class="text--centered">
+          <div class="verification-upload-icon" <% if @form.tax_documents.present? %>style="display: none;"<% end %>></div>
+          <div>
+            <button class="button button--cta is-tablet-hidden--inline upload-file-button">Pick a file from this computer</button>
+            <button class="button button--cta is-desktop-hidden--inline upload-file-button">Take a picture</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card__footer">
+      <%= f.button :submit, class: 'button button--primary with-padding-small' do %>
+        Continue
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+
+
+
