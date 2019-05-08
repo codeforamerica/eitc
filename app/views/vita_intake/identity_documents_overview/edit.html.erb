@@ -6,15 +6,25 @@
   <div class="form-card form-card--transition">
     <div class="form-card__header">
       <%= render "components/molecules/progress_step_bar" %>
-      Part 2 of 3: Submit IDs
+      <div style="margin:-40px 0 60px 0;">
+        Part 2 of 3: Submit IDs
+      </div>
       <h1 class="form-card__title">Great! Now let’s get the required ID documents.</h1>
     </div>
 
     <div class="form-card__content">
 
-      <p class="text--small">
+      <p class="text--small with-padding-large">
         You'll need to submit a photo ID of the head of household and social security cards for everyone.
       </p>
+
+      <div class="grid">
+        <div class="grid__item width-one-sixth emoji emoji--small emoji--lock">
+        </div>
+        <div class="grid__item width-five-sixths text--small text--left" style="padding-left: 20px;">
+          We take your privacy seriously. Rest assured that these documents are kept in a secure location and will not be shared with the IRS or any other organization. If you decide to file, relevant documents will be included with your tax return to the IRS.
+        </div>
+      </div>
     </div>
 
     <div class="form-card__footer">
@@ -23,14 +33,6 @@
           Continue
           <i class="button__icon icon-arrow_forward"></i>
         <% end %>
-      </div>
-
-      <div class="grid with-padding-large">
-        <div class="grid__item width-one-sixth emoji emoji--big emoji--lock" style="min-height: 100px;">
-        </div>
-        <div class="grid__item width-five-sixths text--small text--left" style="padding-left: 20px;">
-          We take your privacy seriously. Rest assured that these documents are kept in a secure location and will not be shared with the IRS or any other organization. If you decide to file, relevant documents will be included with your tax return to the IRS.
-        </div>
       </div>
     </div>
 

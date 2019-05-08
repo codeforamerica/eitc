@@ -41,20 +41,17 @@
             </div>
           <% end %>
         </div>
-        <div class="text--centered">
+        <div class="text--left">
           <div class="verification-upload-icon" <% if @form.tax_documents.present? %>style="display: none;"<% end %>></div>
           <div>
-            <button class="button button--cta is-tablet-hidden--inline upload-file-button">Pick a file from this computer</button>
-            <button class="button button--cta is-desktop-hidden--inline upload-file-button">Take a picture</button>
+            <button class="button button--cta is-tablet-hidden--inline upload-file-button with-padding-med">Pick a file from this computer</button>
+            <button class="button button--cta is-desktop-hidden--inline upload-file-button with-padding-med">Take a picture</button>
+            <%= f.button :submit, class: 'button button--primary with-padding-small' do %>
+              Done with this step
+            <% end %>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="form-card__footer">
-      <%= f.button :submit, class: 'button button--primary with-padding-small' do %>
-        Continue
-      <% end %>
     </div>
   <% end %>
 <% end %>
