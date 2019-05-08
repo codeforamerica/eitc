@@ -4,17 +4,14 @@
 
 <% content_for :form_card_content do %>
   <div class="form-card form-card--transition">
-    <div class="form-card__header">
-      <%= render "components/molecules/progress_step_bar" %>
-      <div class="emoji emoji--big emoji--blush"></div>
-      <h1 class="form-card__title with-padding-small">Almost done! Just a few more questions to help us understand your situation better.</h1>
-    </div>
-
     <div class="form-card__content">
+      <%= render "components/molecules/progress_step_bar" %>
+      <h1 class="form-card__title with-padding-small">Let's start with some basic information.</h1>
 
-    </div>
+      <p>
+        We'll ask about your household and filing status.
+      </p>
 
-    <div class="form-card__footer">
       <%= link_to next_path, class: "button button--primary with-padding-med" do %>
         Continue
         <i class="button__icon icon-arrow_forward"></i>

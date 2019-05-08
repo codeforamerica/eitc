@@ -1,19 +1,17 @@
 <% content_for :form_card_title do %>
-  Let us know how to best reach you.
+  Tell us where you currently live
 <% end %>
 
 <% content_for :form_card_content do %>
   <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card' } do |f| %>
     <header class="form-card__header">
-      <h1 class="form-card__title">Let us know how to best reach you.</h1>
+      <h1 class="form-card__title">Tell us where you currently live.</h1>
     </header>
     <fieldset class="button-set with-padding-med">
       <div class="form-card__content">
-        <%= f.cfa_input_field(:phone_number, 'What\'s your phone number?', type: 'tel', classes: ['form-width--phone']) %>
-        <%= f.cfa_checkbox(:sms_enabled,
-                           "Can this number receive text messages? Our tax preparer will use this number to get in contact with you during the process.") %>
-        <%= f.cfa_input_field(:email, 'What is your email address?', type: 'email', classes: ['form-width--email']) %>
-
+        <%= f.cfa_input_field(:street_address, 'What is your street address?', classes: ['form-width--name']) %>
+        <%= f.cfa_input_field(:city, 'What city do you live in?', classes: ['form-width--name']) %>
+        <%= f.cfa_input_field(:zip, 'What is your zip code?', classes: ['form-width--zip']) %>
       </div>
       <div class="form-card__footer">
         <%= f.button :submit, class: 'button button--primary with-padding-small' do %>
@@ -22,5 +20,4 @@
       </div>
     </fieldset>
   <% end %>
-
 <% end %>

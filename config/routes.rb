@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 
   resources :vita_intake, controller: :vita_intake_forms, only: (Rails.env.production? ? %i[show] : %i[show index]) do
     collection do
-      VitaIntakeNavigation.form_controllers.uniq.each do |controller_class|
+      VitaIntakeNavigation.all_form_controllers.uniq.each do |controller_class|
         { get: :edit, put: :update }.each do |method, action|
           match "/#{controller_class.to_param}",
                 action: action,

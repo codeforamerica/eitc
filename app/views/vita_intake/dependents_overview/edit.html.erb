@@ -1,0 +1,17 @@
+<% content_for :form_card_title do %>
+  Tell us about your dependents
+<% end %>
+
+<% content_for :form_card_content do %>
+  <div class="form-card form-card--transition">
+    <h1 class="form-question">Tell us about your dependents.</h1>
+
+    <%= link_to add_dependent_vita_intake_index_path, class: "button with-padding-med" do %>
+      Add a dependent
+    <% end %>
+
+    <%= link_to next_path, class: "button button--cta with-padding-med" do %>
+      Done with this step
+    <% end %>
+  </div>
+<% end %>

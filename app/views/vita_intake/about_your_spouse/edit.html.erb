@@ -1,24 +1,24 @@
 <% content_for :form_card_title do %>
-  Tell us about you
+  Tell us about your spouse
 <% end %>
 
 <% content_for :form_card_content do %>
   <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card' } do |f| %>
     <header class="form-card__header">
-      <h1 class="form-card__title">Tell us about you.</h1>
+      <h1 class="form-card__title">Tell us about your spouse.</h1>
     </header>
     <fieldset class="button-set with-padding-med">
       <div class="form-card__content">
-        <%= f.cfa_input_field(:first_name, 'What\'s your first name?', help_text: 'Legally as it appears on your ID.', classes: ['form-width--name']) %>
-        <%= f.cfa_input_field(:last_name, 'What\'s your last name?', help_text: 'Legally as it appears on your ID.', classes: ['form-width--name']) %>
-        <%= f.cfa_input_field(:birthdate, 'What\'s your date of birth?', type: 'date', classes: ['form-width--date']) %>
+        <%= f.cfa_input_field(:first_name, 'What\'s their first name?', help_text: 'Legally as it appears on their ID.', classes: ['form-width--name']) %>
+        <%= f.cfa_input_field(:last_name, 'What\'s their last name?', help_text: 'Legally as it appears on their ID.', classes: ['form-width--name']) %>
+        <%= f.cfa_input_field(:birthdate, 'When is their birthday?', type: 'date', classes: ['form-width--date']) %>
 
         <%= f.cfa_checkbox_set("", [
                                    { label: 'Full-time student', method: :full_time_student },
                                    { label: 'Non-citizen', method: :non_citizen },
                                    { label: 'Has a disability', method: :disabled },
                                    { label: 'Legally blind', method: :disabled },
-                               ], label_text: "Do any of the following cases describe you?",
+                               ], label_text: "Do any of the following cases describe them?",
                                help_text: "We'll need to know these to determine what tax credits you might qualify for.")
         %>
 

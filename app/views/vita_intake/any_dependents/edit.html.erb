@@ -1,18 +1,18 @@
 <% content_for :form_card_title do %>
-  Are you currently married?
+  Is there anyone you can claim as a dependent?
 <% end %>
 
 <% content_for :form_card_content do %>
   <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
     <fieldset class="with-padding-large">
       <legend>
-        <h1 class="form-question">Are you currently married?</h1>
+        <h1 class="form-question">Is there anyone you can claim as a dependent?</h1>
       </legend>
 
-      <%= f.button :submit, name: form_name + '[has_spouse]', value: 'yes', class: "button" do %>
+      <%= f.button :submit, name: form_name + '[has_dependents]', value: 'yes', class: "button" do %>
         Yes
       <% end %>
-      <%= f.button :submit, name: form_name + '[has_spouse]', value: 'no', class: "button" do %>
+      <%= f.button :submit, name: form_name + '[has_dependents]', value: 'no', class: "button" do %>
         No
       <% end %>
     </fieldset>

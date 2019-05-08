@@ -3,7 +3,7 @@ module VitaIntake
     skip_before_action :ensure_vita_client_present
 
     def current_step
-      3
+      1
     end
 
     def form_class

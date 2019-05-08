@@ -1,4 +1,4 @@
-class AboutYouForm < Form
+class AboutYourSpouseForm < Form
   set_attributes_for :household_member, :first_name, :last_name, :birthdate, :full_time_student, :non_citizen, :disabled, :legally_blind
 
   validates_presence_of :first_name, message: "Make sure to provide a first name."
@@ -7,16 +7,16 @@ class AboutYouForm < Form
 
   def save
     record.save
-    if record.primary_filing_member.present?
-      record.primary_filing_member.update(attributes_for(:household_member))
+    if record.spouse.present?
+      record.spouse.update(attributes_for(:household_member))
     else
-      record.household_members.create(attributes_for(:household_member).merge(relation: :primary_filer))
+      record.household_members.create(attributes_for(:household_member).merge(relation: :spouse))
     end
   end
 
   def self.existing_attributes(record)
-    if record.primary_filing_member.present?
-      HashWithIndifferentAccess.new(record.primary_filing_member.attributes)
+    if record.spouse.present?
+      HashWithIndifferentAccess.new(record.spouse.attributes)
     else
       {}
     end

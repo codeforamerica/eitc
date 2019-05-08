@@ -2,17 +2,18 @@ class VitaIntakeNavigation
   MAIN = [
     VitaIntake::WelcomeController,
     VitaIntake::StepsOverviewController,
-    VitaIntake::TaxDocumentIntroController,
-    VitaIntake::TaxDocumentUploadController,
-    VitaIntake::IdentityDocumentIntroController,
-    VitaIntake::IdentityDocumentUploadController,
     VitaIntake::QuestionsIntroController,
     VitaIntake::AboutYouController,
+    VitaIntake::WhereDoYouLiveController,
     VitaIntake::ContactInfoController,
     VitaIntake::AreYouMarriedController,
-    # VitaIntake::AboutYourSpouseController,
-    # VitaIntake::DependentsOverviewController,
-    # VitaIntake::AddDependentController,
+    VitaIntake::AboutYourSpouseController,
+    VitaIntake::AnyDependentsController,
+    VitaIntake::DependentsOverviewController,
+    # VitaIntake::TaxDocumentIntroController,
+    # VitaIntake::TaxDocumentUploadController,
+    # VitaIntake::IdentityDocumentIntroController,
+    # VitaIntake::IdentityDocumentUploadController,
     # VitaIntake::AnyoneSelfEmployedController,
     # VitaIntake::AnythingElseController,
     # VitaIntake::ReviewYourInformationController,
@@ -20,15 +21,23 @@ class VitaIntakeNavigation
     # VitaIntake::ConfirmationController,
   ].freeze
 
-  class << self
-    delegate :first, to: :form_controllers
+  OFF_MAIN = [
+    VitaIntake::AddDependentController,
+  ].freeze
 
-    def form_controllers
+  class << self
+    delegate :first, to: :main_form_controllers
+
+    def main_form_controllers
       MAIN
+    end
+
+    def all_form_controllers
+      (MAIN + OFF_MAIN).freeze
     end
   end
 
-  delegate :form_controllers, to: :class
+  delegate :main_form_controllers, to: :class
 
   def initialize(form_controller)
     @form_controller = form_controller
@@ -37,14 +46,14 @@ class VitaIntakeNavigation
   def next
     return unless index
 
-    form_controllers_until_end = form_controllers[index + 1..-1]
+    form_controllers_until_end = main_form_controllers[index + 1..-1]
     seek(form_controllers_until_end)
   end
 
   private
 
   def index
-    form_controllers.index(@form_controller.class)
+    main_form_controllers.index(@form_controller.class)
   end
 
   def seek(list)
