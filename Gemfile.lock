@@ -258,9 +258,6 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
-    turbolinks (5.2.0)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     twilio-ruby (5.22.3)
       faraday (~> 0.9)
       jwt (>= 1.5, <= 2.5)
@@ -312,7 +309,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
-  turbolinks (~> 5)
   twilio-ruby
   tzinfo-data
   uglifier (>= 1.3.0)

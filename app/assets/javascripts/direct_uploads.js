@@ -58,6 +58,6 @@ var directUpload = (function () {
     }
 })();
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
     directUpload.init();
 });
