@@ -45,6 +45,8 @@ gem 'device_detector'
 gem 'delayed_job_active_record'
 gem 'httparty'
 gem 'rest-client'
+gem "aws-sdk-s3", require: false
+
 
 
 group :development, :test do
