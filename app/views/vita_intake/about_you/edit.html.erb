@@ -11,7 +11,7 @@
       <div class="form-card__content">
         <%= f.cfa_input_field(:first_name, 'What\'s your first name?', help_text: 'Legally as it appears on your ID.', classes: ['form-width--name']) %>
         <%= f.cfa_input_field(:last_name, 'What\'s your last name?', help_text: 'Legally as it appears on your ID.', classes: ['form-width--name']) %>
-        <%= f.cfa_input_field(:birthdate, 'What\'s your date of birth?', type: 'date', classes: ['form-width--date']) %>
+        <%= f.cfa_date_select(:birthdate, 'What\'s your date of birth?', { options: { start_year: Time.now.year, end_year: 1900 } }) %>
 
         <%= f.cfa_checkbox_set("", [
                                    { label: 'Full-time student', method: :full_time_student },
@@ -25,7 +25,7 @@
       </div>
       <div class="form-card__footer">
         <%= f.button :submit, class: 'button button--primary with-padding-small' do %>
-          Next
+          Continue
         <% end %>
       </div>
     </fieldset>

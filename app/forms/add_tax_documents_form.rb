@@ -9,7 +9,7 @@ class AddTaxDocumentsForm < Form
     end
     record.tax_documents.attach(documents_to_attach)
     record.tax_documents.each do |document|
-      document.delete if tax_documents.exclude?(document.signed_id)
+      document.purge if tax_documents.exclude?(document.signed_id)
     end
   end
 

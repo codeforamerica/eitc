@@ -10,10 +10,10 @@
       </legend>
 
       <%= f.button :submit, name: form_name + '[has_spouse]', value: 'yes', class: "button" do %>
-        Yes
+        <span class="button__icon--left emoji emoji--inline emoji--checkmark"></span> Yes
       <% end %>
       <%= f.button :submit, name: form_name + '[has_spouse]', value: 'no', class: "button" do %>
-        No
+        <span class="button__icon--left emoji emoji--inline emoji--crossmark"></span> No
       <% end %>
     </fieldset>
   <% end %>

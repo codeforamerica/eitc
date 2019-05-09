@@ -9,7 +9,7 @@ class AddIdentityDocumentsForm < Form
     end
     record.identity_documents.attach(documents_to_attach)
     record.identity_documents.each do |document|
-      document.delete if identity_documents.exclude?(document.signed_id)
+      document.purge if identity_documents.exclude?(document.signed_id)
     end
   end
 

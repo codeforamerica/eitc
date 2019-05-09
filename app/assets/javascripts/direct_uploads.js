@@ -4,6 +4,7 @@ var directUpload = (function () {
             var addDeleteFileListener = function() {
                 $('.delete-file-link').each(function (index, deleteFileLink) {
                     deleteFileLink.addEventListener('click', function (e) {
+                        e.preventDefault();
                         deleteFileLink.closest('.uploaded-file-detail').remove();
                     });
                 });
@@ -57,6 +58,6 @@ var directUpload = (function () {
     }
 })();
 
-$(document).ready(function () {
+$(document).on('turbolinks:load', function() {
     directUpload.init();
 });
