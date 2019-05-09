@@ -1,6 +1,6 @@
 module VitaIntake
   class WelcomeController < VitaIntakeFormsController
-    layout "hero"
+    layout "vita_intake/hero"
     
     skip_before_action :ensure_vita_client_present
 

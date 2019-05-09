@@ -6,7 +6,7 @@ module VitaIntake
 
     delegate :form_name, to: :class
 
-    layout "form_card"
+    layout "vita_intake/form_card"
 
     def index
     end

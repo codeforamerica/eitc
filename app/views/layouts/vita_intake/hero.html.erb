@@ -1,0 +1,45 @@
+<% content_for :page do %>
+  <div class="page-wrapper">
+
+    <%= render 'shared/header' %>
+    <section class="slab slab--fold">
+      <div class="grid">
+        <div class="grid__item width-one-whole">
+          <h2 class="h1">Get free tax support from a real person.</h2>
+          <h1 class="h3">
+            Send us your documents and we’ll prepare your tax return. <br>
+            We only file your taxes if you decide to. <br>
+            Get your refund via check or direct deposit.
+          </h1>
+          <%= link_to "Get help now", steps_overview_vita_intake_index_path, class: "button button--cta" %>
+        </div>
+      </div>
+
+      <div class="grid logo-panel">
+        <div class="grid__item width-two-thirds shift-one-sixth">
+          <div class="grid">
+            <div class="logo-panel__item">
+              <a href="https://codeforamerica.org">
+                <%= image_tag "CfALogo-White.svg", class: "image image--cfa-logo", alt: "Code for America" %>
+              </a>
+            </div>
+            <div class="logo-panel__item">
+              <a href="https://www.colorado.gov/cdle">
+                <%= image_tag "cdle-logo.svg", class: "image image--cdle-logo", alt: "Colorado Department of Labor and Employment" %>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </section>
+    <%= content_for :content %>
+    <%= render 'shared/footer' %>
+    <%= render 'shared/front_chat' %>
+  </div>
+
+<% end %>
+
+<%= render template: "layouts/application" %>
