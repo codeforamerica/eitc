@@ -11,6 +11,9 @@ module VitaIntake
     def index
     end
 
+    def destroy
+    end
+
     def edit
       @form = form_class.from_record(current_record)
     end

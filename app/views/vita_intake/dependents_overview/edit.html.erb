@@ -12,6 +12,10 @@
         <%= link_to add_dependent_vita_intake_index_path(member_id: dependent.id) do %>
           <%= dependent.first_name %> <%= dependent.last_name %>
         <% end %>
+        <%= link_to "remove", dependents_overview_vita_intake_index_path(member_id: dependent.id), method: :delete, class: 'link--subtle', data: {
+            confirm: "Are you sure you want to remove this dependent?"
+        } %>
+
       </li>
     <% end %>
     </ul>
