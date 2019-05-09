@@ -91,7 +91,7 @@ class FrontService
             :attachments => attachments,
             :body => body,
             :body_format => 'html',
-            :sender => {:handle => 'lou@codeforamerica.org'}
+            :sender => {:handle => vita_client.email}
         },
         :headers => {
             'Content-Type' => 'multipart/form-data',

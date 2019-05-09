@@ -1,22 +1,23 @@
-class AboutYourSpouseForm < Form
-  set_attributes_for :household_member, :first_name, :last_name, :birthdate, :full_time_student, :non_citizen, :disabled, :legally_blind
-
-  validates_presence_of :first_name, message: "Make sure to provide a first name."
-  validates_presence_of :last_name, message: "Make sure to provide a last name."
-  validates_presence_of :birthdate, message: "Make sure to provide a date of birth."
+class AboutYourSpouseForm < HouseholdMemberForm
+  set_attributes_for :household_member, :first_name, :last_name, :birthdate_year, :birthdate_month,
+                     :birthdate_day, :full_time_student, :non_citizen, :disabled, :legally_blind
 
   def save
     record.save
     if record.spouse.present?
-      record.spouse.update(attributes_for(:household_member))
+      record.spouse.update(household_member_attributes)
     else
-      record.household_members.create(attributes_for(:household_member).merge(relation: :spouse))
+      record.household_members.create(household_member_attributes.merge(relation: :spouse))
     end
   end
 
   def self.existing_attributes(record)
     if record.spouse.present?
-      HashWithIndifferentAccess.new(record.spouse.attributes)
+      attributes = record.spouse.attributes
+      %i[year month day].each do |sym|
+        attributes["birthdate_#{sym}"] = record.spouse.birthdate.try(sym)
+      end
+      HashWithIndifferentAccess.new(attributes)
     else
       {}
     end

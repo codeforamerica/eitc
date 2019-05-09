@@ -1,18 +1,13 @@
-class AboutYouForm < Form
+class AboutYouForm < HouseholdMemberForm
   set_attributes_for :household_member, :first_name, :last_name, :birthdate_year, :birthdate_month,
                      :birthdate_day, :full_time_student, :non_citizen, :disabled, :legally_blind
-
-  validates_presence_of :first_name, message: "Make sure to provide a first name."
-  validates_presence_of :last_name, message: "Make sure to provide a last name."
-  attr_internal_reader :birthdate
-  validates :birthdate, date: true
 
   def save
     record.save
     if record.primary_filing_member.present?
-      record.primary_filing_member.update(primary_filing_member_attributes)
+      record.primary_filing_member.update(household_member_attributes)
     else
-      record.household_members.create(primary_filing_member_attributes.merge(relation: :primary_filer))
+      record.household_members.create(household_member_attributes.merge(relation: :primary_filer))
     end
   end
 
@@ -27,17 +22,4 @@ class AboutYouForm < Form
       {}
     end
   end
-
-  private
-
-  def primary_filing_member_attributes
-    attributes = attributes_for(:household_member)
-    attributes[:birthdate] = to_datetime(birthdate_year, birthdate_month, birthdate_day)
-    attributes.except(
-        :birthdate_year,
-        :birthdate_month,
-        :birthdate_day,
-        )
-  end
-
 end
