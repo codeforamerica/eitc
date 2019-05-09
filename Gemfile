@@ -46,6 +46,7 @@ gem 'delayed_job_active_record'
 gem 'httparty'
 gem 'rest-client'
 gem "aws-sdk-s3", require: false
+gem "twilio-ruby"
 
 
 

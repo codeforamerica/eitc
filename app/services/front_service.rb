@@ -1,20 +1,6 @@
 class FrontService
   include Singleton
 
-  def send_message_to_front_intake(data)
-    @url = CredentialsHelper.environment_credential_for_key(:front_custom_channel_url)
-    @api_key = CredentialsHelper.environment_credential_for_key(:front_api_key)
-    return unless @url && @api_key
-    json_payload = data.to_json
-    HTTParty.post(@url,
-                  body: json_payload,
-                  headers: {
-                      'Content-Type' => 'application/json',
-                      'Authorization' => "Bearer #{@api_key}",
-                      'Accept' => 'application/json'
-                  })
-  end
-
   def send_message_with_attachment(attachment)
     @url = CredentialsHelper.environment_credential_for_key(:front_custom_channel_url)
     @api_key = CredentialsHelper.environment_credential_for_key(:front_api_key)
@@ -35,9 +21,6 @@ class FrontService
             :Authorization => "Bearer #{@api_key}",
             :Accept => 'application/json'
         })
-
-    puts request.payload
-    puts request.headers
 
     response = request.execute
   end
@@ -115,9 +98,6 @@ class FrontService
             :Authorization => "Bearer #{@api_key}",
             :Accept => 'application/json'
         })
-
-    puts request.payload
-    puts request.headers
 
     response = request.execute
   end

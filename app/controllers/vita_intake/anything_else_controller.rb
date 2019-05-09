@@ -11,16 +11,14 @@ module VitaIntake
         @form.save
         update_session
         track_form_progress
-        send_application_to_front
+        SendMessageToFrontJob.perform_later(vita_client: current_vita_client)
+        TextConfirmationToClientJob.perform_later(phone_number: current_vita_client.phone_number)
+        EmailConfirmationToClientJob.perform_later(email: current_vita_client.email)
         redirect_to(next_path)
       else
         track_validation_errors
         render :edit
       end
-    end
-
-    def send_application_to_front
-      FrontService.instance.send_client_application(current_record)
     end
   end
 end
