@@ -17,6 +17,8 @@ class ResearchContactDecorator < SimpleDelegator
       "Craigslist Colorado Springs"
     when 'clp'
       "Craigslist Pueblo"
+    when 'clws'
+      "Craigslist Western Slope"
     when 'organic_google'
       "Google search"
     when 'mt'
