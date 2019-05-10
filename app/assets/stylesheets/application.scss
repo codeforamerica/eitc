@@ -23,6 +23,7 @@
 @import 'molecules/button-set';
 @import 'molecules/progress-bar';
 @import 'molecules/reveal';
+@import 'molecules/doc-preview';
 @import 'organisms/action-bust';
 @import 'organisms/header';
 @import 'organisms/footer';
@@ -34,51 +35,7 @@
   height: auto;
 }
 
-.button {
-  border-radius: 8px;
-  border-width: 2px;
-  padding: .8em 1.3em;
-}
-
-.button, .button--primary {
-  box-shadow: none;
-  font-weight: bold;
-}
-
-.form-card {
-  border-top: none;
-  border-radius: 8px;
-  margin-bottom: 60px;
-}
-
-.form-card__header {
-  border-bottom: none;
-}
-
-.form-card__footer {
-  border-top: none;
-}
-
-.text--small, .form-card__title, .text--help {
-  line-height: $line-height-display;
-}
-
 .slab--dark {
   background-color: $color-darkest-grey;
   color: white;
-}
-
-.doc-preview__info {
-  overflow-wrap: break-word;
-}
-
-.progress-step-bar {
-  max-width: 300px;
-}
-
-.doc-preview__thumb {
-  border: none;
-  border-radius: 8px;
-  background-color: #efefef;
-  padding: 5px;
 }

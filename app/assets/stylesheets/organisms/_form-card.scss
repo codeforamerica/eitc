@@ -1,5 +1,8 @@
 .form-card {
   margin-top: 1em;
+  border-top: none;
+  border-radius: 8px;
+  margin-bottom: 60px;
 }
 
 .form-card--notice {
@@ -30,4 +33,17 @@
 
 .form-group {
   margin-bottom: $padding-med;
+}
+
+
+.form-card__header {
+  border-bottom: none;
+}
+
+.form-card__footer {
+  border-top: none;
+}
+
+.text--small, .form-card__title, .text--help {
+  line-height: $line-height-display;
 }

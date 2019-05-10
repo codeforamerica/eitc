@@ -1,3 +1,15 @@
+
 .button {
-  padding: .5em .9em;
+  border-radius: 8px;
+  border-width: 2px;
+  padding: .8em 1.3em;
+}
+.button--small {
+  border-radius: 5px;
+  padding: .4em .7em;
+}
+
+.button, .button--primary {
+  box-shadow: none;
+  font-weight: bold;
 }

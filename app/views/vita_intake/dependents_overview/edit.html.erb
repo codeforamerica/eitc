@@ -5,24 +5,32 @@
 <% content_for :form_card_content do %>
   <div class="form-card">
     <div class="form-card__header">
-      <h2>Tell us about your dependents.</h2>
+      <h1 class="h2">Tell us about your dependents.</h1>
     </div>
 
     <ul>
     <% current_vita_client.dependents.each do |dependent| %>
-      <li id="member-<%= dependent.id %>">
-        <%= link_to add_dependent_vita_intake_index_path(member_id: dependent.id) do %>
-          <%= dependent.first_name %> <%= dependent.last_name %>
-        <% end %>
-        <%= link_to "remove", dependents_overview_vita_intake_index_path(member_id: dependent.id), method: :delete, class: 'link--subtle', data: {
-            confirm: "Are you sure you want to remove this dependent?"
-        } %>
+      <li class="member-card statistic-card">
+        <h2 class="h4"><%= dependent.first_name %> <%= dependent.last_name %></h2>
+        <div class="with-padding-small"><em>Birthdate:</em> <%= dependent.birthdate.strftime("%B %-d, %Y") %></div>
+        <div>
+          <%= link_to add_dependent_vita_intake_index_path(member_id: dependent.id),
+              class: "button button--small" do %>
+            <i class="icon-mode_edit"></i> Edit
+          <% end %>
 
+          <%= link_to dependents_overview_vita_intake_index_path(member_id: dependent.id),
+                         method: :delete, class: 'button button--small button--danger', data: {
+            confirm: "Are you sure you want to remove this dependent?"} do %>
+            <i class="icon-cancel"></i> Remove
+          <% end %>
+        </div>
       </li>
     <% end %>
     </ul>
 
     <%= link_to add_dependent_vita_intake_index_path, class: "button with-padding-med" do %>
+      <i class="icon-add"></i>
       Add a dependent
     <% end %>
 
