@@ -9,10 +9,13 @@
     </header>
     <fieldset class="button-set with-padding-med">
       <div class="form-card__content">
-        <%= f.cfa_input_field(:phone_number, 'What\'s your phone number?', type: 'tel', classes: ['form-width--phone']) %>
-        <%= f.cfa_checkbox(:sms_enabled,
-                           "Can this number receive text messages? Our tax preparer will use this number to get in contact with you during the process.") %>
-        <%= f.cfa_input_field(:email, 'What is your email address?', type: 'email', classes: ['form-width--email']) %>
+        <%= f.cfa_input_field(:phone_number, 'What is your phone number?', type: 'tel', classes: ['form-width--phone with-padding-med']) %>
+        <div class="with-padding-med">
+          <p class="form-question" style="margin-bottom: 0;">Can this number receive text messages?</p>
+          <p class="text--help">Our tax preparer will use this number to get in touch with you during the process.</p>
+          <%= f.cfa_checkbox(:sms_enabled, "Yes, I can get texts", options: {classes: ['with-padding-med']}) %>
+        </div>
+        <%= f.cfa_input_field(:email, 'What is your email address?', type: 'email', classes: ['form-width--email with-padding-med']) %>
 
       </div>
       <div class="form-card__footer">

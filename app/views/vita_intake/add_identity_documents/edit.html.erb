@@ -5,6 +5,7 @@
 <% content_for :form_card_content do %>
   <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card' } do |f| %>
     <div class="form-card__header">
+      <div class="emoji emoji--big emoji--page-facing-up with-padding-small"></div>
       <h1 class="form-card__title with-padding-small">Attach any ID documents you can.</h1>
       <p class="text--left">
         You'll need to submit a photo ID for the head of household and social security cards for everyone. We recommend
@@ -23,7 +24,7 @@
                   <h4><%= document.filename %></h4>
                   <p class="text--help">
                     <a class="delete-file-link link--subtle" href="#">
-                      Delete
+                      Remove
                     </a>
                   </p>
                 </div>
@@ -42,8 +43,8 @@
         <div>
           <div class="verification-upload-icon" <% if @form.identity_documents.present? %>style="display: none;"<% end %>></div>
           <div>
-            <button class="button button--cta is-tablet-hidden--inline upload-file-button with-padding-med">Pick a file from this computer</button>
-            <button class="button button--cta is-desktop-hidden--inline upload-file-button with-padding-med">Take a picture</button>
+            <button class="button is-tablet-hidden--inline upload-file-button with-padding-med">Pick a file from this computer</button>
+            <button class="button is-desktop-hidden--inline upload-file-button with-padding-med">Take a photo</button>
             <%= f.button :submit, class: 'button button--primary with-padding-small' do %>
               Done with this step
             <% end %>

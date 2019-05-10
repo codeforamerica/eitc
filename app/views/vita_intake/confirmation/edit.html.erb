@@ -4,13 +4,15 @@
 
 <% content_for :form_card_content do %>
   <div class="form-card form-card--transition">
-    <div class="form-card__header">
-      <div class="emoji emoji--big emoji--checkmark"></div>
-      <h1 class="form-card__title">Your tax information has been successfully submitted!</h1>
+    <div class="form-card__header with-padding-large">
+      <div class="emoji emoji--big emoji--white-heavy-checkmark with-padding-med"></div>
+      <h1 class="form-card__title with-padding-small">Your tax information has been successfully submitted!</h1>
+      <p>
+        <%= Time.now.strftime("%l:%M%P")%> on <%= Time.now.to_date.to_s(:long_ordinal) %>
+      </p>
     </div>
 
     <div class="form-card__content">
-
       <div class="text--centered">
         <h2>What to expect next</h2>
         <p>

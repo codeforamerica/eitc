@@ -34,4 +34,19 @@
 
   <%= content_for :page %>
   </body>
+
+  <footer class="main-footer">
+    <div class="grid">
+      <div class="grid__item">
+        <p class="text--small">
+          GetYourRefund.org is a service delivered by <%= link_to "Code for America", "https://www.codeforamerica.org/" %> on behalf of the people of Colorado.
+        </p>
+        <div class="logo-panel__item">
+          <a href="https://codeforamerica.org">
+            <%= image_tag "cfa_logo.png", class: "image image--cfa-logo", alt: "Code for America" %>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </html>

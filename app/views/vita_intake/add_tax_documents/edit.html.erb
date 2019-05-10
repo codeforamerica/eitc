@@ -5,6 +5,7 @@
 <% content_for :form_card_content do %>
   <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card' } do |f| %>
     <div class="form-card__header">
+      <div class="emoji emoji--big emoji--page-facing-up with-padding-small"></div>
       <h1 class="form-card__title with-padding-small">Attach any tax documents you can.</h1>
       <p class="text--left">
         This includes any tax forms you have such as W2's, 1099's, etc. We recommend you submit as much as you can now
@@ -42,8 +43,8 @@
         <div class="text--left">
           <div class="verification-upload-icon" <% if @form.tax_documents.present? %>style="display: none;"<% end %>></div>
           <div>
-            <button class="button button--cta is-tablet-hidden--inline upload-file-button with-padding-med">Pick a file from this computer</button>
-            <button class="button button--cta is-desktop-hidden--inline upload-file-button with-padding-med">Take a picture</button>
+            <button class="button is-tablet-hidden--inline upload-file-button with-padding-med">Pick a file from this computer</button>
+            <button class="button is-desktop-hidden--inline upload-file-button with-padding-med">Take a picture</button>
             <%= f.button :submit, class: 'button button--primary with-padding-small' do %>
               Done with this step
             <% end %>

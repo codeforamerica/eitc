@@ -5,13 +5,13 @@
 <% content_for :form_card_content do %>
   <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card' } do |f| %>
     <header class="form-card__header">
-      <h1 class="form-card__title">Tell us about you.</h1>
+      <h1 class="form-card__title">Tell us about yourself.</h1>
     </header>
     <fieldset class="button-set with-padding-med">
       <div class="form-card__content">
-        <%= f.cfa_input_field(:first_name, 'What\'s your first name?', help_text: 'Legally as it appears on your ID.', classes: ['form-width--name']) %>
-        <%= f.cfa_input_field(:last_name, 'What\'s your last name?', help_text: 'Legally as it appears on your ID.', classes: ['form-width--name']) %>
-        <%= f.cfa_date_select(:birthdate, 'What\'s your date of birth?', { options: { start_year: Time.now.year, end_year: 1900 } }) %>
+        <%= f.cfa_input_field(:first_name, 'What\'s your first name?', help_text: 'Legally as it appears on your ID.', classes: ['form-width--name with-padding-med']) %>
+        <%= f.cfa_input_field(:last_name, 'What\'s your last name?', help_text: 'Legally as it appears on your ID.', classes: ['form-width--name with-padding-med']) %>
+        <%= f.cfa_date_select(:birthdate, 'When is your birthday?', { options: { start_year: Time.now.year, end_year: 1900 } }) %>
 
         <%= f.cfa_checkbox_set("", [
                                    { label: 'Full-time student', method: :full_time_student },

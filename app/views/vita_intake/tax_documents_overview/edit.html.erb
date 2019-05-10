@@ -6,15 +6,14 @@
   <div class="form-card form-card--transition">
     <div class="form-card__header">
       <%= render "components/molecules/progress_step_bar" %>
-      <div style="margin:-40px 0 60px 0;">
+      <div class="text--centered with-padding-large" style="margin-top:-40px;">
         Part 3 of 3: Submit tax forms
       </div>
-      <h1 class="form-card__title">Lastly, let's get any tax documents you have.</h1>
+      <h2 class="form-card__title with-padding-small">Lastly, let's get any tax documents you have.</h2>
     </div>
 
-    <div class="form-card__content">
-
-      <p class="text--small with-padding-large">
+    <div class="form-card__content with-padding-large">
+      <p class="text--centered with-padding-large">
         This includes any tax forms you have such as W2's, 1099's, etc.
       </p>
 
@@ -26,14 +25,10 @@
     </div>
 
     <div class="form-card__footer">
-      <div class="with-padding-med">
-        <%= link_to next_path, class: "button button--primary with-padding-med" do %>
-          Continue
-          <i class="button__icon icon-arrow_forward"></i>
-        <% end %>
-      </div>
+      <%= link_to next_path, class: "button button--primary with-padding-med" do %>
+        Continue
+      <% end %>
     </div>
-
   </div>
 <% end %>
 

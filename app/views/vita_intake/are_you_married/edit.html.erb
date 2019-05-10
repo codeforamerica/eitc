@@ -4,17 +4,19 @@
 
 <% content_for :form_card_content do %>
   <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
-    <fieldset class="with-padding-large">
-      <legend>
-        <h1 class="form-question">Are you currently married?</h1>
-      </legend>
-
+    <div class="form-card__header">
+      <div class="emoji emoji--huge emoji--ring"></div>
+    </div>
+    <div class="form-card__content">
+      <h2 class="form-question">Are you currently married?</h2>
+    </div>
+    <div class="form-card__footer">
       <%= f.button :submit, name: form_name + '[has_spouse]', value: 'yes', class: "button" do %>
         <span class="button__icon--left emoji emoji--inline emoji--checkmark"></span> Yes
       <% end %>
       <%= f.button :submit, name: form_name + '[has_spouse]', value: 'no', class: "button" do %>
         <span class="button__icon--left emoji emoji--inline emoji--crossmark"></span> No
       <% end %>
-    </fieldset>
+    </div>
   <% end %>
 <% end %>

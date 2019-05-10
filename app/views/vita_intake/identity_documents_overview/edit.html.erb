@@ -6,15 +6,14 @@
   <div class="form-card form-card--transition">
     <div class="form-card__header">
       <%= render "components/molecules/progress_step_bar" %>
-      <div style="margin:-40px 0 60px 0;">
+      <div class="text--centered with-padding-large" style="margin-top:-40px;">
         Part 2 of 3: Submit IDs
       </div>
-      <h1 class="form-card__title">Great! Now let’s get the required ID documents.</h1>
+      <h2 class="form-card__title with-padding-small">Great! The next step is to get the required ID documents.</h2>
     </div>
 
-    <div class="form-card__content">
-
-      <p class="text--small with-padding-large">
+    <div class="form-card__content with-padding-large">
+      <p class="text--centered with-padding-large">
         You'll need to submit a photo ID of the head of household and social security cards for everyone.
       </p>
 
@@ -26,14 +25,10 @@
     </div>
 
     <div class="form-card__footer">
-      <div class="with-padding-med">
-        <%= link_to next_path, class: "button button--primary with-padding-med" do %>
-          Continue
-          <i class="button__icon icon-arrow_forward"></i>
-        <% end %>
-      </div>
+      <%= link_to next_path, class: "button button--primary with-padding-med" do %>
+        Continue
+      <% end %>
     </div>
-
   </div>
 <% end %>
 

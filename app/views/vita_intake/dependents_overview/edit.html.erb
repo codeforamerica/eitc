@@ -3,8 +3,10 @@
 <% end %>
 
 <% content_for :form_card_content do %>
-  <div class="form-card form-card--transition">
-    <h1 class="form-question">Tell us about your dependents.</h1>
+  <div class="form-card">
+    <div class="form-card__header">
+      <h2>Tell us about your dependents.</h2>
+    </div>
 
     <ul>
     <% current_vita_client.dependents.each do |dependent| %>

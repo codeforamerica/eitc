@@ -10,8 +10,8 @@
     <fieldset class="button-set with-padding-med">
       <div class="form-card__content">
         <%= f.cfa_input_field(:first_name, 'What\'s their first name?', help_text: 'Legally as it appears on their ID.', classes: ['form-width--name']) %>
-        <%= f.cfa_input_field(:last_name, 'What\'s their last name?', help_text: 'Legally as it appears on their ID.', classes: ['form-width--name']) %>
-        <%= f.cfa_date_select(:birthdate, 'What\'s their date of birth?', { options: { start_year: Time.now.year, end_year: 1900 } }) %>
+        <%= f.cfa_input_field(:last_name, 'What\'s their last name?', help_text: 'Legally as it appears on their ID.', classes: ['form-width--name with-padding-med']) %>
+        <%= f.cfa_date_select(:birthdate, 'When is their birthday?', { options: { start_year: Time.now.year, end_year: 1900 } }) %>
 
         <%= f.cfa_checkbox_set("", [
                                    { label: 'Full-time student', method: :full_time_student },
@@ -25,7 +25,7 @@
       </div>
       <div class="form-card__footer">
         <%= f.button :submit, class: 'button button--primary with-padding-small' do %>
-          Next
+          Continue
         <% end %>
       </div>
     </fieldset>

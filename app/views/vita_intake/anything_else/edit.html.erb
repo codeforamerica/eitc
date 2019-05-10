@@ -5,7 +5,7 @@
 <% content_for :form_card_content do %>
   <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card' } do |f| %>
     <h2>Anything else you'd like your tax preparer to know about your situation?</h2>
-    <p class="text--small with-padding-med">
+    <p class="text--help with-padding-med">
       For example, are you missing any documents, or did you have major changes in your household situation this year?
       If not, you can leave this blank.
     </p>
