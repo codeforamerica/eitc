@@ -57,7 +57,7 @@ class FrontService
             "<li>Additional Info: #{vita_client.anything_else}</li>"\
             "</ul>"
 
-    if vita_client.has_spouse && vita_client.spouse.present?
+    if vita_client.married? && vita_client.spouse.present?
       body += "<br>"\
             "Spouse: #{vita_client.spouse.first_name} #{vita_client.spouse.last_name}<br>"\
             "<ul>"\
@@ -69,7 +69,7 @@ class FrontService
             "</ul>"
     end
 
-    if vita_client.has_dependents && vita_client.dependents.present?
+    if vita_client.dependents? && vita_client.dependents.present?
       vita_client.dependents.each_with_index do |dependent, index|
         body += "<br>"\
             "Dependent ##{index+1}: #{dependent.first_name} #{dependent.last_name}<br>"\
