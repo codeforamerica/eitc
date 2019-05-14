@@ -28,12 +28,9 @@
 @import 'organisms/header';
 @import 'organisms/footer';
 @import 'organisms/form-card';
+@import 'organisms/main-footer';
 @import 'organisms/testimonial';
 @import 'templates/homepage';
-
-.main-footer {
-  height: auto;
-}
 
 .slab--dark {
   background-color: $color-darkest-grey;

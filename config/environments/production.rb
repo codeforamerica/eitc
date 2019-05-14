@@ -64,10 +64,22 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "eitc_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
+
+  # Customize default host
   config.action_mailer.default_url_options = {
-      :host           => Rails.application.credentials[:production][:hostname_for_urls],
-      :protocol       => "https"
+      host: "getyourrefund.org",
+      protocol: "https",
   }
+
+  config.action_mailer.smtp_settings = {
+      port: 587,
+      address: "smtp.mailgun.org",
+      user_name: Rails.application.credentials[Rails.env.to_sym][:mailgun_smtp_login],
+      password: Rails.application.credentials[Rails.env.to_sym][:mailgun_smtp_password],
+      authentication: :plain,
+  }.freeze
+
+  config.action_mailer.delivery_method = :smtp
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
