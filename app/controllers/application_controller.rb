@@ -48,7 +48,11 @@ class ApplicationController < ActionController::Base
     session[:source]
   end
 
-  def set_params_in_session
+  def state
+    session[:state]
+  end
+
+  def set_source
     if params[:source]
       session[:source] = params[:source]
     elsif params[:utm_source]
@@ -58,6 +62,26 @@ class ApplicationController < ActionController::Base
     elsif request.headers.fetch(:referer, "").include?("google.com")
       session[:source] = "organic_google"
     end
+  end
+
+  def set_state
+    if params[:state]
+      case params[:state].downcase
+      when 'ca'
+        session[:state] = 'California'
+      when 'co'
+        session[:state] = 'Colorado'
+      when 'nj'
+        session[:state] = 'New Jersey'
+      else
+        session[:state] = params[:state]
+      end
+    end
+  end
+
+  def set_params_in_session
+    set_source
+    set_state
 
     %w(campaign content).each do |param|
       if params[param]

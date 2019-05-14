@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_08_002048) do
+ActiveRecord::Schema.define(version: 2019_05_14_002820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,11 @@ ActiveRecord::Schema.define(version: 2019_05_08_002048) do
     t.string "zip"
     t.string "sms_enabled"
     t.string "has_dependents"
+    t.string "state"
+    t.string "source"
+    t.datetime "signed_at"
+    t.string "signature_ip"
+    t.string "spouse_signature"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

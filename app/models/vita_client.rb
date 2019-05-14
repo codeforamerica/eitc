@@ -15,6 +15,10 @@ class VitaClient < ApplicationRecord
     household_members.where(relation: :spouse).first
   end
 
+  def added_spouse?
+    married? && spouse.present?
+  end
+
   def primary_filing_member
     household_members.where(relation: :primary_filer).first
   end
