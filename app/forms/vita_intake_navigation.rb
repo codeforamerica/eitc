@@ -15,7 +15,7 @@ class VitaIntakeNavigation
     VitaIntake::TaxDocumentsOverviewController,
     VitaIntake::AddTaxDocumentsController,
     VitaIntake::AnythingElseController,
-    # VitaIntake::ConsentAndSignController,
+    VitaIntake::ConsentAndSignController,
     VitaIntake::ConfirmationController,
   ].freeze
 

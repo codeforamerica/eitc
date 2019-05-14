@@ -8,4 +8,8 @@ class HouseholdMember < ApplicationRecord
   def analytics_data
     {}
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
