@@ -27,7 +27,7 @@
 
           <%= f.cfa_input_field(:signature, 'Your signature', classes: ['form-width--long']) %>
           <% if current_vita_client.added_spouse? %>
-            <%= f.cfa_input_field(:spouse_signature, "#{current_vita_client.spouse.full_name}'s signature", classes: ['form-width--long']) %>
+            <%= f.cfa_input_field(:spouse_signature, "#{current_vita_client.spouse.full_name}'s signature, if filing jointly", classes: ['form-width--long']) %>
           <% end %>
         </div>
 
