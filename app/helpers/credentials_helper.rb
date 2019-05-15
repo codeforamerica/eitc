@@ -1,5 +1,9 @@
 module CredentialsHelper
   class << self
+    def secret_key_for_encryption
+      encoded_value = environment_credential_for_key(:secret_key_for_encryption)
+      Base64.decode64(encoded_value)
+    end
 
     def twilio_phone_number
       environment_credential_for_key(:twilio_phone_number, alternate_value: "15553338888")

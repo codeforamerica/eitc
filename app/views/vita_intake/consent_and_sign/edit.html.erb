@@ -30,9 +30,13 @@
           </p>
 
           <%= f.cfa_input_field(:signature, 'Your signature', classes: ['form-width--long']) %>
+          <%= f.cfa_input_field(:last_four_ssn, 'Last 4 digits of your SSN or ITIN', type: 'tel', classes: ['form-width--short']) %>
+
           <% if current_vita_client.added_spouse? %>
             <%= f.cfa_input_field(:spouse_signature, "#{current_vita_client.spouse.full_name}'s signature, if filing jointly", classes: ['form-width--long']) %>
-          <% end %>
+            <%= f.cfa_input_field(:last_four_ssn_spouse, "Last 4 digits of #{current_vita_client.spouse.full_name}'s SSN or ITIN", type: 'tel', classes: ['form-width--short']) %>
+
+        <% end %>
         </div>
 
       <div class="form-card__footer">

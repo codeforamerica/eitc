@@ -25,6 +25,7 @@ class IntakePdfAssembler
     if @vita_client.signature.present?
       data = data.merge({
         signature: @vita_client.signature,
+        ssn_last_four: @vita_client.last_four_ssn,
         ip_address: "IP: #{@vita_client.signature_ip}",
         signed_at: @vita_client.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z")
       })
@@ -40,6 +41,7 @@ class IntakePdfAssembler
     if @vita_client.spouse_signature.present?
       data = data.merge({
         signature_spouse: @vita_client.spouse_signature,
+        ssn_last_four_spouse: @vita_client.last_four_ssn_spouse,
         ip_address_spouse: "IP: #{@vita_client.signature_ip}",
         signed_at_spouse: @vita_client.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"),
       })

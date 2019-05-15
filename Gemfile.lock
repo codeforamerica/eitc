@@ -56,6 +56,8 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
+    attr_encrypted (3.1.0)
+      encryptor (~> 3.0.0)
     autoprefixer-rails (9.4.7)
       execjs
     aws-eventstream (1.0.3)
@@ -103,6 +105,7 @@ GEM
     diff-lcs (1.3)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
+    encryptor (3.0.0)
     erubi (1.8.0)
     execjs (2.7.0)
     factory_bot (4.11.1)
@@ -289,6 +292,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  attr_encrypted
   aws-sdk-s3
   bootsnap (>= 1.1.0)
   byebug

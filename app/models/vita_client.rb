@@ -4,6 +4,10 @@ class VitaClient < ApplicationRecord
   has_many :household_members
   has_many_attached :tax_documents
   has_many_attached :identity_documents
+  attribute :last_four_ssn
+  attr_encrypted(:last_four_ssn, key: CredentialsHelper.secret_key_for_encryption)
+  attribute :last_four_ssn_spouse
+  attr_encrypted(:last_four_ssn_spouse, key: CredentialsHelper.secret_key_for_encryption)
 
   def married?
     has_spouse == 'yes'
