@@ -32,6 +32,9 @@ class FrontService
 
     attachments = []
 
+    pdf_assembler = IntakePdfAssembler.new(vita_client)
+    attachments.push stringfile(pdf_assembler.intake_pdf_file.read, pdf_assembler.filename, 'application/pdf')
+
     vita_client.tax_documents.each do |tax_doc|
       attachments.push stringfile(tax_doc.blob.download, tax_doc.blob.filename, tax_doc.blob.content_type)
     end

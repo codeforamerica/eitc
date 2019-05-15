@@ -10,7 +10,7 @@ class IntakePdfAssembler
 
   def filename
     time = DateTime.now.in_time_zone(@vita_client.timezone)
-    @filename ||= "#{time.strftime("%Y-%m-%d_%H-%M_%Z")}_#{@vita_client.primary_filer.last_name}_intake_packet.pdf"
+    @filename ||= "Intake_Packet_#{@vita_client.primary_filer.last_name}_#{time.strftime("%Y-%m-%d_%H-%M_%Z")}.pdf"
   end
 
   private
