@@ -8,7 +8,7 @@
       <div class="emoji emoji--big emoji--white-heavy-checkmark with-padding-med"></div>
       <h1 class="form-card__title with-padding-small">Your tax information has been successfully submitted!</h1>
       <p>
-        <%= Time.now.strftime("%l:%M%P")%> on <%= Time.now.to_date.to_s(:long_ordinal) %>
+        Signed <%= current_vita_client.local_signed_at.strftime("%l:%M %P %Z on %b %-m, %Y")%>
       </p>
     </div>
 
