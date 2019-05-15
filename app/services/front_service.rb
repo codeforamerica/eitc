@@ -40,17 +40,17 @@ class FrontService
     end
 
     body = "New intake form received<br><br>"\
-            "Primary Filer: #{vita_client.primary_filing_member.first_name} #{vita_client.primary_filing_member.last_name}<br>"\
+            "Primary Filer: #{vita_client.primary_filer.first_name} #{vita_client.primary_filer.last_name}<br>"\
             "<ul>"\
-            "<li>Date of Birth: #{vita_client.primary_filing_member.birthdate.strftime("%m/%d/%Y")}</li>"\
+            "<li>Date of Birth: #{vita_client.primary_filer.birthdate.strftime("%m/%d/%Y")}</li>"\
             "<li>Email: #{vita_client.email}</li>"\
             "<li>Address: #{vita_client.street_address} #{vita_client.city} #{vita_client.zip}</li>"\
             "<li>Phone Number: #{vita_client.phone_number}</li>"\
             "<li>Can you receive text messages?: #{vita_client.sms_enabled ? 'yes' : 'no'}</li>"\
-            "<li>Are you a full-time student?: #{vita_client.primary_filing_member.full_time_student ? 'yes' : 'no'}</li>"\
-            "<li>Are you a non-citizen?: #{vita_client.primary_filing_member.non_citizen ? 'yes' : 'no'}</li>"\
-            "<li>Are you disabled?: #{vita_client.primary_filing_member.disabled ? 'yes' : 'no'}</li>"\
-            "<li>Are you legally blind?: #{vita_client.primary_filing_member.legally_blind ? 'yes' : 'no'}</li>"\
+            "<li>Are you a full-time student?: #{vita_client.primary_filer.full_time_student ? 'yes' : 'no'}</li>"\
+            "<li>Are you a non-citizen?: #{vita_client.primary_filer.non_citizen ? 'yes' : 'no'}</li>"\
+            "<li>Are you disabled?: #{vita_client.primary_filer.disabled ? 'yes' : 'no'}</li>"\
+            "<li>Are you legally blind?: #{vita_client.primary_filer.legally_blind ? 'yes' : 'no'}</li>"\
             "<li>Are you married?: #{vita_client.has_spouse ? 'yes' : 'no'}</li>"\
             "<li>Do you have any dependents?: #{vita_client.has_dependents ? 'yes' : 'no'}</li>"\
             "<li>Is anyone in your household self employed?: #{vita_client.anyone_self_employed ? 'yes' : 'no'}</li>"\

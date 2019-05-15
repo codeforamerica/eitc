@@ -4,18 +4,18 @@ class AboutYouForm < HouseholdMemberForm
 
   def save
     record.save
-    if record.primary_filing_member.present?
-      record.primary_filing_member.update(household_member_attributes)
+    if record.primary_filer.present?
+      record.primary_filer.update(household_member_attributes)
     else
       record.household_members.create(household_member_attributes.merge(relation: :primary_filer))
     end
   end
 
   def self.existing_attributes(record)
-    if record.primary_filing_member.present?
-      attributes = record.primary_filing_member.attributes
+    if record.primary_filer.present?
+      attributes = record.primary_filer.attributes
       %i[year month day].each do |sym|
-        attributes["birthdate_#{sym}"] = record.primary_filing_member.birthdate.try(sym)
+        attributes["birthdate_#{sym}"] = record.primary_filer.birthdate.try(sym)
       end
       HashWithIndifferentAccess.new(attributes)
     else

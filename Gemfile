@@ -45,6 +45,7 @@ gem 'httparty'
 gem 'rest-client'
 gem "aws-sdk-s3", require: false
 gem "twilio-ruby"
+gem "pdf-forms"
 
 
 
