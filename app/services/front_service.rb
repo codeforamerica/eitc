@@ -47,12 +47,12 @@ class FrontService
             "<li>Address: #{vita_client.street_address} #{vita_client.city} #{vita_client.zip}</li>"\
             "<li>Phone Number: #{vita_client.phone_number}</li>"\
             "<li>Can you receive text messages?: #{vita_client.sms_enabled ? 'yes' : 'no'}</li>"\
-            "<li>Are you a full-time student?: #{vita_client.primary_filing_member.full_time_student ? 'yes' : 'no'}</li>"\
-            "<li>Are you a non-citizen?: #{vita_client.primary_filing_member.non_citizen ? 'yes' : 'no'}</li>"\
-            "<li>Are you disabled?: #{vita_client.primary_filing_member.disabled ? 'yes' : 'no'}</li>"\
-            "<li>Are you legally blind?: #{vita_client.primary_filing_member.legally_blind ? 'yes' : 'no'}</li>"\
-            "<li>Are you married?: #{vita_client.has_spouse ? 'yes' : 'no'}</li>"\
-            "<li>Do you have any dependents?: #{vita_client.has_dependents ? 'yes' : 'no'}</li>"\
+            "<li>Are you a full-time student?: #{vita_client.primary_filing_member.full_time_student? ? 'yes' : 'no'}</li>"\
+            "<li>Are you a non-citizen?: #{vita_client.primary_filing_member.non_citizen? ? 'yes' : 'no'}</li>"\
+            "<li>Are you disabled?: #{vita_client.primary_filing_member.disabled? ? 'yes' : 'no'}</li>"\
+            "<li>Are you legally blind?: #{vita_client.primary_filing_member.legally_blind? ? 'yes' : 'no'}</li>"\
+            "<li>Are you married?: #{vita_client.married? ? 'yes' : 'no'}</li>"\
+            "<li>Do you have any dependents?: #{vita_client.dependents? ? 'yes' : 'no'}</li>"\
             "<li>Is anyone in your household self employed?: #{vita_client.anyone_self_employed ? 'yes' : 'no'}</li>"\
             "<li>Additional Info: #{vita_client.anything_else}</li>"\
             "</ul>"
@@ -62,10 +62,10 @@ class FrontService
             "Spouse: #{vita_client.spouse.first_name} #{vita_client.spouse.last_name}<br>"\
             "<ul>"\
             "<li>Date of Birth: #{vita_client.spouse.birthdate.strftime("%m/%d/%Y")}</li>"\
-            "<li>Are they a full-time student?: #{vita_client.spouse.full_time_student ? 'yes' : 'no'}</li>"\
-            "<li>Are they a non-citizen?: #{vita_client.spouse.non_citizen ? 'yes' : 'no'}</li>"\
-            "<li>Are they disabled?: #{vita_client.spouse.disabled ? 'yes' : 'no'}</li>"\
-            "<li>Are they legally blind?: #{vita_client.spouse.legally_blind ? 'yes' : 'no'}</li>"\
+            "<li>Are they a full-time student?: #{vita_client.spouse.full_time_student? ? 'yes' : 'no'}</li>"\
+            "<li>Are they a non-citizen?: #{vita_client.spouse.non_citizen? ? 'yes' : 'no'}</li>"\
+            "<li>Are they disabled?: #{vita_client.spouse.disabled? ? 'yes' : 'no'}</li>"\
+            "<li>Are they legally blind?: #{vita_client.spouse.legally_blind? ? 'yes' : 'no'}</li>"\
             "</ul>"
     end
 
@@ -75,10 +75,10 @@ class FrontService
             "Dependent ##{index+1}: #{dependent.first_name} #{dependent.last_name}<br>"\
             "<ul>"\
             "<li>Date of Birth: #{dependent.birthdate.strftime("%m/%d/%Y")}</li>"\
-            "<li>Are they a full-time student?: #{dependent.full_time_student ? 'yes' : 'no'}</li>"\
-            "<li>Are they a non-citizen?: #{dependent.non_citizen ? 'yes' : 'no'}</li>"\
-            "<li>Are they disabled?: #{dependent.disabled ? 'yes' : 'no'}</li>"\
-            "<li>Are they legally blind?: #{dependent.legally_blind ? 'yes' : 'no'}</li>"\
+            "<li>Are they a full-time student?: #{dependent.full_time_student? ? 'yes' : 'no'}</li>"\
+            "<li>Are they a non-citizen?: #{dependent.non_citizen? ? 'yes' : 'no'}</li>"\
+            "<li>Are they disabled?: #{dependent.disabled? ? 'yes' : 'no'}</li>"\
+            "<li>Are they legally blind?: #{dependent.legally_blind? ? 'yes' : 'no'}</li>"\
             "</ul>"
       end
     end
@@ -91,7 +91,8 @@ class FrontService
             :attachments => attachments,
             :body => body,
             :body_format => 'html',
-            :sender => {:handle => vita_client.email}
+            :sender => {:handle => vita_client.email},
+            :subject => "Web Intake"
         },
         :headers => {
             'Content-Type' => 'multipart/form-data',
@@ -100,6 +101,7 @@ class FrontService
         })
 
     response = request.execute
+    puts response
   end
 
   private
