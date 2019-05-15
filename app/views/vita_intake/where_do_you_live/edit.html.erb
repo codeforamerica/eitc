@@ -11,7 +11,7 @@
       <div class="form-card__content">
         <%= f.cfa_input_field(:street_address, 'What is your street address?', classes: ['form-width--name']) %>
         <%= f.cfa_input_field(:city, 'What city do you live in?', classes: ['form-width--name']) %>
-        <%= f.cfa_select(:state, 'What state do you live in?', state_choices, prompt: 'Select a state', classes: ['form-width--name']) %>
+        <%= f.cfa_select(:state, 'What state do you live in?', current_vita_client.state_choices, prompt: 'Select a state', classes: ['form-width--name']) %>
         <%= f.cfa_input_field(:zip, 'What is your zip code?', classes: ['form-width--zip']) %>
       </div>
       <div class="form-card__footer">

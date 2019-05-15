@@ -1,4 +1,6 @@
 class VitaClient < ApplicationRecord
+  include StatesHelper
+
   has_many :household_members
   has_many_attached :tax_documents
   has_many_attached :identity_documents
@@ -19,7 +21,7 @@ class VitaClient < ApplicationRecord
     married? && spouse.present?
   end
 
-  def primary_filing_member
+  def primary_filer
     household_members.where(relation: :primary_filer).first
   end
 
@@ -29,5 +31,13 @@ class VitaClient < ApplicationRecord
 
   def analytics_data
     {}
+  end
+
+  def local_signed_at
+    signed_at.in_time_zone(timezone)
+  end
+
+  def timezone
+    timezone_for_state(state)
   end
 end

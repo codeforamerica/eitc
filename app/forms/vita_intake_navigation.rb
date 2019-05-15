@@ -21,6 +21,7 @@ class VitaIntakeNavigation
 
   OFF_MAIN = [
     VitaIntake::AddDependentController,
+    VitaIntake::VitaConsentPdfPreviewController,
   ].freeze
 
   class << self
