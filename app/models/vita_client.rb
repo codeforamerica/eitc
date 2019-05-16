@@ -1,5 +1,6 @@
 class VitaClient < ApplicationRecord
   include StatesHelper
+  include SourcesHelper
 
   has_many :household_members
   has_many_attached :tax_documents
@@ -43,5 +44,13 @@ class VitaClient < ApplicationRecord
 
   def timezone
     timezone_for_state(state)
+  end
+
+  def formatted_phone_number
+    Phonelib.parse(phone_number).local_number
+  end
+
+  def tel_link_phone_number
+    "+1#{Phonelib.parse(phone_number).sanitized}"
   end
 end

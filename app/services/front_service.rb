@@ -42,13 +42,20 @@ class FrontService
       attachments.push stringfile(identity_doc.blob.download, identity_doc.blob.filename, identity_doc.blob.content_type)
     end
 
-    body = "New intake form received<br><br>"\
+    body = "New <strong>#{vita_client.state}</strong> intake form received from #{vita_client.full_source}<br>"\
+           "<em>Referrer: #{vita_client.source || "No referrer"}</em><br>"
+
+    if vita_client.dependents.count > 4
+      body += "<p><strong>Alert! More than 4 dependents!</strong></p>"
+    end
+
+    body += "<br>"\
             "Primary Filer: #{vita_client.primary_filer.first_name} #{vita_client.primary_filer.last_name}<br>"\
             "<ul>"\
             "<li>Date of Birth: #{vita_client.primary_filer.birthdate.strftime("%m/%d/%Y")}</li>"\
             "<li>Email: #{vita_client.email}</li>"\
             "<li>Address: #{vita_client.street_address} #{vita_client.city} #{vita_client.zip}</li>"\
-            "<li>Phone Number: #{vita_client.phone_number}</li>"\
+            "<li>Phone Number: #{vita_client.formatted_phone_number}</li>"\
             "<li>Can you receive text messages?: #{vita_client.sms_enabled ? 'yes' : 'no'}</li>"\
             "<li>Are you a full-time student?: #{vita_client.primary_filer.full_time_student? ? 'yes' : 'no'}</li>"\
             "<li>Are you a non-citizen?: #{vita_client.primary_filer.non_citizen? ? 'yes' : 'no'}</li>"\
@@ -94,8 +101,13 @@ class FrontService
             :attachments => attachments,
             :body => body,
             :body_format => 'html',
-            :sender => {:handle => vita_client.email},
-            :subject => "Web Intake"
+            :sender => {
+                :name => vita_client.primary_filer.full_name,
+                :email => vita_client.email,
+                :phone => vita_client.tel_link_phone_number,
+                :handle => vita_client.email,
+            },
+            :subject => "New #{vita_client.state} Intake"
         },
         :headers => {
             'Content-Type' => 'multipart/form-data',

@@ -52,6 +52,10 @@ class ApplicationController < ActionController::Base
     session[:state]
   end
 
+  def referrer
+    session[:referrer]
+  end
+
   def set_source
     if params[:source]
       session[:source] = params[:source]
@@ -61,6 +65,12 @@ class ApplicationController < ActionController::Base
       session[:source] = params[:s]
     elsif request.headers.fetch(:referer, "").include?("google.com")
       session[:source] = "organic_google"
+    end
+  end
+
+  def set_referrer
+    unless session[:referrer].present?
+      session[:referrer] = request.headers.fetch(:referer, "None")
     end
   end
 
@@ -80,6 +90,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_params_in_session
+    set_referrer
     set_source
     set_state
 
