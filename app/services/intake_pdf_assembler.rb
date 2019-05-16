@@ -3,7 +3,12 @@ class IntakePdfAssembler
     @vita_client = vita_client
   end
 
-  def intake_pdf_file
+  def consent_pdf_file
+    run
+    consent_file
+  end
+
+  def intake_packet_pdf
     run
     output_file
   end
@@ -14,7 +19,7 @@ class IntakePdfAssembler
   end
 
   private
-  def client_data
+  def consent_data
     data = {
       name: @vita_client.primary_filer.full_name,
       dob: @vita_client.primary_filer.birthdate.strftime("%-m/%-d/%Y"),
@@ -50,15 +55,62 @@ class IntakePdfAssembler
     data
   end
 
-
-  def output_file
-    @_output_file ||= Tempfile.new(
-        filename,
-        "tmp/",
-        )
+  def intake_data
+    data = {
+      "phone" => @vita_client.phone_number,
+      "married" => yesoff(@vita_client.married?),
+      "street_address" => @vita_client.street_address,
+      "city" => @vita_client.city,
+      "state" => @vita_client.state,
+      "zip" => @vita_client.zip,
+    }.merge(
+        member_attributes(@vita_client.primary_filer, "")
+    )
+    if @vita_client.added_spouse?
+      data = data.merge(member_attributes(@vita_client.spouse, "_spouse"))
+    end
+    @vita_client.dependents.first(4).each_with_index do | dependent, index |
+      data = data.merge(member_attributes(dependent, "_dependent_#{index + 1}"))
+    end
+    data
   end
 
-  def source_pdf_path
+  def member_attributes(member, suffix)
+    data = {
+        "birthdate#{suffix}" => member.birthdate.strftime("%-m/%-d/%Y"),
+        "student#{suffix}" => yesno(member.full_time_student?),
+        "disabled#{suffix}" => yesno(member.disabled?),
+        "citizen#{suffix}" => yesno(!member.non_citizen?),
+    }
+    if member.relation == 'dependent'
+      data["name#{suffix}"] = member.full_name
+    else
+      data["first_name#{suffix}"] = member.first_name
+      data["last_name#{suffix}"] = member.last_name
+      data["blind#{suffix}"] = yesno(member.legally_blind?)
+    end
+
+    data
+  end
+
+
+  def output_file
+    @_output_file ||= Tempfile.new('Intake_Packet', "tmp/",)
+  end
+
+  def intake_file
+    @_intake_file ||= Tempfile.new('14446.pdf', "tmp/",)
+  end
+
+  def consent_file
+    @_consent_file ||= Tempfile.new('13614c.pdf', "tmp/",)
+  end
+
+  def intake_pdf_path
+    "app/lib/pdfs/f13614c.pdf"
+  end
+
+  def consent_pdf_path
     if @vita_client.state == "California"
       "app/lib/pdfs/California_14446.pdf"
     else
@@ -67,6 +119,16 @@ class IntakePdfAssembler
   end
 
   def run
-    PdfForms.new.fill_form(source_pdf_path, output_file.path, client_data)
+    PdfForms.new.fill_form(consent_pdf_path, consent_file.path, consent_data)
+    PdfForms.new.fill_form(intake_pdf_path, intake_file.path, intake_data)
+    PdfForms::PdftkWrapper.new.cat([intake_file, consent_file], output_file.path)
+  end
+
+  def yesno(value)
+    value ? "yes" : "no"
+  end
+
+  def yesoff(value)
+    value ? "Yes" : "Off"
   end
 end
