@@ -114,7 +114,7 @@ class ApplicationController < ActionController::Base
     unless user_agent.bot?
       default_data = {
           source: source,
-          referrer: request.referrer,
+          referrer: referrer,
           ad_campaign_id: session[:campaign],
           ad_campaign_name: campaign_name(session[:campaign]),
           ad_id: session[:content],

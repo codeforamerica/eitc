@@ -35,7 +35,11 @@ class VitaClient < ApplicationRecord
   end
 
   def analytics_data
-    {}
+    {
+      source: full_source,
+      referrer: referrer,
+      state: state,
+    }
   end
 
   def local_signed_at
