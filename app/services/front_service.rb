@@ -42,7 +42,7 @@ class FrontService
       attachments.push stringfile(identity_doc.blob.download, identity_doc.blob.filename, identity_doc.blob.content_type)
     end
 
-    body = "New <strong>#{vita_client.state}</strong> intake form received from #{vita_client.full_source}<br>"\
+    body = "New <strong>#{vita_client.looks_fake? ? "probably fake " : ""}#{vita_client.state}</strong> intake form received from #{vita_client.full_source}<br>"\
            "<em>Referrer: #{vita_client.source || "No referrer"}</em><br>"
 
     if vita_client.dependents.count > 4
@@ -107,7 +107,7 @@ class FrontService
                 :phone => vita_client.tel_link_phone_number,
                 :handle => vita_client.email,
             },
-            :subject => "New #{vita_client.state} Intake"
+            :subject => front_subject(vita_client)
         },
         :headers => {
             'Content-Type' => 'multipart/form-data',
@@ -117,6 +117,11 @@ class FrontService
 
     response = request.execute
     puts response
+  end
+
+  def front_subject(vita_client)
+    return "Fake #{vita_client.state} Intake" if vita_client.looks_fake?
+    "New #{vita_client.state} Intake"
   end
 
   private

@@ -57,4 +57,8 @@ class VitaClient < ApplicationRecord
   def tel_link_phone_number
     "+1#{Phonelib.parse(phone_number).sanitized}"
   end
+
+  def looks_fake?
+    source == "demo"
+  end
 end
