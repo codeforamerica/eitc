@@ -3,9 +3,15 @@
   line-height: $line-height-normal;
   margin-bottom: 0;
   font-weight: 500;
-  color: black;
+  color: #121111;
+
   a {
-    color: black;
+    color: #121111;
     text-decoration: none;
+    img {
+      width:25px;
+      height:22px;
+      vertical-align:top;
+    }
   }
 }

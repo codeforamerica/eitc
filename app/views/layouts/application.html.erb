@@ -20,6 +20,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
@@ -38,14 +39,15 @@
   <footer class="main-footer">
     <div class="grid">
       <div class="grid__item">
-        <p class="text--small">
+        <div class="text--small main-footer__legal">
           GetYourRefund.org is a free non-profit service delivered by <%= link_to "Code for America", "https://www.codeforamerica.org/" %>.
-        </p>
-        <div class="logo-panel__item">
+        </div>
+        <div class="main-footer__cfa-logo">
           <a href="https://codeforamerica.org">
-            <%= image_tag "cfa_logo.png", class: "image image--cfa-logo", alt: "Code for America" %>
+            <%= image_tag "cfa-logo.png", class: "image image--cfa-logo", alt: "Code for America" %>
           </a>
         </div>
+        <div style="clear:both;"></div>
       </div>
     </div>
   </footer>

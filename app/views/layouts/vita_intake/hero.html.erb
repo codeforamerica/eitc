@@ -4,37 +4,43 @@
     <%= render 'shared/header' %>
     <section class="slab slab--fold">
       <div class="grid">
-        <div class="grid__item width-one-whole">
-          <h2 class="h1">Get free tax support from a real person.</h2>
+        <div class="grid__item width-one-half">
+          <h2 class="h1">Get free tax support from real people.</h2>
           <h1 class="h3">
-            Send us your documents and we’ll prepare your tax return. <br>
-            We only file your taxes if you decide to. <br>
-            Get your refund via check or direct deposit.
+            Claim any tax refunds from the last three years even if tax season is over.
           </h1>
           <%= link_to "Get help now", steps_overview_vita_intake_index_path, class: "button button--cta" %>
         </div>
       </div>
+    </section>
 
-      <div class="grid logo-panel">
-        <div class="grid__item width-two-thirds shift-one-sixth">
-          <div class="grid">
-            <div class="logo-panel__item">
-              <a href="https://codeforamerica.org">
-                <%= image_tag "CfALogo-White.svg", class: "image image--cfa-logo", alt: "Code for America" %>
-              </a>
+    <div class="grid refund-panel">
+      <div class="grid__item width-two-thirds shift-one-sixth">
+        <div class="grid">
+          <div class="refund-panel__item">
+            <div class="refund-size">
+              $3,176
             </div>
-            <div class="logo-panel__item">
-              <a href="https://www.colorado.gov/cdle">
-                <%= image_tag "cdle-logo.svg", class: "image image--cdle-logo", alt: "Colorado Department of Labor and Employment" %>
-              </a>
+            <div class="refund-size-desc">
+              The average EITC refund for a family with kids in 2016.
             </div>
+          </div>
+          <div class="refund-panel__item">
+            <p>
+              Claim the credits you've earned:
+            </p>
+            <p>
+            <ul>
+              <li>Earned Income Tax Credit (EITC)</li>
+              <li>Child Tax Credit</li>
+              <li>Various education tax credits</li>
+            </ul>
+            </p>
           </div>
         </div>
       </div>
+    </div>
 
-
-
-    </section>
     <%= content_for :content %>
     <%= render 'shared/front_chat' %>
   </div>

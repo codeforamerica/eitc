@@ -1,10 +1,36 @@
-@media screen and (min-width: 601px) {
-  body {
-    margin-bottom: 150px;
+.main-footer {
+  background-color: #D4CDC9;
+  color: #121111;
+  font-weight: normal;
+
+  a {
+    color: #121111;
   }
-  .main-footer {
-    padding: 2em 40px;
-    height: 150px;
+
+  @media screen and (min-width: 601px) {
+    body {
+      margin-bottom: 150px;
+    }
+    .main-footer {
+      padding: 2em 40px;
+      height: 150px;
+    }
+  }
+}
+
+.main-footer__legal {
+  @include media($tablet-up) {
+    float: left;
+    width: 70%;
+  }
+}
+
+.main-footer__cfa-logo {
+  margin-top: 1em;
+
+  @include media($tablet-up) {
+    margin: 0;
+    float: right;
   }
 }
 
