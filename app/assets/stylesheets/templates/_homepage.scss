@@ -44,7 +44,7 @@ html {
       opacity: .15;
       background-image: image-url('dollar-hero.png');
       background-repeat: no-repeat;
-      background-size: auto;
+      background-size: 476px 365px;
       background-position: bottom right;
       @include media($tablet-up) {
         opacity: .5;
