@@ -35,7 +35,7 @@ gem "handlebars_assets"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
 
-gem "cfa-styleguide", git: "https://github.com/codeforamerica/cfa-styleguide-gem"
+gem "cfa-styleguide", "0.6.0", git: "https://github.com/codeforamerica/cfa-styleguide-gem"
 gem "phonelib"
 gem "pry-byebug"
 gem "mixpanel-ruby"
