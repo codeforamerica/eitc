@@ -58,10 +58,6 @@ html {
     max-width: 200%;
     padding: 6rem 0;
 
-    .grid__item {
-      text-align: center;
-    }
-
     .refund-panel__item {
       display: block;
       padding: 0 2rem;
@@ -72,12 +68,18 @@ html {
 
       @include media($tablet-up) {
         float: left;
-        padding: 0;
         margin-right: 2.3576520234%;
         width: 48.8211739883%;
+        padding: 0 4rem 0 0;
         &:last-child {
+          padding: 0 0 0 4rem;
           margin-right: 0;
         }
+      }
+
+      ul {
+        list-style: disc;
+        padding-left: 2em;
       }
 
       .refund-size {
@@ -132,12 +134,7 @@ html {
 
   div#how-its-free {
     .h2 {
-      margin: 40px 0 60px 0;
-      text-align: center;
-
-      @include media($tablet-up) {
-        text-align: left;
-      }
+      margin: 40px 0 20px 0;
     }
 
     .how-its-free-desc {
@@ -149,20 +146,14 @@ html {
 
     .how-its-free-logo {
       display: block;
-      margin: 0 auto;
-      margin-bottom: 20px;
+      margin: 0 auto 20px auto;
       width: 100%;
       text-align: center;
       @include media($tablet-up) {
         width: 40%;
         text-align: center;
         float: right;
-        margin: 0;
-      }
-
-      img {
-        width: 107px;
-        height: 60px;
+        margin: 40px 0 0 0;
       }
     }
   }

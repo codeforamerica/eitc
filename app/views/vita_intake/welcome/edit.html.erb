@@ -1,6 +1,29 @@
 <% content_for :content do %>
 
   <section class="slab slab--off-white">
+    <div id="how-its-free" class="grid">
+      <div class="grid__item width-full">
+        <div class="with-padding-med">
+          <div>
+            <div class="how-its-free-logo">
+              <%=image_tag "partner_logos.png"%>
+            </div>
+            <div class="how-its-free-desc">
+              <h2 class="h2">Helping low-income households get the tax refunds they’ve earned.</h2>
+              GetYourRefund.org is a <strong>non-profit service</strong> built by
+              <a target="_blank" href="https://www.codeforamerica.org">Code for America</a>. We partner with
+              <a target="_blank" href="https://www.garycommunity.org/tax-help-colorado-0">Tax Help Colorado</a> and
+              <a target="_blank" href="https://earnitkeepitsaveit.org/">Earn It! Keep It! Save It!</a> to provide free
+              IRS-certified tax help to low income, disabled, or limited English speaking households.
+            </div>
+            <div style="clear:both;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slab slab--white">
     <div id="how-it-works" class="grid">
       <div class="grid__item width-two-thirds shift-one-sixth">
         <div class="with-padding-small">
@@ -50,27 +73,6 @@
             <%= link_to next_path, class: "button button--cta with-padding-med" do %>
               Get help now
             <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slab slab--white">
-    <div id="how-its-free" class="grid">
-      <div class="grid__item width-full">
-        <div class="with-padding-med">
-          <h2 class="h2">How is this free?</h2>
-          <div>
-            <div class="how-its-free-logo">
-              <%=image_tag "vita-logo.png"%>
-            </div>
-            <div class="how-its-free-desc">
-              GetYourRefund.org is a partnership with <strong>VITA</strong> (Volunteer Income Tax Assistance), a program
-              that offers free tax help to people who generally make $55,000 or less, persons with disabilities and
-              limited English speaking taxpayers who need assistance in preparing their own tax returns.
-            </div>
-            <div style="clear:both;"></div>
           </div>
         </div>
       </div>
