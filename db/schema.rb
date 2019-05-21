@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_16_004839) do
+ActiveRecord::Schema.define(version: 2019_05_21_220903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,9 +103,22 @@ ActiveRecord::Schema.define(version: 2019_05_16_004839) do
     t.datetime "followed_interview_link"
     t.string "appointment_url"
     t.string "source"
-    t.bigint "eitc_estimate_id"
-    t.index ["eitc_estimate_id"], name: "index_research_contacts_on_eitc_estimate_id"
     t.index ["unique_token"], name: "index_research_contacts_on_unique_token", unique: true
+  end
+
+  create_table "signing_requests", force: :cascade do |t|
+    t.bigint "vita_client_id"
+    t.string "federal_signature"
+    t.string "federal_signature_spouse"
+    t.string "state_signature"
+    t.string "state_signature_spouse"
+    t.string "signature_ip"
+    t.datetime "signed_at"
+    t.string "email"
+    t.string "unique_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vita_client_id"], name: "index_signing_requests_on_vita_client_id"
   end
 
   create_table "vita_clients", force: :cascade do |t|
@@ -133,9 +146,10 @@ ActiveRecord::Schema.define(version: 2019_05_16_004839) do
     t.string "encrypted_last_four_ssn_iv"
     t.string "encrypted_last_four_ssn_spouse"
     t.string "encrypted_last_four_ssn_spouse_iv"
+    t.string "referrer"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "household_members", "vita_clients"
-  add_foreign_key "research_contacts", "eitc_estimates"
+  add_foreign_key "signing_requests", "vita_clients"
 end
