@@ -47,6 +47,8 @@ gem "aws-sdk-s3", require: false
 gem "twilio-ruby"
 gem "pdf-forms"
 gem "attr_encrypted"
+gem "prawn"
+gem "combine_pdf"
 
 
 group :development, :test do

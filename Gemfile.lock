@@ -94,6 +94,8 @@ GEM
       xpath (~> 3.2)
     cliver (0.3.2)
     coderay (1.1.2)
+    combine_pdf (1.0.16)
+      ruby-rc4 (>= 0.1.5)
     concurrent-ruby (1.1.4)
     crass (1.0.4)
     delayed_job (4.1.5)
@@ -166,11 +168,15 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
+    pdf-core (0.7.0)
     pdf-forms (1.2.0)
       cliver (~> 0.3.2)
       safe_shell (>= 1.0.3, < 2.0)
     pg (1.1.4)
     phonelib (0.6.28)
+    prawn (2.2.2)
+      pdf-core (~> 0.7.0)
+      ttfunk (~> 1.5)
     prism-rails (1.6.0.3)
       railties (>= 4.2, < 6)
     pry (0.11.3)
@@ -238,6 +244,7 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
+    ruby-rc4 (0.1.5)
     ruby_dep (1.5.0)
     safe_shell (1.1.0)
     sass (3.7.3)
@@ -266,6 +273,7 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
+    ttfunk (1.5.1)
     twilio-ruby (5.22.3)
       faraday (~> 0.9)
       jwt (>= 1.5, <= 2.5)
@@ -298,6 +306,7 @@ DEPENDENCIES
   byebug
   capybara
   cfa-styleguide (= 0.6.0)!
+  combine_pdf
   delayed_job_active_record
   device_detector
   factory_bot
@@ -310,6 +319,7 @@ DEPENDENCIES
   pdf-forms
   pg (>= 0.18, < 2.0)
   phonelib
+  prawn
   pry-byebug
   puma (~> 3.11)
   rails (~> 5.2.2)
