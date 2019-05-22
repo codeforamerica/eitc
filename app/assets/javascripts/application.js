@@ -16,4 +16,4 @@
 //= require handlebars.runtime
 //= require cfa_styleguide_main
 //= require_tree ./templates
-//= require_tree .
+//= stub direct_uploads
