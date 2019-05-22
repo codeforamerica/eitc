@@ -1,7 +1,10 @@
 <% content_for :page do %>
   <div class="admin-application-card">
-    <h1 class="form-card__title with-padding-small">Search clients by email</h1>
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "flash flash--#{key}" %>
+    <% end %>
 
+    <h1 class="form-card__title with-padding-small">Search clients by email</h1>
     <%= form_tag({action: :index}, :method => :get) do %>
       <div class="with-padding-med">
         <%= text_field_tag 'email' %>
