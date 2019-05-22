@@ -1,4 +1,5 @@
 class SigningRequestController < ApplicationController
+  layout "vita_intake/form_card"
 
   def index
     if params[:email]
@@ -31,7 +32,8 @@ class SigningRequestController < ApplicationController
     if params[:unique_key]
       @signing_request = SigningRequest.find_by_unique_key(params[:unique_key])
       if @signing_request.expired?
-        # TODO: handle expired links
+        @signing_request = nil
+        flash[:error] = "Sorry, this link has expired. Please contact our tax prep volunteers by email at vita-support@codeforamerica.org or by text at 720-728-0704 to request a new link."
       end
     end
   end
