@@ -61,4 +61,9 @@ class VitaClient < ApplicationRecord
   def looks_fake?
     source == "demo"
   end
+
+  def ready_to_upload_docs?
+    # when null, return true
+    ready_to_submit_docs != false
+  end
 end

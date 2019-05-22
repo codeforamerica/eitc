@@ -1,0 +1,24 @@
+<% content_for :form_card_title do %>
+  Can you submit any IDs or tax documents now?
+<% end %>
+
+<% content_for :form_card_content do %>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
+    <div class="form-card__header">
+      <div class="emoji emoji--huge emoji--id_docs"></div>
+    </div>
+    <div class="form-card__content">
+      <h1 class="h2 form-question">Can you submit any IDs or tax documents now?</h1>
+      <p>In order to prepare your tax return, we will need to verify your identity and review any tax documents.</p>
+      <p>You can choose to do this later if you don't have them with you or would rather talk to an IRS-certified volunteer first.</p>
+    </div>
+    <div class="form-card__footer">
+      <%= f.button :submit, name: form_name + '[ready_to_submit_docs]', value: '1', class: "button button--primary" do %>
+        Submit docs now
+      <% end %>
+      <%= f.button :submit, name: form_name + '[ready_to_submit_docs]', value: '0', class: "button" do %>
+        I'll do this later
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

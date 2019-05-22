@@ -45,6 +45,10 @@ class FrontService
     body = "New <strong>#{vita_client.looks_fake? ? "probably fake " : ""}#{vita_client.state}</strong> intake form received from #{vita_client.full_source}<br>"\
            "<em>Referrer: #{vita_client.source || "No referrer"}</em><br>"
 
+    if !vita_client.ready_to_upload_docs?
+      body += "<p><strong>This client was not ready to upload documents.</strong></p>"
+    end
+
     if vita_client.dependents.count > 4
       body += "<p><strong>Alert! More than 4 dependents!</strong></p>"
     end

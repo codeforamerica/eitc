@@ -10,6 +10,7 @@ class VitaIntakeNavigation
     VitaIntake::AboutYourSpouseController,
     VitaIntake::AnyDependentsController,
     VitaIntake::DependentsOverviewController,
+    VitaIntake::ReadyForDocumentsController,
     VitaIntake::IdentityDocumentsOverviewController,
     VitaIntake::AddIdentityDocumentsController,
     VitaIntake::TaxDocumentsOverviewController,
