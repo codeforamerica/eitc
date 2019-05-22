@@ -1,0 +1,31 @@
+<% content_for :page do %>
+  <div class="admin-application-card">
+    <h1 class="form-card__title with-padding-small">Review and sign below to approve your state and federal tax returns</h1>
+
+    <h2 class="h4">Review your documents</h2>
+    <%=link_to "Your prepared tax return", rails_blob_path(@signing_request.prepared_return, disposition: "attachment", only_path: true) %><br>
+
+    <h2 class="h4">Electronic Signatures</h2>
+    <%= form_tag({action: :sign}, :method => :post) do %>
+      <div class="with-padding-small">
+        Federal Signature: <%=text_field_tag 'federal_signature' %>
+      </div>
+      <div class="with-padding-med">
+        State Signature: <%=text_field_tag 'state_signature' %>
+      </div>
+      <% if @signing_request.vita_client.married? %>
+        <div class="with-padding-small">
+          Spouse Federal Signature: <%=text_field_tag 'federal_signature_spouse' %>
+        </div>
+        <div class="with-padding-med">
+          Spouse State Signature: <%=text_field_tag 'state_signature_spouse' %>
+        </div>
+      <% end %>
+      <div class="with-padding-med">
+        <%=hidden_field_tag 'signing_request_id', value=@signing_request.id %>
+        <button name="button" type="submit" class="button button--cta">Sign</button>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+

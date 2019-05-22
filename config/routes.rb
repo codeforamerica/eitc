@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get '/chat_support' => 'pages#chat_support', as: 'chat_support'
   get '/front_upload_test' => 'front_upload_test#new'
   post '/front_upload' => 'front_upload_test#upload', as: 'front_upload'
-
   get '/interview/:unique_token' => 'research_contacts#appointment', as: 'interview_appointment'
+  get '/signature/:unique_key' => 'signing_request#show', as: 'signature'
+  post '/signature' => 'signing_request#sign', as: 'sign'
 
   resource :reminder_contact do
     get 'new'
@@ -23,6 +24,15 @@ Rails.application.routes.draw do
   namespace :redirects do
     get 'my_free_taxes'
     get 'get_ahead_colorado_locations'
+  end
+
+
+  scope :vita_admin do
+    root 'signing_request#index'
+    resource :signing_request, controller:'signing_request' do
+      get 'index'
+      post 'create'
+    end
   end
 
   resources :screens, controller: :eitc_estimate_forms, only: (Rails.env.production? ? %i[show] : %i[show index]) do

@@ -119,9 +119,64 @@ class FrontService
     puts response
   end
 
+  def send_signed_approval(vita_client)
+    @url = CredentialsHelper.environment_credential_for_key(:front_custom_channel_url)
+    @api_key = CredentialsHelper.environment_credential_for_key(:front_api_key)
+    return unless @url && @api_key
+
+    attachments = []
+
+    pdf_assembler = ApprovalPdfAssembler.new(vita_client)
+    attachments.push stringfile(pdf_assembler.approval_pdf_file.read, pdf_assembler.filename, 'application/pdf')
+
+    body = "New <strong>#{vita_client.looks_fake? ? "probably fake " : ""}#{vita_client.state}</strong> signed approval form received from #{vita_client.full_source}<br>"\
+           "<em>Referrer: #{vita_client.source || "No referrer"}</em><br>"
+
+    body += "<br>"\
+            "Primary Filer: #{vita_client.primary_filer.first_name} #{vita_client.primary_filer.last_name}<br>"\
+            "<ul>"\
+            "<li>Date of Birth: #{vita_client.primary_filer.birthdate.strftime("%m/%d/%Y")}</li>"\
+            "<li>Email: #{vita_client.email}</li>"\
+            "<li>Address: #{vita_client.street_address} #{vita_client.city} #{vita_client.zip}</li>"\
+            "<li>Phone Number: #{vita_client.formatted_phone_number}</li>"\
+            "</ul>"
+
+    request = RestClient::Request.new(
+        :method => :post,
+        :url => @url,
+        :payload => {
+            :multipart => true,
+            :attachments => attachments,
+            :body => body,
+            :body_format => 'html',
+            :sender => {
+                :name => vita_client.primary_filer.full_name,
+                :email => vita_client.email,
+                :phone => vita_client.tel_link_phone_number,
+                :handle => vita_client.email,
+            },
+            :subject => front_approval_subject(vita_client)
+        },
+        :headers => {
+            'Content-Type' => 'multipart/form-data',
+            :Authorization => "Bearer #{@api_key}",
+            :Accept => 'application/json'
+        })
+
+    response = request.execute
+    puts "================================="
+    puts "Approval Front Response #{response}"
+    puts "================================="
+  end
+
   def front_subject(vita_client)
     return "Fake #{vita_client.state} Intake" if vita_client.looks_fake?
     "New #{vita_client.state} Intake"
+  end
+
+  def front_approval_subject(vita_client)
+    return "Fake #{vita_client.state} Signed Approval" if vita_client.looks_fake?
+    "New #{vita_client.state} Signed Approval"
   end
 
   private

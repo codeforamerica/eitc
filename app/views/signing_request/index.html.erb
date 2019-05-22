@@ -1,0 +1,52 @@
+<% content_for :page do %>
+  <div class="admin-application-card">
+    <h1 class="form-card__title with-padding-small">Search clients by email</h1>
+
+    <%= form_tag({action: :index}, :method => :get) do %>
+      <div class="with-padding-med">
+        <%= text_field_tag 'email' %>
+      </div>
+      <div class="with-padding-med">
+        <button name="button" type="submit" class="button button--cta">Search</button>
+      </div>
+    <% end %>
+
+    <div class="with-padding-med">
+      <% if defined?(@vita_client) %>
+        <h2><%= @vita_client.primary_filer.first_name %> <%= @vita_client.primary_filer.last_name %></h2>
+        <ul>
+          <li>Date of Birth: <%= @vita_client.primary_filer.birthdate.strftime("%m/%d/%Y") %></li>
+          <li>Email: <%= @vita_client.email %></li>
+          <li>Address: <%= @vita_client.street_address %> <%= @vita_client.city %> <%= @vita_client.zip %></li>
+          <li>Phone Number: <%= @vita_client.formatted_phone_number %></li>
+          <li><br>Can you receive text messages?: <%= @vita_client.sms_enabled ? 'yes' : 'no' %></li>
+          <li>Are you a full-time student?: <%= @vita_client.primary_filer.full_time_student? ? 'yes' : 'no' %></li>
+          <li>Are you a non-citizen?: <%= @vita_client.primary_filer.non_citizen? ? 'yes' : 'no' %></li>
+          <li>Are you disabled?: <%= @vita_client.primary_filer.disabled? ? 'yes' : 'no' %></li>
+          <li>Are you legally blind?: <%= @vita_client.primary_filer.legally_blind? ? 'yes' : 'no' %></li>
+          <li>Are you married?: <%= @vita_client.married? ? 'yes' : 'no' %></li>
+          <li>Do you have any dependents?: <%= @vita_client.dependents? ? 'yes' : 'no' %></li>
+          <li>Is anyone in your household self employed?: <%= @vita_client.anyone_self_employed ? 'yes' : 'no' %></li>
+          <li>Additional Info: <%= @vita_client.anything_else %></li>
+        </ul>
+        <p>
+          <%= form_tag({action: :create}, :method => :post, multipart: true) do %>
+            <h2 style="margin-bottom: 0;">Send <%= @vita_client.primary_filer.first_name %> their final documents</h2>
+            <p style="margin-top:0;font-style: italic;">Attach final documents and hit Send to email them to <%= @vita_client.email %></p>
+            <div class="with-padding-small">
+              Signature Document: <%= file_field_tag 'signature_document' %>
+            </div>
+            <div class="with-padding-med">
+              Prepared Tax Return: <%= file_field_tag 'prepared_return' %>
+            </div>
+            <div class="with-padding-med">
+              <%= hidden_field_tag('vita_client_id', value=@vita_client.id) %>
+              <button name="button" type="submit" class="button button--cta">Send</button>
+            </div>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
