@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_21_220903) do
+ActiveRecord::Schema.define(version: 2019_05_21_235658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(version: 2019_05_21_220903) do
     t.string "encrypted_last_four_ssn_spouse"
     t.string "encrypted_last_four_ssn_spouse_iv"
     t.string "referrer"
+    t.boolean "ready_to_submit_docs"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
