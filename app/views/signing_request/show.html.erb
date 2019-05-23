@@ -9,7 +9,7 @@
       <%=link_to "Your prepared tax return", rails_blob_path(@signing_request.prepared_return, disposition: "attachment", only_path: true) %><br>
 
       <h2 class="h4">Electronic Signatures</h2>
-      <%= form_tag({action: :sign}, :method => :post) do %>
+      <%= form_tag({action: :update}, :method => :put) do %>
         <div class="with-padding-small">
           Federal Signature: <%=text_field_tag 'federal_signature' %>
         </div>
@@ -17,6 +17,7 @@
           State Signature: <%=text_field_tag 'state_signature' %>
         </div>
         <% if @signing_request.vita_client.married? %>
+          <h4>Your spouse needs to sign too, if you are filing jointly</h4>
           <div class="with-padding-small">
             Spouse Federal Signature: <%=text_field_tag 'federal_signature_spouse' %>
           </div>

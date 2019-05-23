@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   get '/front_upload_test' => 'front_upload_test#new'
   post '/front_upload' => 'front_upload_test#upload', as: 'front_upload'
   get '/interview/:unique_token' => 'research_contacts#appointment', as: 'interview_appointment'
-  get '/signature/:unique_key' => 'signing_request#show', as: 'signature'
-  post '/signature' => 'signing_request#sign', as: 'sign'
+  get '/vita_admin' => 'signing_request#new', as: 'start_signing_request'
 
   resource :reminder_contact do
     get 'new'
@@ -26,13 +25,8 @@ Rails.application.routes.draw do
     get 'get_ahead_colorado_locations'
   end
 
-
-  scope :vita_admin do
-    root 'signing_request#index'
-    resource :signing_request, controller:'signing_request' do
-      get 'index'
-      post 'create'
-    end
+  resources :signatures, controller: 'signing_request', param: :unique_key, only: [:new, :create, :show, :update] do
+    get 'confirm', action: :confirm, as: 'confirm'
   end
 
   resources :screens, controller: :eitc_estimate_forms, only: (Rails.env.production? ? %i[show] : %i[show index]) do
