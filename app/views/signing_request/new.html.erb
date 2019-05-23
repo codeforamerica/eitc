@@ -5,7 +5,7 @@
     <% end %>
 
     <h1 class="form-card__title with-padding-small">Search clients by email</h1>
-    <%= form_tag({action: :index}, :method => :get) do %>
+    <%= form_tag({action: :new}, :method => :get) do %>
       <div class="with-padding-med">
         <%= text_field_tag 'email' %>
       </div>
