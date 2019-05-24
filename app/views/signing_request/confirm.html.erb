@@ -1,8 +1,0 @@
-<% content_for :form_card_content do %>
-  <div class="form-card">
-    <% flash.each do |key, value| %>
-      <%= content_tag :div, value, class: "flash flash--#{key}" %>
-    <% end %>
-  </div>
-<% end %>
-

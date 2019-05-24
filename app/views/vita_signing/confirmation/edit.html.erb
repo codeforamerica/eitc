@@ -1,0 +1,22 @@
+<% content_for :form_card_content do %>
+  <div class="form-card form-card--transition">
+    <div class="form-card__header with-padding-large">
+      <div class="emoji emoji--big emoji--white-heavy-checkmark with-padding-med"></div>
+      <h1 class="form-card__title with-padding-small">Your tax information has been successfully submitted!</h1>
+      <p>
+        Signed <%= current_signing_request.local_signed_at.strftime("%l:%M %P %Z on %b %-m, %Y")%>
+      </p>
+    </div>
+
+    <div class="form-card__content">
+      <div class="text--centered">
+        <h2>What to expect next</h2>
+        <p>
+          Your tax preparer will submit your tax return to the IRS within the next day. If you qualified for a refund,
+          you should receive a check or direct deposit within the next month.
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>
+

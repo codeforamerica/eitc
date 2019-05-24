@@ -1,0 +1,27 @@
+<% content_for :form_card_content do %>
+  <div class="form-card form-card--transition">
+    <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder do |f| %>
+      <header class="form-card__header">
+        <h1 class="form-card__title">Great! We have everything we need to file your returns.</h1>
+      </header>
+      <div class="form-card__content">
+        <p class="with-padding-small">
+          Rest assured your IRS-certified tax preparer has reviewed your situation to make sure you are getting the
+          biggest refund possible.
+        </p>
+        <p class="with-padding-small">
+          When you click below, we'll transmit your signed federal and state tax returns back to your tax preparer and
+          give them the go-ahead to file on your behalf.
+        </p>
+      </div>
+      <fieldset class="button-set with-padding-med">
+        <div class="form-card__footer">
+          <%= f.button :submit, class: 'button button--primary with-padding-small' do %>
+            Submit my tax returns
+          <% end %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+<% end %>
+
