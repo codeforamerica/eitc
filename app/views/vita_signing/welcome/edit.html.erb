@@ -1,0 +1,24 @@
+<% content_for :form_card_content do %>
+  <div class="form-card form-card--transition">
+    <div class="form-card__header">
+      <h1 class="form-card__title with-padding-med">Your prepared federal and state tax returns are ready to review!</h1>
+      <div class="emoji emoji--huge emoji--clipboard"></div>
+    </div>
+    <div class="form-card__content with-padding-large">
+      <p>
+        <strong>Your prepared tax return will open in a new browser tab.</strong> If you have any questions or
+        corrections, contact your tax preparer.
+      </p>
+      <p class="text--small text--grey-dark">
+        For your privacy, this link will expire 5 days after we sent it to you.
+      </p>
+    </div>
+    <div class="form-card__footer">
+      <%=link_to "Your prepared tax returns", rails_blob_path(current_signing_request.prepared_return, disposition: "preview", only_path: true), class: 'button with-padding-med', target:'_blank' %><br>
+      <%= link_to next_path, class: "button button--primary with-padding-med" do %>
+        This looks correct
+      <% end %>
+    </div>
+  </div>
+<% end %>
+

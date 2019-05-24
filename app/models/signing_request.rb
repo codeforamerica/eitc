@@ -1,4 +1,6 @@
 class SigningRequest < ApplicationRecord
+  include StatesHelper
+
   belongs_to :vita_client
 
   has_one_attached :prepared_return
@@ -10,7 +12,7 @@ class SigningRequest < ApplicationRecord
 
   def signature_url
     default_url_options = Rails.application.config.action_mailer.default_url_options
-    Rails.application.routes.url_helpers.signature_url(unique_key: unique_key, **default_url_options)
+    Rails.application.routes.url_helpers.welcome_vita_signing_index_url(unique_key: unique_key, **default_url_options)
   end
 
   def local_signed_at
@@ -25,6 +27,12 @@ class SigningRequest < ApplicationRecord
     signature_page(2)
   end
 
+  def analytics_data
+    {
+        vita_client_id: vita_client.id
+    }
+  end
+
   private
 
   def signature_page(page_number)
@@ -34,4 +42,5 @@ class SigningRequest < ApplicationRecord
     fed_page << CombinePDF.load(full_file.path).pages[page_number - 1]
     fed_page.to_pdf
   end
+
 end

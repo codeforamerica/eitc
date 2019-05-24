@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get '/front_upload_test' => 'front_upload_test#new'
   post '/front_upload' => 'front_upload_test#upload', as: 'front_upload'
   get '/interview/:unique_token' => 'research_contacts#appointment', as: 'interview_appointment'
-  get '/vita_admin' => 'signing_request#new', as: 'start_signing_request'
 
   resource :reminder_contact do
     get 'new'
@@ -25,9 +24,7 @@ Rails.application.routes.draw do
     get 'get_ahead_colorado_locations'
   end
 
-  resources :signatures, controller: 'signing_request', param: :unique_key, only: [:new, :create, :show, :update] do
-    get 'confirm', action: :confirm, as: 'confirm'
-  end
+  resources :vita_admin, controller: 'vita_admin', only: [:index, :new, :create]
 
   resources :screens, controller: :eitc_estimate_forms, only: (Rails.env.production? ? %i[show] : %i[show index]) do
     collection do
@@ -58,6 +55,19 @@ Rails.application.routes.draw do
   resources :vita_intake, controller: :vita_intake_forms, only: (Rails.env.production? ? %i[show] : %i[show index]) do
     collection do
       VitaIntakeNavigation.all_form_controllers.uniq.each do |controller_class|
+        { get: :edit, put: :update, delete: :destroy }.each do |method, action|
+          match "/#{controller_class.to_param}",
+                action: action,
+                controller: controller_class.controller_path,
+                via: method
+        end
+      end
+    end
+  end
+
+  resources :vita_signing, controller: :vita_signing_forms, param: :unique_key, only: (Rails.env.production? ? %i[show] : %i[show index]) do
+    collection do
+      VitaSigningNavigation.all_form_controllers.uniq.each do |controller_class|
         { get: :edit, put: :update, delete: :destroy }.each do |method, action|
           match "/#{controller_class.to_param}",
                 action: action,

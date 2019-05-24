@@ -1,0 +1,28 @@
+<% content_for :page_title do %>
+  <% if @form.present? %>
+    <%= @form.errors.messages.values.reduce([], :concat).first %>
+  <% end %>
+  <%= content_for :form_card_title %>
+  | GetYourRefund.org
+<% end %>
+
+<% content_for :template_css_class, "form" %>
+
+<% content_for :page do %>
+  <div class="page-wrapper">
+    <%= render 'shared/header' %>
+    <main class="main">
+      <section class="slab slab--not-padded">
+        <div class="grid">
+          <div class="grid__item width-two-thirds shift-one-sixth">
+            <%= content_for :form_card_content %>
+          </div>
+        </div>
+      </section>
+
+      <%= render 'shared/front_chat' %>
+    </main>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

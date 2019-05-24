@@ -116,7 +116,6 @@ class FrontService
         })
 
     response = request.execute
-    puts response
   end
 
   def send_signed_approval(signing_request)
@@ -166,9 +165,6 @@ class FrontService
         })
 
     response = request.execute
-    puts "================================="
-    puts "Approval Front Response #{response}"
-    puts "================================="
   end
 
   def front_subject(vita_client)

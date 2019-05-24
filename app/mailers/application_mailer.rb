@@ -10,11 +10,11 @@ class ApplicationMailer < ActionMailer::Base
         )
   end
 
-  def vita_approval_confirmation(email)
+  def vita_signing_confirmation(email)
     mail(
         from: %("Code for America VITA Support" <vita-support@codeforamerica.org>),
         to: email,
-        subject: "Confirmation of receipt of your approval to file",
+        subject: "Confirmation of receipt of your signed tax returns",
         )
   end
 
@@ -24,7 +24,7 @@ class ApplicationMailer < ActionMailer::Base
     mail(
         from: %("Code for America VITA Support" <vita-support@codeforamerica.org>),
         to: email,
-        subject: "Your tax returns are ready",
+        subject: "Your tax returns are ready to sign",
         )
   end
 end
