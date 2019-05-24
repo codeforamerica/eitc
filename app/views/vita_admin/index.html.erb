@@ -15,7 +15,7 @@
     <% end %>
 
     <div class="with-padding-med">
-      <% if defined?(@vita_client) %>
+      <% if @vita_client.present? %>
         <h2><%= @vita_client.primary_filer.first_name %> <%= @vita_client.primary_filer.last_name %></h2>
         <ul>
           <li>Date of Birth: <%= @vita_client.primary_filer.birthdate.strftime("%m/%d/%Y") %></li>
@@ -48,6 +48,8 @@
             </div>
           <% end %>
         </p>
+      <% else %>
+        <p>Could not find a client with the email: <%= @email %></p>
       <% end %>
     </div>
   </div>
