@@ -110,6 +110,11 @@ html {
 
     .how-it-works-step {
       margin: 48px 0;
+      text-align: center;
+
+      @include media($tablet-up) {
+        text-align: left;
+      }
     }
 
     .how-it-works-step-desc {
@@ -128,8 +133,8 @@ html {
       @include media($tablet-up) {
         float: right;
         margin: 0;
-        width: 4em;
-        height: 4em;
+        width: 5em;
+        height: 5em;
       }
     }
 

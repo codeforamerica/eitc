@@ -9,7 +9,7 @@
 <% content_for :form_card_content do %>
   <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card' } do |f| %>
     <div class="form-card__header">
-      <div class="emoji emoji--big emoji--page-facing-up with-padding-small"></div>
+      <div class="emoji emoji--big emoji--id_docs with-padding-small"></div>
       <h1 class="form-card__title with-padding-small">Attach any tax documents you can.</h1>
       <p class="text--left">
         This includes any tax forms you have such as W2's, 1099's, etc. We recommend you submit as much as you can now
