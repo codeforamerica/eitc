@@ -13,4 +13,7 @@ class SigningRequest < ApplicationRecord
     Rails.application.routes.url_helpers.signature_url(unique_key: unique_key, **default_url_options)
   end
 
+  def local_signed_at
+    signed_at.in_time_zone(vita_client.timezone)
+  end
 end

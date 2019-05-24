@@ -57,7 +57,7 @@ class SigningRequestController < ApplicationController
         @signing_request.signature_ip = request.remote_ip
         @signing_request.save
 
-        SendApprovalToFrontJob.perform_later(vita_client: @signing_request.vita_client)
+        SendApprovalToFrontJob.perform_later(signing_request: @signing_request)
         EmailApprovalConfirmationToClientJob.perform_later(email: @signing_request.vita_client.email)
         TextApprovalConfirmationToClientJob.perform_later(phone_number: @signing_request.vita_client.phone_number)
 
