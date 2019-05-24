@@ -13,7 +13,7 @@ RSpec.describe ApprovalPdfAssembler do
           signed_at: DateTime.new(2019, 6, 30),
           street_address: "111 Hay Lane",
           city: "Hayward",
-          state: "Colorado",
+          state: state,
           zip: "94609")
       HouseholdMember.create(
           relation: :primary_filer,
@@ -48,12 +48,51 @@ RSpec.describe ApprovalPdfAssembler do
       vita_client
     end
 
-    it "Adds the signature to the Approval PDF" do
-      assembler = ApprovalPdfAssembler.new(vita_client)
-      outfile = assembler.approval_pdf_file
+    let(:signing_request) do
+      SigningRequest.create(
+        vita_client: vita_client,
+        federal_signature: "H.O.",
+        federal_signature_spouse: "GG",
+        state_signature: "H.O.",
+        state_signature_spouse: "GG",
+        signature_ip: "127.0.0.1",
+        signed_at: DateTime.new(2019, 6, 30),
+      )
+    end
 
+    context "with a colorado return" do
+      let(:state) { "Colorado" }
+      it "Adds the signature to on the right lines for Colorado" do
+        signing_request.signature_document.attach(
+            io: File.open("spec/fixtures/pdfs/ColoradoSignatureDocuments.pdf"),
+            filename: "signature_pages.pdf",
+            content_type: "application/pdf"
+        )
+        assembler = ApprovalPdfAssembler.new(signing_request)
+        outfile = assembler.approval_pdf_file
+        # uncomment lines below to see output
+        # File.open(assembler.filename, "wb") do |file|
+        #   file.write(outfile.read)
+        # end
+      end
+    end
+
+    context "with a California return" do
+      let(:state) { "California" }
+
+      it "Adds the signature to on the right lines for Colorado" do
+        signing_request.signature_document.attach(
+            io: File.open("spec/fixtures/pdfs/CaliforniaSignatureDocuments.pdf"),
+            filename: "signature_pages.pdf",
+            content_type: "application/pdf"
+        )
+        assembler = ApprovalPdfAssembler.new(signing_request)
+        outfile = assembler.approval_pdf_file
+        # uncomment lines below to see output
+        # File.open(assembler.filename, "wb") do |file|
+        #   file.write(outfile.read)
+        # end
+      end
     end
   end
 end
-
- # notice the << operator is on a page and not a PDF object.

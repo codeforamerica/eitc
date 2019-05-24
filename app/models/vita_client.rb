@@ -3,6 +3,7 @@ class VitaClient < ApplicationRecord
   include SourcesHelper
 
   has_many :household_members
+  has_many :signing_requests
   has_many_attached :tax_documents
   has_many_attached :identity_documents
   attribute :last_four_ssn

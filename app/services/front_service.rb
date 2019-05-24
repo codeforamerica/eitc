@@ -119,14 +119,16 @@ class FrontService
     puts response
   end
 
-  def send_signed_approval(vita_client)
+  def send_signed_approval(signing_request)
     @url = CredentialsHelper.environment_credential_for_key(:front_custom_channel_url)
     @api_key = CredentialsHelper.environment_credential_for_key(:front_api_key)
     return unless @url && @api_key
 
+    vita_client = signing_request.vita_client
+
     attachments = []
 
-    pdf_assembler = ApprovalPdfAssembler.new(vita_client)
+    pdf_assembler = ApprovalPdfAssembler.new(signing_request)
     attachments.push stringfile(pdf_assembler.approval_pdf_file.read, pdf_assembler.filename, 'application/pdf')
 
     body = "New <strong>#{vita_client.looks_fake? ? "probably fake " : ""}#{vita_client.state}</strong> signed approval form received from #{vita_client.full_source}<br>"\

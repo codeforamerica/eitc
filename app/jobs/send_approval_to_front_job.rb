@@ -1,5 +1,5 @@
 class SendApprovalToFrontJob < ApplicationJob
-  def perform(vita_client:)
-    FrontService.instance.send_signed_approval(vita_client)
+  def perform(signing_request:)
+    FrontService.instance.send_signed_approval(signing_request)
   end
 end
