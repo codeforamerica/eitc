@@ -1,7 +1,7 @@
 class VitaAdminController < ApplicationController
   layout "vita_intake/form_card"
 
-  http_basic_authenticate_with name: CredentialsHelper.vita_admin_user, password: CredentialsHelper.vita_admin_user
+  http_basic_authenticate_with name: CredentialsHelper.vita_admin_user, password: CredentialsHelper.vita_admin_password
 
   def index
     if params.has_key?(:email)
