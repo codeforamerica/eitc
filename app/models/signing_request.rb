@@ -16,4 +16,22 @@ class SigningRequest < ApplicationRecord
   def local_signed_at
     signed_at.in_time_zone(vita_client.timezone)
   end
+
+  def federal_signature_page
+    signature_page(1)
+  end
+
+  def state_signature_page
+    signature_page(2)
+  end
+
+  private
+
+  def signature_page(page_number)
+    full_file = Tempfile.new("sig_pages.pdf", "tmp/", encoding: "ascii-8bit")
+    full_file << signature_document.download
+    fed_page = CombinePDF.new
+    fed_page << CombinePDF.load(full_file.path).pages[page_number - 1]
+    fed_page.to_pdf
+  end
 end
