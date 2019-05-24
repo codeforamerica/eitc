@@ -69,10 +69,10 @@ RSpec.describe ApprovalPdfAssembler do
             content_type: "application/pdf"
         )
         assembler = ApprovalPdfAssembler.new(signing_request)
-        outfile = assembler.approval_pdf_file
+        outdata = assembler.approval_pdf_file
         # uncomment lines below to see output
         # File.open(assembler.filename, "wb") do |file|
-        #   file.write(outfile.read)
+        #   file.write(outdata)
         # end
       end
     end
@@ -87,10 +87,10 @@ RSpec.describe ApprovalPdfAssembler do
             content_type: "application/pdf"
         )
         assembler = ApprovalPdfAssembler.new(signing_request)
-        outfile = assembler.approval_pdf_file
+        outdata = assembler.approval_pdf_file
         # uncomment lines below to see output
         # File.open(assembler.filename, "wb") do |file|
-        #   file.write(outfile.read)
+        #   file.write(outdata)
         # end
       end
     end

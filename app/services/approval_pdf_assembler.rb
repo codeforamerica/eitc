@@ -5,7 +5,6 @@ class ApprovalPdfAssembler
 
   def approval_pdf_file
     run
-    output_file
   end
 
   def filename
@@ -33,7 +32,7 @@ class ApprovalPdfAssembler
     end
   end
 
-  def colorado_signature_overlay
+  def colorado_signature_overlay_path
     "tmp/co_signature_overlay.pdf"
   end
 
@@ -79,10 +78,6 @@ class ApprovalPdfAssembler
     end
   end
 
-  def output_file
-    @_output_file ||= Tempfile.new("output.pdf", "tmp/", encoding: "ascii-8bit")
-  end
-
   def download_signature_document
     @signing_request.signature_document.download
   end
@@ -106,6 +101,7 @@ class ApprovalPdfAssembler
       colorado_signature_overlay = CombinePDF.load colorado_signature_overlay_path
       signature_doc.pages[1] << colorado_signature_overlay.pages[0]
     end
-    signature_doc.save(output_file.path)
+
+    signature_doc.to_pdf
   end
 end

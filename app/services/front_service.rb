@@ -129,7 +129,7 @@ class FrontService
     attachments = []
 
     pdf_assembler = ApprovalPdfAssembler.new(signing_request)
-    attachments.push stringfile(pdf_assembler.approval_pdf_file.read, pdf_assembler.filename, 'application/pdf')
+    attachments.push stringfile(pdf_assembler.approval_pdf_file, pdf_assembler.filename, 'application/pdf')
 
     body = "New <strong>#{vita_client.looks_fake? ? "probably fake " : ""}#{vita_client.state}</strong> signed approval form received from #{vita_client.full_source}<br>"\
            "<em>Referrer: #{vita_client.source || "No referrer"}</em><br>"
