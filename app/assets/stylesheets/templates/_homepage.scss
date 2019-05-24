@@ -12,24 +12,27 @@ html {
   .slab--fold {
     color: #121111;
     border-bottom: none;
+    padding-bottom: 3.1em;
 
     div.width-one-half {
       float: none;
     }
 
     .h1 {
-      margin-top: 2em;
+      margin-top: .15em;
       font-size: 5rem;
       line-height: 1.2em;
     }
     .h3 {
       font-size: $font-size-normal;
       font-weight: normal;
-      line-height: $line-height-normal;
+      line-height: $line-height-display;
+      margin-top: 1.4em;
+      max-width: 480px;
     }
 
     .button {
-      margin-top: 60px;
+      margin-top: 2.2em;
     }
 
     &:before {
@@ -56,7 +59,8 @@ html {
     background: white;
     @include full-bleed();
     max-width: 200%;
-    padding: 6rem 0;
+    padding: 5.5rem 0 4.4rem 0;
+    position: relative;
 
     .refund-panel__item {
       display: block;
@@ -68,12 +72,13 @@ html {
 
       @include media($tablet-up) {
         float: left;
-        margin-right: 2.3576520234%;
-        width: 48.8211739883%;
+        margin-right: 2em;
+        max-width: 45%;
         padding: 0 4rem 0 0;
         &:last-child {
-          padding: 0 0 0 4rem;
+          padding: 0;
           margin-right: 0;
+          float: right;
         }
       }
 
@@ -92,6 +97,7 @@ html {
 
       .refund-size-desc {
         font-weight: bold;
+        line-height: 1.4em;
       }
     }
   }
@@ -99,11 +105,11 @@ html {
   div#how-it-works {
     .h2 {
       text-align: center;
-      margin: 40px 0 60px 0;
+      margin: 40px 0 54px 0;
     }
 
     .how-it-works-step {
-      margin: 60px 0;
+      margin: 48px 0;
     }
 
     .how-it-works-step-desc {
@@ -134,13 +140,14 @@ html {
 
   div#how-its-free {
     .h2 {
-      margin: 40px 0 20px 0;
+      margin: 2rem 0 2.4rem 0;
     }
 
     .how-its-free-desc {
       @include media($tablet-up) {
         float: left;
-        width: 60%;
+        width: 65%;
+        line-height: 1.4em;
       }
     }
 
@@ -150,7 +157,7 @@ html {
       width: 100%;
       text-align: center;
       @include media($tablet-up) {
-        width: 40%;
+        width: 35%;
         text-align: center;
         float: right;
         margin: 40px 0 0 0;
@@ -163,8 +170,8 @@ html {
     position: relative;
     border: 0;
     z-index: 2;
-    padding-bottom: 4em;
-    margin-bottom: -7.5em;
+    padding-bottom: 0;
+    margin-bottom: 0;
     overflow: visible;
     .toolbar__item {
       color: #fff;
