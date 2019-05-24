@@ -9,6 +9,9 @@ class VitaSigningNavigation
 
   OFF_MAIN = [
       VitaSigning::InvalidSigningRequestController,
+      VitaSigning::PreparedReturnPreviewController,
+      VitaSigning::FederalSignaturePagePreviewController,
+      VitaSigning::StateSignaturePagePreviewController,
   ].freeze
 
   class << self

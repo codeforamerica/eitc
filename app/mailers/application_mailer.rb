@@ -24,7 +24,7 @@ class ApplicationMailer < ActionMailer::Base
     mail(
         from: %("Code for America VITA Support" <vita-support@codeforamerica.org>),
         to: email,
-        subject: "Your tax returns are ready to sign",
+        subject: "Your tax returns are ready",
         )
   end
 end

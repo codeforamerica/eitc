@@ -14,7 +14,7 @@
       </p>
     </div>
     <div class="form-card__footer">
-      <%=link_to "Your prepared tax returns", rails_blob_path(current_signing_request.prepared_return, disposition: "preview", only_path: true), class: 'button with-padding-med', target:'_blank' %><br>
+      <%=link_to "Your prepared tax returns", prepared_return_preview_vita_signing_index_path, class: 'button with-padding-med', target:'_blank' %><br>
       <%= link_to next_path, class: "button button--primary with-padding-med" do %>
         This looks correct
       <% end %>
