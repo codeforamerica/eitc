@@ -67,7 +67,7 @@ Rails.application.configure do
 
   # Customize default host
   config.action_mailer.default_url_options = {
-      host: "getyourrefund.org",
+      host: "www.getyourrefund.org",
       protocol: "https",
   }
 
