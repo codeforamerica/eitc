@@ -109,7 +109,7 @@ html {
     }
 
     .how-it-works-step {
-      margin: 48px 0;
+      margin: 5rem 0;
       text-align: center;
 
       @include media($tablet-up) {
@@ -144,6 +144,8 @@ html {
   }
 
   div#how-its-free {
+    padding-bottom: 0.6em;
+
     .h2 {
       margin: 2rem 0 2.4rem 0;
     }
