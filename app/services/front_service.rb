@@ -1,9 +1,12 @@
 class FrontService
   include Singleton
 
-  def send_message_with_attachment(attachment)
+  def initialize
     @url = CredentialsHelper.environment_credential_for_key(:front_custom_channel_url)
     @api_key = CredentialsHelper.environment_credential_for_key(:front_api_key)
+  end
+
+  def send_message_with_attachment(attachment)
     return unless @url && @api_key
 
     request = RestClient::Request.new(
@@ -26,8 +29,6 @@ class FrontService
   end
 
   def send_client_application(vita_client)
-    @url = CredentialsHelper.environment_credential_for_key(:front_custom_channel_url)
-    @api_key = CredentialsHelper.environment_credential_for_key(:front_api_key)
     return unless @url && @api_key
 
     attachments = []
@@ -97,6 +98,12 @@ class FrontService
       end
     end
 
+    contact_id = find_or_create_contact(
+      :name => vita_client.primary_filer.full_name,
+      :email => vita_client.email,
+      :phone => vita_client.tel_link_phone_number,
+    )
+
     request = RestClient::Request.new(
         :method => :post,
         :url => @url,
@@ -107,8 +114,7 @@ class FrontService
             :body_format => 'html',
             :sender => {
                 :name => vita_client.primary_filer.full_name,
-                :email => vita_client.email,
-                :phone => vita_client.tel_link_phone_number,
+                :contact_id => contact_id,
                 :handle => vita_client.email,
             },
             :subject => front_subject(vita_client)
@@ -123,8 +129,6 @@ class FrontService
   end
 
   def send_signed_approval(signing_request)
-    @url = CredentialsHelper.environment_credential_for_key(:front_custom_channel_url)
-    @api_key = CredentialsHelper.environment_credential_for_key(:front_api_key)
     return unless @url && @api_key
 
     vita_client = signing_request.vita_client
@@ -146,6 +150,12 @@ class FrontService
             "<li>Phone Number: #{vita_client.formatted_phone_number}</li>"\
             "</ul>"
 
+    contact_id = find_or_create_contact(
+      :name => vita_client.primary_filer.full_name,
+      :email => vita_client.email,
+      :phone => vita_client.tel_link_phone_number,
+    )
+
     request = RestClient::Request.new(
         :method => :post,
         :url => @url,
@@ -156,8 +166,7 @@ class FrontService
             :body_format => 'html',
             :sender => {
                 :name => vita_client.primary_filer.full_name,
-                :email => vita_client.email,
-                :phone => vita_client.tel_link_phone_number,
+                :contact_id => contact_id,
                 :handle => vita_client.email,
             },
             :subject => front_approval_subject(vita_client)
@@ -182,6 +191,69 @@ class FrontService
   end
 
   private
+
+  def find_contact(email:, phone:)
+    contact_aliases = []
+    contact_aliases << "alt:email:#{email}" if email
+    contact_aliases << "alt:phone:#{format_phone_number(phone)}" if phone
+
+    contact_aliases.each do |contact_alias|
+      response = RestClient.get(
+        "https://api2.frontapp.com/contacts/#{contact_alias}",
+        {
+          'Content-Type' => 'application/json',
+          :Authorization => "Bearer #{@api_key}",
+          :Accept => 'application/json'
+        }
+      )
+
+      if response
+        return JSON.parse(response.body)
+      end
+    end
+  rescue RestClient::BadRequest, RestClient::NotFound
+    nil
+  end
+
+  def format_phone_number(phone_number_string)
+    return unless phone_number_string && phone_number_string.present?
+
+    cleaned_string = phone_number_string.gsub(/\D+/, "")
+    if (cleaned_string.length == 11) && (cleaned_string[0] == '1')
+      "+" + cleaned_string
+    elsif cleaned_string.length == 10
+      "+1" + cleaned_string
+    end
+  end
+
+  def find_or_create_contact(name:, email:, phone:)
+    existing_contact = find_contact(email: email, phone: phone)
+    return existing_contact['id'] if existing_contact
+
+    response = RestClient.post(
+      "https://api2.frontapp.com/contacts",
+      {
+        :name => name,
+        :handles => [
+          {
+            :handle => email,
+            :source => 'email',
+          },
+          {
+            :handle => phone,
+            :source => 'phone',
+          },
+        ],
+      }.to_json,
+      {
+        'Content-Type' => 'application/json',
+        :Authorization => "Bearer #{@api_key}",
+        :Accept => 'application/json'
+      }
+    )
+
+    JSON.parse(response.body)['id']
+  end
 
   def stringfile(string,
                  filename="file_#{rand 100000}",
