@@ -1,5 +1,6 @@
 class FrontService
   include Singleton
+  require "json"
 
   def send_message_with_attachment(attachment)
     @url = CredentialsHelper.environment_credential_for_key(:front_custom_channel_url)
@@ -25,7 +26,44 @@ class FrontService
     response = request.execute
   end
 
+  def create_contact(vita_client)
+    @url = "https://api2.frontapp.com/contacts"
+    @api_key = CredentialsHelper.environment_credential_for_key(:front_api_key)
+    return unless @url && @api_key
+
+    request = RestClient::Request.new(
+        :method => :post,
+        :url => @url,
+        :payload => {
+            :name => vita_client.primary_filer.full_name,
+            :handles => [
+                {:source => "email", :handle => vita_client.email},
+                {:source => "phone", :handle => vita_client.tel_link_phone_number}
+            ]
+        }.to_json,
+        :headers => {
+            'Content-Type' => 'application/json',
+            :Authorization => "Bearer #{@api_key}",
+            :Accept => 'application/json'
+        })
+
+    response = request.execute
+  end
+
   def send_client_application(vita_client)
+    begin
+      create_contact(vita_client)
+    rescue => e
+      # We will get a 409 error response if the contact already exists, and and we don't really want to fail on contact
+      # creation regardless of the error. Better to let this fail and still send the application, but we'll at least
+      # log the errors here
+      MixpanelService.instance.run(
+        unique_id: vita_client.visitor_id,
+        event_name: "create_contact_error",
+        data: {"status_code": e.http_code, "message": e.message}
+      )
+    end
+
     @url = CredentialsHelper.environment_credential_for_key(:front_custom_channel_url)
     @api_key = CredentialsHelper.environment_credential_for_key(:front_api_key)
     return unless @url && @api_key
@@ -107,8 +145,6 @@ class FrontService
             :body_format => 'html',
             :sender => {
                 :name => vita_client.primary_filer.full_name,
-                :email => vita_client.email,
-                :phone => vita_client.tel_link_phone_number,
                 :handle => vita_client.email,
             },
             :subject => front_subject(vita_client)
@@ -156,8 +192,6 @@ class FrontService
             :body_format => 'html',
             :sender => {
                 :name => vita_client.primary_filer.full_name,
-                :email => vita_client.email,
-                :phone => vita_client.tel_link_phone_number,
                 :handle => vita_client.email,
             },
             :subject => front_approval_subject(vita_client)
