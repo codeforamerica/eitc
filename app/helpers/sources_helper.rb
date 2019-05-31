@@ -1,5 +1,6 @@
 module SourcesHelper
   SOURCES = {
+      "ak" => "Alaska Outreach",
       "fb" => "Facebook",
       "cl" => "Craigslist",
       "cld" => "Craigslist Denver",
@@ -17,6 +18,7 @@ module SourcesHelper
   }
 
   def full_source
-    SOURCES.fetch(source, "Unknown source")
+    return "Unknown source" unless source.present?
+    SOURCES.fetch(source, source)
   end
 end
