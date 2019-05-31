@@ -44,7 +44,7 @@ class FrontService
     end
 
     body = "New <strong>#{vita_client.looks_fake? ? "probably fake " : ""}#{vita_client.state}</strong> intake form received from #{vita_client.full_source}<br>"\
-           "<em>Referrer: #{vita_client.source || "No referrer"}</em><br>"
+           "<em>Referrer: #{vita_client.referrer || "No referrer"}</em><br>"
 
     if !vita_client.ready_to_upload_docs?
       body += "<p><strong>This client was not ready to upload documents.</strong></p>"
