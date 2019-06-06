@@ -79,6 +79,10 @@ module VitaIntake
       end
     end
 
+    def clear_session
+      reset_session
+    end
+
     def form_navigation
       @form_navigation ||= VitaIntakeNavigation.new(self)
     end
