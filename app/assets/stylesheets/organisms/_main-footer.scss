@@ -1,6 +1,7 @@
 body {
+  margin-bottom: 480px;
   @include media($tablet-up) {
-    margin-bottom: 150px;
+    margin-bottom: 240px;
   }
 }
 
@@ -8,6 +9,7 @@ body {
   background-color: #D4CDC9;
   color: #121111;
   font-weight: normal;
+  height: 480px;
 
   a {
     color: #121111;
@@ -15,23 +17,57 @@ body {
 
   @include media($tablet-up) {
     padding: 2em 40px;
-    height: 150px;
+    height: 240px;
   }
 }
 
 .main-footer__legal {
   @include media($tablet-up) {
-    float: left;
     width: 70%;
   }
 }
 
-.main-footer__cfa-logo {
-  margin-top: 1em;
+.main-footer__logos {
+  margin-top: 2em;
+  text-align: center;
 
   @include media($tablet-up) {
-    margin: 0;
-    float: right;
+    text-align: left;
   }
+}
+
+.main-footer__logo {
+  display: block;
+  vertical-align: middle;
+  margin-right: 0;
+  margin-top: 1.5em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+  @include media($tablet-up) {
+    display: inline-block;
+    margin-top: 0;
+    margin-right: 60px;
+  }
+
+}
+
+.image--eks-logo {
+  width: 189px;
+  height: auto;
+}
+
+.image--thc-logo {
+  width: 188px;
+  height: auto;
+}
+
+.image--cfa-logo {
+  width: 160px;
+  height: auto;
 }
 

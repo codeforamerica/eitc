@@ -3,7 +3,10 @@ html {
 }
 
 .template--homepage {
-  margin-bottom: 150px;
+  margin-bottom: 480px;
+  @include media($tablet-up) {
+    margin-bottom: 240px;
+  }
 
   .slab {
     border-bottom: none;
@@ -198,6 +201,9 @@ html {
   }
 
   .main-footer {
-    height: 150px;
+    height: 480px;
+    @include media($tablet-up) {
+      height: 240px;
+    }
   }
 }

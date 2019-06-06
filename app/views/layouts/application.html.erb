@@ -37,14 +37,30 @@
 
   <footer class="main-footer">
     <div class="grid">
-      <div class="grid__item">
+      <div class="grid__item width-one-whole">
         <div class="text--small main-footer__legal">
-          GetYourRefund.org is a free non-profit service delivered by <%= link_to "Code for America", "https://www.codeforamerica.org/" %>.
+          GetYourRefund.org is a <strong>free non-profit service</strong> delivered by
+          <%= link_to "Code for America", "https://www.codeforamerica.org/", target: "_blank" %> with tax preparation by
+          <%= link_to "United Way Bay Area", "https://uwba.org/", target: "_blank" %>,
+          <%= link_to "Earn it! Keep it! Save it!", "https://earnitkeepitsaveit.org", target: "_blank" %>, and
+          <%= link_to "Tax Help Colorado", "https://www.garycommunity.org/tax-help-colorado-0", target: "_blank" %>.
         </div>
-        <div class="main-footer__cfa-logo">
-          <a href="https://codeforamerica.org">
-            <%= image_tag "cfa-logo.png", class: "image image--cfa-logo", alt: "Code for America" %>
-          </a>
+        <div class="main-footer__logos">
+          <div class="main-footer__logo">
+            <a href="https://earnitkeepitsaveit.org" target="_blank">
+              <%= image_tag "eks-logo.png", class: "image image--eks-logo", alt: "Code for America" %>
+            </a>
+          </div>
+          <div class="main-footer__logo">
+            <a href="https://www.garycommunity.org/tax-help-colorado-0" target="_blank">
+              <%= image_tag "taxhelpco-logo.png", class: "image image--thc-logo", alt: "Code for America" %>
+            </a>
+          </div>
+          <div class="main-footer__logo">
+            <a href="https://codeforamerica.org" target="_blank">
+              <%= image_tag "cfa-logo.png", class: "image image--cfa-logo", alt: "Code for America" %>
+            </a>
+          </div>
         </div>
         <div style="clear:both;"></div>
       </div>
