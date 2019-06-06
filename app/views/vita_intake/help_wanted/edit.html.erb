@@ -1,0 +1,15 @@
+<% content_for :form_card_title do %>
+  what you are looking for help with?
+<% end %>
+
+<% content_for :form_card_content do %>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder, html: { class: 'form-card' } do |f| %>
+    <h1 class="h2 form-question">For the years you already filed, please describe what you are looking for help with.</h1>
+    <%= f.cfa_textarea :already_filed_needs, "", options: { rows: 5 } %>
+    <div class="form-card__footer">
+      <%= f.button :submit, class: 'button button--primary with-padding-small' do %>
+        Continue
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

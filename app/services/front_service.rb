@@ -50,6 +50,16 @@ class FrontService
       body += "<p><strong>This client was not ready to upload documents.</strong></p>"
     end
 
+    body += "<p>Wants help with:</p><ul>"
+    vita_client.tax_years.each do |year|
+      body += "<li>#{year}#{vita_client.years_already_filed.include?(year) ? " (Already filed)" : "" }</li>"
+    end
+    body += "</ul>"
+
+    if vita_client.already_filed?
+      body+= "<p><em>For years they already filed, they'd like help with:<em></p> <p>#{vita_client.already_filed_needs}</p>"
+    end
+
     if vita_client.dependents.count > 4
       body += "<p><strong>Alert! More than 4 dependents!</strong></p>"
     end
@@ -59,7 +69,7 @@ class FrontService
             "<ul>"\
             "<li>Date of Birth: #{vita_client.primary_filer.birthdate.strftime("%m/%d/%Y")}</li>"\
             "<li>Email: #{vita_client.email}</li>"\
-            "<li>Address: #{vita_client.street_address} #{vita_client.city} #{vita_client.zip}</li>"\
+            "<li>Address: #{vita_client.street_address} #{vita_client.city} #{vita_client.state} #{vita_client.zip}</li>"\
             "<li>Phone Number: #{vita_client.formatted_phone_number}</li>"\
             "<li>Can you receive text messages?: #{vita_client.sms_enabled ? 'yes' : 'no'}</li>"\
             "<li>Are you a full-time student?: #{vita_client.primary_filer.full_time_student? ? 'yes' : 'no'}</li>"\

@@ -1,0 +1,24 @@
+<% content_for :form_card_title do %>
+  Which years would you like us to help you prepare taxes for?
+<% end %>
+
+<% content_for :form_card_content do %>
+  <%= form_for @form, url: current_path, method: :put, local: true, builder: Eitc::EitcFormBuilder, html: { class: 'form-card form-card--transition' } do |f| %>
+    <div class="form-card__content">
+      <%= f.eitc_checkbox_set(:tax_years,
+         [
+           { label: "2018", method: :tax_years, checked_value: "2018", unchecked_value: nil },
+           { label: "2017", method: :tax_years, checked_value: "2017", unchecked_value: nil },
+           { label: "2016", method: :tax_years, checked_value: "2016", unchecked_value: nil },
+         ],
+         label_text: "Which years would you like us to help you prepare taxes for?",
+         help_text: "We can help you file or redo taxes from past years.")
+      %>
+    </div>
+    <div class="form-card__footer">
+      <%= f.button :submit, class: 'button button--primary with-padding-small' do %>
+        Continue
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

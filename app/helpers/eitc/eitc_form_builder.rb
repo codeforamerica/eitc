@@ -89,6 +89,60 @@ module Eitc
 
       label_text.html_safe
     end
+
+    def eitc_fieldset_label_contents(label_text:, help_text:, legend_class:, h1: false, optional: false)
+      if h1
+        label_text = "<h1 class=\"form-question\">#{label_text}</h1>"
+      end
+
+      label_html = <<~HTML
+        <legend class="form-question #{legend_class}">
+          #{label_text + optional_text(optional)}
+        </legend>
+      HTML
+
+      if help_text
+        label_html += <<~HTML
+          <p class="text--help with-padding-med">#{help_text}</p>
+        HTML
+      end
+
+      label_html.html_safe
+    end
+
+    def eitc_checkbox_set(method, collection, label_text: "", legend_class: "", none_option: "", help_text: nil, only_question: true)
+      checkbox_html = collection.map do |item|
+        <<~HTML.html_safe
+          <label class="checkbox">
+            #{check_box(item[:method], {multiple: true}, item[:checked_value], item[:unchecked_value])}  #{item[:label]}
+          </label>
+        HTML
+      end.join.html_safe
+
+      if none_option.present?
+        none_check_box_html = <<~HTML
+          <label class="checkbox">
+            #{check_box(method, {id: "none__checkbox"}, nil, nil)} #{none_option}
+          </label>
+        HTML
+      else
+        none_check_box_html = ""
+      end
+
+      <<~HTML.html_safe
+        <fieldset class="input-group form-group#{error_state(object, method)}">
+          #{eitc_fieldset_label_contents(
+                label_text: label_text,
+                help_text: help_text,
+                legend_class: legend_class,
+                h1: only_question
+          )}
+          #{checkbox_html}
+          #{none_check_box_html}
+          #{errors_for(object, method)}
+        </fieldset
+      HTML
+    end
   end
 end
 

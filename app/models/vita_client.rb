@@ -63,6 +63,10 @@ class VitaClient < ApplicationRecord
     source == "demo"
   end
 
+  def already_filed?
+    years_already_filed.present?
+  end
+
   def ready_to_upload_docs?
     # when null, return true
     ready_to_submit_docs != false
