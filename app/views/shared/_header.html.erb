@@ -5,5 +5,10 @@
         <a class="main-header__logo" href="/"><%=image_tag("checkmark-logo.png")%> GetYourRefund.org</a>
       </h1>
     </div>
+    <div class="toolbar__right">
+      <%= link_to "javascript:FrontChat('show');", class: "button button--small" do %>
+        Chat with us
+      <% end %>
+    </div>
   </div>
 </header>

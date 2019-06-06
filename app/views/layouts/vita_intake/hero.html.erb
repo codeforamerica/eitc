@@ -1,7 +1,16 @@
 <% content_for :page do %>
   <div class="page-wrapper">
 
-    <%= render 'shared/header' %>
+    <header class="main-header">
+      <div class="toolbar">
+        <div class="toolbar__left">
+          <h1 class="main-header__site-name">
+            <a class="main-header__logo" href="/"><%=image_tag("checkmark-logo.png")%> GetYourRefund.org</a>
+          </h1>
+        </div>
+      </div>
+    </header>
+
     <section class="slab slab--fold">
       <div class="grid">
         <div class="grid__item width-two-thirds">
@@ -41,7 +50,6 @@
     </div>
 
     <%= content_for :content %>
-    <%= render 'shared/front_chat' %>
   </div>
 
 <% end %>

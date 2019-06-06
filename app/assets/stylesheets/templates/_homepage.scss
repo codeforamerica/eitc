@@ -187,6 +187,9 @@ html {
     padding-bottom: 0;
     margin-bottom: 0;
     overflow: visible;
+    .toolbar__left {
+      padding-top: 0;
+    }
     .toolbar__item {
       color: #fff;
     }
