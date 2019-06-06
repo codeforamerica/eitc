@@ -163,7 +163,7 @@ html {
 
     .how-its-free-logo {
       display: block;
-      margin: 0 auto 20px auto;
+      margin: 0 auto 30px auto;
       width: 100%;
       text-align: center;
       @include media($tablet-up) {
@@ -171,6 +171,10 @@ html {
         text-align: center;
         float: right;
         margin: 2.8rem 0 0 0;
+      }
+
+      img {
+        width: 190px;
       }
     }
   }
