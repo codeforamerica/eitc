@@ -108,12 +108,6 @@ class FrontService
       end
     end
 
-    contact_id = find_or_create_contact(
-      :name => vita_client.primary_filer.full_name,
-      :email => vita_client.email,
-      :phone => vita_client.tel_link_phone_number,
-    )
-
     request = RestClient::Request.new(
         :method => :post,
         :url => @url,
@@ -122,11 +116,7 @@ class FrontService
             :attachments => attachments,
             :body => body,
             :body_format => 'html',
-            :sender => {
-                :name => vita_client.primary_filer.full_name,
-                :contact_id => contact_id,
-                :handle => vita_client.email,
-            },
+            :sender => sender_data(vita_client),
             :subject => front_subject(vita_client)
         },
         :headers => {
@@ -160,11 +150,7 @@ class FrontService
             "<li>Phone Number: #{vita_client.formatted_phone_number}</li>"\
             "</ul>"
 
-    contact_id = find_or_create_contact(
-      :name => vita_client.primary_filer.full_name,
-      :email => vita_client.email,
-      :phone => vita_client.tel_link_phone_number,
-    )
+
 
     request = RestClient::Request.new(
         :method => :post,
@@ -174,11 +160,7 @@ class FrontService
             :attachments => attachments,
             :body => body,
             :body_format => 'html',
-            :sender => {
-                :name => vita_client.primary_filer.full_name,
-                :contact_id => contact_id,
-                :handle => vita_client.email,
-            },
+            :sender => sender_data(vita_client),
             :subject => front_approval_subject(vita_client)
         },
         :headers => {
@@ -201,6 +183,22 @@ class FrontService
   end
 
   private
+
+  def sender_data(vita_client)
+    contact_id = find_or_create_contact(
+        :name => vita_client.primary_filer.full_name,
+        :email => vita_client.email,
+        :phone => vita_client.tel_link_phone_number)
+    data = {
+      name: vita_client.primary_filer.full_name,
+      handle: vita_client.email
+    }
+    if contact_id.present?
+      data = data.merge(contact_id: contact_id)
+    end
+
+    data
+  end
 
   def find_contact(email:, phone:)
     contact_aliases = []
@@ -263,6 +261,8 @@ class FrontService
     )
 
     JSON.parse(response.body)['id']
+  rescue RestClient::Conflict
+    nil
   end
 
   def stringfile(string,
