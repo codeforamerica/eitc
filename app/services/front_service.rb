@@ -150,8 +150,6 @@ class FrontService
             "<li>Phone Number: #{vita_client.formatted_phone_number}</li>"\
             "</ul>"
 
-
-
     request = RestClient::Request.new(
         :method => :post,
         :url => @url,
@@ -169,7 +167,13 @@ class FrontService
             :Accept => 'application/json'
         })
 
-    response = request.execute
+    begin
+      response = request.execute
+    rescue RestClient::Conflict => e
+      puts e.message
+      puts e.response
+      raise
+    end
   end
 
   def front_subject(vita_client)
