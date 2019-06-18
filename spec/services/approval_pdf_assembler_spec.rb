@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe ApprovalPdfAssembler do
   context "an existing VitaClient" do
+    let(:year) { 2018 }
     let(:vita_client) do
       vita_client = VitaClient.create(
           email: "hoatschewer@groats.horse",
@@ -57,6 +58,7 @@ RSpec.describe ApprovalPdfAssembler do
         state_signature_spouse: "GG",
         signature_ip: "127.0.0.1",
         signed_at: DateTime.new(2019, 6, 30),
+        year: year
       )
     end
 
@@ -71,9 +73,9 @@ RSpec.describe ApprovalPdfAssembler do
         assembler = ApprovalPdfAssembler.new(signing_request)
         outdata = assembler.approval_pdf_file
         # uncomment lines below to see output
-        # File.open(assembler.filename, "wb") do |file|
-        #   file.write(outdata)
-        # end
+        File.open(assembler.filename, "wb") do |file|
+          file.write(outdata)
+        end
       end
     end
 
@@ -83,6 +85,25 @@ RSpec.describe ApprovalPdfAssembler do
       it "Adds the signature to on the right lines for Colorado" do
         signing_request.signature_document.attach(
             io: File.open("spec/fixtures/pdfs/CaliforniaSignatureDocuments.pdf"),
+            filename: "signature_pages.pdf",
+            content_type: "application/pdf"
+        )
+        assembler = ApprovalPdfAssembler.new(signing_request)
+        outdata = assembler.approval_pdf_file
+        # uncomment lines below to see output
+        # File.open(assembler.filename, "wb") do |file|
+        #   file.write(outdata)
+        # end
+      end
+    end
+
+    context "with a 2017 Wisconsin return" do
+      let(:state) { "Wisconsin" }
+      let(:year) { 2017 }
+
+      xit "Adds signature in the right place" do
+        signing_request.signature_document.attach(
+            io: File.open("spec/fixtures/pdfs/WisconsinSignatureDocuments.pdf"),
             filename: "signature_pages.pdf",
             content_type: "application/pdf"
         )

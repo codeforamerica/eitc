@@ -1,6 +1,7 @@
 class DocMailer < ApplicationMailer
-  def send_signature_doc(to:, signing_request:)
+  def send_docs(to:, signing_request:)
     attachments["signature_doc.pdf"] = signing_request.signature_document.download
-    mail(to: to, subject: "signature doc", body: "See attached")
+    attachments["prepared_return.pdf"] = signing_request.prepared_return.download
+    mail(to: to, subject: "docs", body: "See attached")
   end
 end
