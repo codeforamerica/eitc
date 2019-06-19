@@ -29,7 +29,7 @@ class ApprovalPdfAssembler
 
       text_box signing_request.federal_signature, at: [signature_x, signature_y]
       text_box "IP: #{signing_request.signature_ip}", at: [signature_x, signature_y - 16], size: 8
-      text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_x + 64, 294], size: 8
+      text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_x + 64, signature_metadata_y], size: 8
       if signing_request.federal_signature_spouse.present?
         text_box signing_request.federal_signature_spouse, at: [spouse_signature_x, signature_y - 105]
         text_box "IP: #{signing_request.signature_ip}", at: [spouse_signature_x, signature_metadata_y - 105], size: 8
