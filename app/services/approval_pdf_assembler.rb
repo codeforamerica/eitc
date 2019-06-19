@@ -29,11 +29,11 @@ class ApprovalPdfAssembler
 
       text_box signing_request.federal_signature, at: [signature_x, signature_y]
       text_box "IP: #{signing_request.signature_ip}", at: [signature_x, signature_y - 16], size: 8
-      text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_x + 64, signature_metadata_y], size: 8
+      text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_x + 69, signature_metadata_y], size: 8
       if signing_request.federal_signature_spouse.present?
         text_box signing_request.federal_signature_spouse, at: [spouse_signature_x, signature_y - 105]
         text_box "IP: #{signing_request.signature_ip}", at: [spouse_signature_x, signature_metadata_y - 105], size: 8
-        text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [spouse_signature_x + 64, signature_metadata_y - 105], size: 8
+        text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [spouse_signature_x + 69, signature_metadata_y - 105], size: 8
       end
     end
   end
@@ -46,12 +46,12 @@ class ApprovalPdfAssembler
     Prawn::Document.generate(signature_overlay_path("co")) do
       text_box signing_request.state_signature, at: [signature_x, signature_y], size: 11
       text_box "IP: #{signing_request.signature_ip}", at: [signature_x, signature_metadata_y], size: 8
-      text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_x + 64, signature_metadata_y], size: 9
+      text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_x + 69, signature_metadata_y], size: 9
       if signing_request.state_signature_spouse.present?
         signature_spouse_x = signature_x + 281
         text_box signing_request.state_signature_spouse, at: [signature_spouse_x, signature_y], size: 11
         text_box "IP: #{signing_request.signature_ip}", at: [signature_spouse_x, signature_metadata_y], size: 8
-        text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_spouse_x + 64, signature_metadata_y], size: 9
+        text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_spouse_x + 69, signature_metadata_y], size: 9
       end
     end
   end
@@ -64,14 +64,14 @@ class ApprovalPdfAssembler
     Prawn::Document.generate(signature_overlay_path("ca")) do
       text_box signing_request.state_signature, at: [signature_x, signature_y], size: 11
       text_box "IP: #{signing_request.signature_ip}", at: [signature_x, signature_metadata_y], size: 8
-      text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_x + 64, signature_metadata_y], size: 9
+      text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_x + 69, signature_metadata_y], size: 9
       if signing_request.state_signature_spouse.present?
         signature_spouse_x = signature_x + 37
         signature_spouse_y = signature_y - 104
         signature_metadata_y = signature_spouse_y - 11
         text_box signing_request.state_signature_spouse, at: [signature_spouse_x, signature_spouse_y], size: 11
         text_box "IP: #{signing_request.signature_ip}", at: [signature_spouse_x, signature_metadata_y], size: 8
-        text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_spouse_x + 64, signature_metadata_y], size: 9
+        text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_spouse_x + 69, signature_metadata_y], size: 9
       end
     end
   end
@@ -84,14 +84,14 @@ class ApprovalPdfAssembler
     Prawn::Document.generate(signature_overlay_path("wi")) do
       text_box signing_request.state_signature, at: [signature_x, signature_y], size: 11
       text_box "IP: #{signing_request.signature_ip}", at: [signature_x, signature_metadata_y], size: 8
-      text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_x + 64, signature_metadata_y], size: 9
+      text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_x + 69, signature_metadata_y], size: 9
       if signing_request.state_signature_spouse.present?
         signature_spouse_x = signature_x + 210
         signature_spouse_y = signature_y
         signature_metadata_y = signature_spouse_y - 13
         text_box signing_request.state_signature_spouse, at: [signature_spouse_x, signature_spouse_y], size: 11
         text_box "IP: #{signing_request.signature_ip}", at: [signature_spouse_x, signature_metadata_y], size: 8
-        text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_spouse_x + 64, signature_metadata_y], size: 9
+        text_box signing_request.local_signed_at.strftime("%-m/%-d/%Y %-I:%M%p %Z"), at: [signature_spouse_x + 69, signature_metadata_y], size: 9
       end
     end
   end
