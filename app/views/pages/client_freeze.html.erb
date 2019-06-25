@@ -1,0 +1,65 @@
+
+<% content_for :template_css_class, "form" %>
+
+<% content_for :page do %>
+  <div class="page-wrapper">
+    <%= render 'shared/header' %>
+    <main class="main">
+      <section class="slab slab--not-padded">
+        <div class="grid">
+          <div class="grid__item width-two-thirds shift-one-sixth">
+            <div class="form-card">
+
+              <h1 class="with-padding-med nudge--med">
+                GetYourRefund.org is not accepting new clients as of June 25th, 2019.
+              </h1>
+
+              <p class="with-padding-large">
+                Read below if you are an existing client or are looking for free tax help.
+              </p>
+
+              <h2 class="with-padding-med">
+                I am an existing GetYourRefund client.
+              </h2>
+
+              <p class="with-padding-large">
+                We are still working with all existing clients to help them file their taxes.
+                If you have any questions or concerns about your case, you can respond to any
+                emails or text messages you received from one of our case workers.
+                Or, you can email us at <br>
+                <a href="mailto:vita-support@codeforamerica.org">vita-support@codeforamerica.org</a>
+                or text us at 
+                <strong class="no-wrap">1 (720) 728-0704</strong>
+              </p>
+
+              <h2 class="with-padding-med">
+                I’m looking for free tax help.
+              </h2>
+
+              <p>
+                Here are a few resources we recommend for free tax help.
+              </p>
+
+              <ul class="list--bulleted with-padding-large">
+                <li><a href="https://www.garycommunity.org/tax-help">Tax Help Colorado</a> - Free tax help for Coloradans, online and in-person.</li>
+                <li><a href="https://caleitc4me.org/get-it-2/">CalEITC 4 Me</a> - Free tax help for Californians, online and in-person.</li>
+                <li><a href="https://www.myfreetaxes.com/">MyFreeTaxes.com</a> - Free online tax help from H&R Block and the United Way.</li>
+                <li><a href="https://irs.treasury.gov/freetaxprep/">IRS VITA site search</a> - Free in-person tax help from the Volunteer Income Tax Assistance program.</li>
+              </ul>
+
+              <h2 class="with-padding-med">
+                I want to know the status of my tax refund.
+              </h2>
+
+              <p class="with-padding-large">
+                We suggest getting in touch directly with the IRS about your tax refund at
+                <a href=" https://www.irs.gov/refunds"> https://www.irs.gov/refunds</a>.
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+<% end %>
