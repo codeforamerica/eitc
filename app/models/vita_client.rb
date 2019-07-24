@@ -11,6 +11,8 @@ class VitaClient < ApplicationRecord
   attribute :last_four_ssn_spouse
   attr_encrypted(:last_four_ssn_spouse, key: CredentialsHelper.secret_key_for_encryption)
 
+  scope :signed, -> { where.not(signature: nil) }
+
   def married?
     has_spouse == 'yes'
   end
@@ -60,7 +62,7 @@ class VitaClient < ApplicationRecord
   end
 
   def looks_fake?
-    source == "demo"
+    !Rails.env.production? || source == "demo"
   end
 
   def already_filed?

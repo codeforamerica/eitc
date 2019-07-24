@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  root 'pages#client_freeze'
+
+  if Rails.env.production?
+    root 'pages#client_freeze'
+  else
+    root 'vita_intake/welcome#edit'
+  end
   get '/file_online' => 'pages#file_online', as: 'file_online'
   get '/chat_support' => 'pages#chat_support', as: 'chat_support'
   get '/front_upload_test' => 'front_upload_test#new'
