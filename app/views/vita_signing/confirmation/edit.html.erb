@@ -12,7 +12,7 @@
       <div class="text--centered">
         <h2>What to expect next</h2>
         <p>
-          Your tax preparer will submit your tax return to the IRS within the next day. If you qualified for a refund,
+          Your tax preparer will submit your <%= current_signing_request.year %> tax return to the IRS within the next day. If you qualified for a refund,
           you should receive a check or direct deposit within the next month.
         </p>
       </div>
@@ -25,7 +25,7 @@
             will be sent a $5 Amazon gift card and be eligible for more paid research opportunities.
           </p>
           <div>
-            <%= link_to "https://codeforamerica.co1.qualtrics.com/jfe/form/SV_eyuicC2PFuxeIHb?ExternalDataReference=vc-#{current_vita_client.id}", class: "button button--cta with-padding-med", target: "_blank" do %>
+            <%= link_to "https://codeforamerica.co1.qualtrics.com/jfe/form/SV_eyuicC2PFuxeIHb?ExternalDataReference=vc-#{current_signing_request.vita_client.id}", class: "button button--cta with-padding-med", target: "_blank" do %>
               Let us know how we did
             <% end %>
           </div>

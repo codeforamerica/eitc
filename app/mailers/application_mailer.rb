@@ -18,13 +18,13 @@ class ApplicationMailer < ActionMailer::Base
         )
   end
 
-  def vita_signing_request(email, link)
-    @signing_request_link = link
+  def vita_signing_request(signing_request:)
+    @signing_request = signing_request
 
     mail(
         from: %("Code for America VITA Support" <vita-support@codeforamerica.org>),
-        to: email,
-        subject: "Your tax returns are ready",
+        to: @signing_request.vita_client.email,
+        subject: "Your #{@signing_request.year} tax return is ready",
         )
   end
 end

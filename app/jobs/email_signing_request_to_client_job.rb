@@ -1,5 +1,5 @@
 class EmailSigningRequestToClientJob < ApplicationJob
-  def perform(email:, link:)
-    ApplicationMailer.vita_signing_request(email, link).deliver
+  def perform(signing_request:)
+    ApplicationMailer.vita_signing_request(signing_request: signing_request).deliver
   end
 end

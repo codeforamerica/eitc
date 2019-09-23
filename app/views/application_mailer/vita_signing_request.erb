@@ -1,11 +1,11 @@
 <p>Hello from GetYourRefund.org,</p>
 
 <p>
-Your state and federal tax returns are prepared and ready. You can review them at the link below.
+Your <%= @signing_request.year %> tax return is prepared and ready. You can review it at the link below.
   If they look good to you, you can sign and our preparers will e-file them for you. </p>
 
 <p>
-  You can review your prepared returns at this link: <%=@signing_request_link %>
+  You can review your prepared return at this link: <%=@signing_request.signature_url %>
 </p>
 
 <p>

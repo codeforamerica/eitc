@@ -36,7 +36,16 @@
           <%= form_tag({action: :create}, :method => :post, multipart: true) do %>
             <h2 style="margin-bottom: 0;">Send <%= @vita_client.primary_filer.first_name %> their final documents</h2>
             <p style="margin-top:0;font-style: italic;">Attach final documents and hit Send to email them to <%= @vita_client.email %></p>
-            <div class="with-padding-small">
+<!--            year-->
+            <div class="with-padding-med">
+              <label for="year">Tax year</label>
+              <select id="year" name="year">
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+              </select>
+            </div>
+            <div class="with-padding-med">
               Signature Document: <%= file_field_tag 'signature_document' %>
             </div>
             <div class="with-padding-med">

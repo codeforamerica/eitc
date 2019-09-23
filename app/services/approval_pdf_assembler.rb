@@ -20,6 +20,8 @@ class ApprovalPdfAssembler
       case signing_request.year
       when 2017
         signature_y = 275
+      when 2016
+        signature_y = 275
       else
         signature_y = 310
       end
@@ -115,6 +117,8 @@ class ApprovalPdfAssembler
     federal_signature_overlay = CombinePDF.load signature_overlay_path("fed")
     signature_doc.pages[0] << federal_signature_overlay.pages[0]
     case @signing_request.vita_client.state
+    when "Alaska"
+      # do nothing
     when "California"
       write_california_signature_overlay
       california_signature_overlay = CombinePDF.load signature_overlay_path("ca")

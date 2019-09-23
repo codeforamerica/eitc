@@ -1,8 +1,7 @@
 module CredentialsHelper
   class << self
     def secret_key_for_encryption
-      encoded_value = environment_credential_for_key(
-          :secret_key_for_encryption, alternate_value: "This is a key that is 256 bits!!")
+      encoded_value = environment_credential_for_key(:secret_key_for_encryption)
       Base64.decode64(encoded_value)
     end
 

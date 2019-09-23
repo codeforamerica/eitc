@@ -42,7 +42,7 @@ module VitaSigning
       end
     end
 
-    def self.show?(vita_client)
+    def self.show?(signing_request)
       true
     end
 

@@ -2,7 +2,7 @@
   <div class="form-card form-card--transition">
     <%= form_for @form, url: current_path, method: :put, local: true, builder: Cfa::Styleguide::CfaFormBuilder do |f| %>
       <header class="form-card__header">
-        <h1 class="form-card__title">Great! We have everything we need to file your returns.</h1>
+        <h1 class="form-card__title">Great! We have everything we need to file your <%= current_signing_request.year %> return.</h1>
       </header>
       <div class="form-card__content">
         <p class="with-padding-small">

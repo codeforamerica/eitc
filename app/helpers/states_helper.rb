@@ -1,7 +1,7 @@
 module StatesHelper
   STATES_AND_TIMEZONES = {
       'Alabama' => 'Mountain Time (US & Canada)',
-      'Alaska' => 'Mountain Time (US & Canada)',
+      'Alaska' => 'Alaska',
       'Arizona' => 'Mountain Time (US & Canada)',
       'Arkansas' => 'Mountain Time (US & Canada)',
       'California' => 'Pacific Time (US & Canada)',
