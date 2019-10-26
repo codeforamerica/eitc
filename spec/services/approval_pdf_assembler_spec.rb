@@ -134,5 +134,24 @@ RSpec.describe ApprovalPdfAssembler do
         # end
       end
     end
+
+    context "with a 2016 California return" do
+      let(:state) { "California" }
+      let(:year) { 2016 }
+
+      it "Adds a signature in the right place" do
+        signing_request.signature_document.attach(
+            io: File.open("spec/fixtures/pdfs/CaliforniaSignatureDocuments2016.pdf"),
+            filename: "signature_pages.pdf",
+            content_type: "application/pdf"
+        )
+        assembler = ApprovalPdfAssembler.new(signing_request)
+        outdata = assembler.approval_pdf_file
+        # uncomment lines below to see output
+        # File.open(assembler.filename, "wb") do |file|
+        #   file.write(outdata)
+        # end
+      end
+    end
   end
 end

@@ -62,6 +62,7 @@ class ApprovalPdfAssembler
     signing_request = @signing_request
     signature_x = 65
     signature_y = 319
+    signature_y -= 20 if signing_request.year == 2016
     signature_metadata_y = signature_y - 13
     Prawn::Document.generate(signature_overlay_path("ca")) do
       text_box signing_request.state_signature, at: [signature_x, signature_y], size: 11
@@ -70,6 +71,7 @@ class ApprovalPdfAssembler
       if signing_request.state_signature_spouse.present?
         signature_spouse_x = signature_x + 37
         signature_spouse_y = signature_y - 104
+        signature_spouse_y -= 6 if signing_request.year == 2016
         signature_metadata_y = signature_spouse_y - 11
         text_box signing_request.state_signature_spouse, at: [signature_spouse_x, signature_spouse_y], size: 11
         text_box "IP: #{signing_request.signature_ip}", at: [signature_spouse_x, signature_metadata_y], size: 8
